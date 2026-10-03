@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+
+<title>Payment Success</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins', sans-serif;
+    background:#0d0d0d;
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    padding:20px;
+}
+
+.success-card{
+    width:100%;
+    max-width:420px;
+    background:#151515;
+    border-radius:18px;
+    padding:40px 30px;
+    text-align:center;
+    box-shadow:0 15px 40px rgba(0,0,0,0.5);
+}
+
+.success-icon{
+    width:90px;
+    height:90px;
+    background:#1f3d1f;
+    border-radius:50%;
+    margin:auto;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:42px;
+    color:#4CAF50;
+    margin-bottom:20px;
+}
+
+h1{
+    color:#fff;
+    margin-bottom:10px;
+}
+
+.success-text{
+    color:#aaa;
+    margin-bottom:30px;
+}
+
+.amount{
+    font-size:42px;
+    color:#ff9800;
+    font-weight:700;
+    margin-bottom:20px;
+}
+
+.info-box{
+    background:#101010;
+    border:1px solid #2a2a2a;
+    border-radius:12px;
+    padding:20px;
+    text-align:left;
+}
+
+.info-row{
+    display:flex;
+    justify-content:space-between;
+    margin-bottom:14px;
+}
+
+.info-row span{
+    color:#aaa;
+    font-size:14px;
+}
+
+.info-row strong{
+    color:#fff;
+}
+
+.btn-area{
+    margin-top:30px;
+}
+
+.btn{
+    display:inline-block;
+    padding:12px 20px;
+    border-radius:10px;
+    text-decoration:none;
+    font-size:14px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.back-btn{
+    background:#ff9800;
+    color:#fff;
+}
+
+.back-btn:hover{
+    background:#e68900;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="success-card">
+
+    <div class="success-icon">
+        ✔
+    </div>
+
+    <h1>Payment Successful</h1>
+
+    <p class="success-text">
+        EMI payment completed successfully
+    </p>
+
+    <div class="amount">
+        ₹{{ emi.amount }}
+    </div>
+
+    <div class="info-box">
+
+        <div class="info-row">
+            <span>Loan ID</span>
+            <strong>#{{ emi.loan.id }}</strong>
+        </div>
+
+        <div class="info-row">
+            <span>EMI Number</span>
+            <strong>{{ emi.emi_number }}</strong>
+        </div>
+
+        <div class="info-row">
+            <span>Payment Date</span>
+            <strong>{{ emi.payment_date }}</strong>
+        </div>
+
+        <div class="info-row">
+            <span>Status</span>
+            <strong>{{ emi.status }}</strong>
+        </div>
+
+    </div>
+
+    <div class="btn-area">
+
+        <a href="{% url 'user_emi' %}" class="btn back-btn">
+            Back to EMI
+        </a>
+
+    </div>
+
+</div>
+
+</body>
+</html>

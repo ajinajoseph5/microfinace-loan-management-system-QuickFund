@@ -1,0 +1,298 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<title>QuickFund Loan Services</title>
+
+<link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/font-awesome.min.css' %}">
+
+<link rel="stylesheet" href="{% static 'service.css' %}">
+
+<link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+
+</head>
+
+<body>
+
+<!-- Header -->
+<header class="header-section">
+
+<nav class="header-nav">
+
+<ul class="main-menu">
+
+<li><a href="#" class="active">Home</a></li>
+<li><a href="{% url 'about' %}">About QuickFund</a></li>
+
+<li><a href="#">Services</a>
+<ul class="sub-menu">
+<li><a href="{% url 'service' %}">Loan Services</a></li>
+<li><a href="#">Features</a></li>
+</ul>
+</li>
+
+<li><a href="#">Contact</a></li>
+
+</ul>
+
+<div class="header-right">
+<a href="#" class="hr-btn"><i class="flaticon-029-telephone-1"></i>Call QuickFund</a>
+<div class="hr-btn hr-btn-2">+91 98765 43210</div>
+</div>
+
+</nav>
+
+</header>
+
+
+<!-- HERO -->
+
+<div class="loan-header">
+
+<h1>QuickFund Loan Services</h1>
+
+<p>Fast, secure and affordable microfinance loans for everyone</p>
+
+</div>
+
+
+<!-- LOAN TYPES -->
+
+<div class="container">
+
+<h2 class="section-title">Loan Types We Provide</h2>
+
+<div class="row">
+
+
+<div class="col-md-4">
+
+<div class="loan-card">
+
+<h4>Personal Loan</h4>
+
+<p>Loans for medical expenses, education, travel and emergencies.</p>
+
+<ul>
+
+<li>Amount: ₹10,000 – ₹1,00,000</li>
+<li>Interest: 12%</li>
+<li>Duration: 6 – 18 Months</li>
+<li>Processing: 2-4 Days</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+<div class="col-md-4">
+
+<div class="loan-card">
+
+<h4>Business Loan</h4>
+
+<p>Financial support for shop owners, startups and small businesses.</p>
+
+<ul>
+
+<li>Amount: ₹20,000 – ₹2,50,000</li>
+<li>Interest: 10%</li>
+<li>Duration: 12 – 24 Months</li>
+<li>Processing: 3-5 Days</li>
+
+</ul>
+
+</div>
+
+</div>
+
+
+<div class="col-md-4">
+
+<div class="loan-card">
+
+<h4>Agriculture Loan</h4>
+
+<p>Loans for farmers, equipment purchase and crop production.</p>
+
+<ul>
+
+<li>Amount: ₹15,000 – ₹2,00,000</li>
+<li>Interest: 9%</li>
+<li>Duration: 12 – 24 Months</li>
+<li>Processing: 3-5 Days</li>
+
+</ul>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- ELIGIBILITY -->
+
+<div class="container">
+
+<h2 class="section-title">Eligibility Conditions</h2>
+
+<ul class="list-group">
+
+<li class="list-group-item">Applicant must be 18+ years old</li>
+<li class="list-group-item">Valid ID proof required</li>
+<li class="list-group-item">Stable income source</li>
+<li class="list-group-item">Active bank account</li>
+<li class="list-group-item">Loan approval after verification</li>
+
+</ul>
+
+</div>
+
+
+<!-- DOCUMENTS -->
+
+<div class="container">
+
+<h2 class="section-title">Required Documents</h2>
+
+<ul class="list-group">
+
+<li class="list-group-item">Aadhar Card / ID Proof</li>
+<li class="list-group-item">Address Proof</li>
+<li class="list-group-item">Bank Passbook</li>
+<li class="list-group-item">Income Proof</li>
+<li class="list-group-item">Passport Size Photo</li>
+
+</ul>
+
+</div>
+
+
+<!-- PROCESS -->
+
+<div class="container">
+
+<h2 class="section-title">Loan Application Process</h2>
+
+<div class="row text-center">
+
+<div class="col-md-3 process-box">
+
+<h5>1. Register</h5>
+
+<p>Create your QuickFund account</p>
+
+</div>
+
+<div class="col-md-3 process-box">
+
+<h5>2. Apply</h5>
+
+<p>Submit loan application</p>
+
+</div>
+
+<div class="col-md-3 process-box">
+
+<h5>3. Verification</h5>
+
+<p>Documents verified</p>
+
+</div>
+
+<div class="col-md-3 process-box">
+
+<h5>4. Approval</h5>
+
+<p>Loan credited to bank</p>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- WHY QUICKFUND -->
+
+<div class="difference">
+
+<div class="container text-center">
+
+<h2 class="mb-5">Why QuickFund Is Better Than Other Loans</h2>
+
+<div class="row">
+
+<div class="col-md-3">
+
+<i class="fa fa-clock-o fa-3x"></i>
+
+<h5>Fast Approval</h5>
+
+<p>Loan approval within 2–5 days</p>
+
+</div>
+
+
+<div class="col-md-3">
+
+<i class="fa fa-percent fa-3x"></i>
+
+<h5>Low Interest</h5>
+
+<p>Better rates than traditional lenders</p>
+
+</div>
+
+
+<div class="col-md-3">
+
+<i class="fa fa-users fa-3x"></i>
+
+<h5>Customer Support</h5>
+
+<p>Friendly assistance for all customers</p>
+
+</div>
+
+
+<div class="col-md-3">
+
+<i class="fa fa-shield fa-3x"></i>
+
+<h5>Secure Process</h5>
+
+<p>Safe and transparent service</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+
+<!-- APPLY BUTTON -->
+
+<div class="container text-center mt-5 mb-5">
+
+<h3>Need a Loan Today?</h3>
+
+<p>Apply now and receive financial support quickly</p>
+
+    <a href="{% url 'home' %}"><button class="apply-btn">Apply for Loan</button></a>
+
+</div>
+
+
+</body>
+</html>

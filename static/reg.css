@@ -1,0 +1,132 @@
+body{
+    background-color:#000;
+    color:#fff;
+    font-family:'Segoe UI',sans-serif;
+    margin:0;
+    padding:60px 15px;
+}
+
+/* Registration Box */
+.registration-container{
+    background:#1e1e1e;
+    max-width:850px;
+    margin:auto;
+    padding:35px;
+    border-radius:14px;
+    border-left:5px solid #f43f00;
+    box-shadow:0 15px 40px rgba(0,0,0,0.8);
+}
+
+/* Heading */
+h2{
+    text-align:center;
+    color:#f43f00;
+    margin-bottom:35px;
+    text-transform:uppercase;
+    letter-spacing:3px;
+    font-weight:300;
+}
+
+/* Left Border */
+.right-border{
+    border-right:1px solid #333;
+}
+
+/* Section Title */
+.form-section-title{
+    color:#f43f00;
+    font-size:12px;
+    text-transform:uppercase;
+    letter-spacing:1px;
+    margin-bottom:20px;
+    padding-bottom:8px;
+    border-bottom:1px solid #333;
+    font-weight:bold;
+}
+
+/* Labels */
+label{
+    color:#aaa;
+    font-size:12px;
+    margin-bottom:6px;
+}
+
+/* Inputs */
+.form-control{
+    background:#111;
+    border:1px solid #333;
+    color:#fff;
+    height:42px;
+    border-radius:5px;
+    box-shadow:none;
+}
+
+.form-control:focus{
+    border-color:#f43f00;
+    background:#000;
+    box-shadow:0 0 8px rgba(244,63,0,0.4);
+}
+
+/* Select Option */
+select option{
+    background:#111;
+    color:#fff;
+}
+
+/* Date Input */
+input[type="date"]{
+    color:#fff;
+    background:#111;
+}
+
+input[type="date"]::-webkit-calendar-picker-indicator{
+    filter:invert(1);
+}
+
+/* Radio & Checkbox */
+.radio-inline,
+.checkbox label{
+    color:#fff;
+    font-size:13px;
+}
+
+input[type="radio"],
+input[type="checkbox"]{
+    accent-color:#f43f00;
+}
+
+/* Button */
+.btn-orange{
+    width:100%;
+    margin-top:30px;
+    background:#f43f00;
+    border:none;
+    color:#fff;
+    padding:13px;
+    border-radius:5px;
+    font-weight:bold;
+    text-transform:uppercase;
+    transition:0.3s;
+}
+
+.btn-orange:hover{
+    background:#d13600;
+    color:#fff;
+    transform:translateY(-2px);
+    box-shadow:0 5px 15px rgba(244,63,0,0.5);
+}
+
+/* Responsive */
+@media(max-width:767px){
+
+    .right-border{
+        border-right:none;
+        border-bottom:1px solid #333;
+        margin-bottom:25px;
+        padding-bottom:25px;
+    }
+
+    .registration-container{
+        padding:25px;
+    }
+}

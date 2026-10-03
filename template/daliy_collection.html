@@ -1,0 +1,574 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Daily Collection
+    </title>
+
+    <!-- Bootstrap -->
+
+    <link rel="stylesheet"
+          href="{% static 'home/css/bootstrap.min.css' %}">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="{% static 'home/css/font-awesome.min.css' %}">
+
+    <!-- Google Font -->
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+          rel="stylesheet">
+
+    <style>
+
+        :root {
+
+            --black:#0f0f0f;
+            --dark:#1a1a1a;
+            --orange:#ff6600;
+            --light-orange:#ff8533;
+            --white:#ffffff;
+            --gray:#bdbdbd;
+            --border:#2a2a2a;
+            --green:#28a745;
+
+        }
+
+        *{
+
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+
+        }
+
+        body{
+
+            background:var(--black);
+            font-family:'Poppins',sans-serif;
+            color:var(--white);
+
+        }
+
+        .page{
+
+            padding:40px;
+
+        }
+
+        /* HEADER */
+
+        .top-header{
+
+            background:var(--dark);
+            border:1px solid var(--border);
+            border-radius:18px;
+            padding:25px;
+            margin-bottom:30px;
+
+        }
+
+        .top-header h2{
+
+            color:var(--orange);
+            font-weight:600;
+            margin-bottom:10px;
+
+        }
+
+        .top-header p{
+
+            color:var(--gray);
+            margin:0;
+
+        }
+
+        /* BUTTONS */
+
+        .back-btn{
+
+            background:#222;
+            color:white;
+            border:none;
+            padding:10px 18px;
+            border-radius:8px;
+            text-decoration:none;
+            margin-right:10px;
+            transition:0.3s;
+
+        }
+
+        .back-btn:hover{
+
+            background:#333;
+            color:white;
+
+        }
+
+        .btn-orange{
+
+            background:var(--orange);
+            color:white;
+            border:none;
+            padding:10px 18px;
+            border-radius:8px;
+            transition:0.3s;
+            text-decoration:none;
+
+        }
+
+        .btn-orange:hover{
+
+            background:var(--light-orange);
+            color:white;
+
+        }
+
+        /* STATS CARD */
+
+        .stats-card{
+
+            background:var(--dark);
+            border:1px solid var(--border);
+            border-radius:18px;
+            padding:25px;
+            margin-bottom:25px;
+            transition:0.3s;
+
+        }
+
+        .stats-card:hover{
+
+            border-color:var(--orange);
+            transform:translateY(-5px);
+
+        }
+
+        .icon-box{
+
+            width:60px;
+            height:60px;
+            border-radius:15px;
+            background:rgba(255,102,0,0.1);
+            color:var(--orange);
+            display:flex;
+            align-items:center;
+            justify-content:center;
+            font-size:24px;
+
+        }
+
+        /* TABLE CARD */
+
+        .table-card{
+
+            background:var(--dark);
+            border:1px solid var(--border);
+            border-radius:18px;
+            padding:25px;
+            margin-top:25px;
+
+        }
+
+        /* TABLE */
+
+        .table{
+
+            color:white;
+            margin-bottom:0;
+
+        }
+
+        .table thead th{
+
+            color:var(--orange);
+            border-bottom:1px solid var(--border);
+            font-size:12px;
+            padding:15px;
+            text-transform:uppercase;
+
+        }
+
+        .table td{
+
+            padding:15px;
+            border-top:1px solid rgba(255,255,255,0.05);
+            vertical-align:middle;
+
+        }
+
+        .table tbody tr:hover{
+
+            background:rgba(255,102,0,0.05);
+
+        }
+
+        /* BADGE */
+
+        .paid-badge{
+
+            background:rgba(40,167,69,0.12);
+            color:#4cd964;
+            padding:7px 14px;
+            border-radius:30px;
+            font-size:12px;
+            font-weight:600;
+
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:768px){
+
+            .page{
+
+                padding:15px;
+
+            }
+
+            .top-header{
+
+                text-align:center;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<div class="page">
+
+    <!-- HEADER -->
+
+    <div class="top-header d-flex justify-content-between align-items-center flex-wrap">
+
+        <div>
+
+            <h2>
+
+                Daily EMI Collection
+
+            </h2>
+
+            <p>
+
+                Paid EMI Report - {{ today }}
+
+            </p>
+
+        </div>
+
+        <div class="mt-3">
+
+            <!-- BACK BUTTON -->
+
+            <a href="{% url 'admin_home' %}"
+               class="back-btn">
+
+                <i class="fa fa-arrow-left"></i>
+
+                Back
+
+            </a>
+
+            <!-- EXPORT BUTTON -->
+
+            <a href="#"
+               class="btn-orange">
+
+                <i class="fa fa-download"></i>
+
+                Export
+
+            </a>
+
+        </div>
+
+    </div>
+
+    <!-- STATS -->
+
+    <div class="row">
+
+        <!-- TOTAL COLLECTION -->
+
+        <div class="col-md-6">
+
+            <div class="stats-card">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+
+                        <small class="text-muted">
+
+                            Total Collection
+
+                        </small>
+
+                        <h2 class="text-success mt-2">
+
+                            ₹{{ total_collection }}
+
+                        </h2>
+
+                    </div>
+
+                    <div class="icon-box">
+
+                        <i class="fa fa-money"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+        <!-- TOTAL PAID -->
+
+        <div class="col-md-6">
+
+            <div class="stats-card">
+
+                <div class="d-flex justify-content-between align-items-center">
+
+                    <div>
+
+                        <small class="text-muted">
+
+                            Paid EMI Count
+
+                        </small>
+
+                        <h2 class="text-warning mt-2">
+
+                            {{ total_paid }}
+
+                        </h2>
+
+                    </div>
+
+                    <div class="icon-box">
+
+                        <i class="fa fa-check-circle"></i>
+
+                    </div>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </div>
+
+    <!-- DAILY TABLE -->
+
+    <div class="table-card">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h5>
+
+                Daily Paid EMI List
+
+            </h5>
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Loan ID</th>
+
+                        <th>Customer</th>
+
+                        <th>EMI Amount</th>
+
+                        <th>Payment Method</th>
+
+                        <th>Payment Date</th>
+
+                        <th>Status</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for emi in paid_emis %}
+
+                    <tr>
+
+                        <td>
+
+                            #{{ emi.emi.loan.id }}
+
+                        </td>
+
+                        <td>
+
+                            {{ emi.user.name }}
+
+                        </td>
+
+                        <td class="text-warning fw-bold">
+
+                            ₹{{ emi.amount }}
+
+                        </td>
+
+                        <td>
+
+                            {{ emi.payment_method }}
+
+                        </td>
+
+                        <td>
+
+                            {{ emi.payment_date }}
+
+                        </td>
+
+                        <td>
+
+                            <span class="paid-badge">
+
+                                Paid
+
+                            </span>
+
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="6"
+                            class="text-center text-muted">
+
+                            No EMI Payments Today
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+    <!-- MONTHLY TABLE -->
+
+    <div class="table-card">
+
+        <div class="d-flex justify-content-between align-items-center mb-4">
+
+            <h5>
+
+                Monthly Collection Report
+
+            </h5>
+
+        </div>
+
+        <div class="table-responsive">
+
+            <table class="table">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Month</th>
+
+                        <th>Total Collection</th>
+
+                        <th>Total Payments</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for month in monthly_data %}
+
+                    <tr>
+
+                        <td>
+
+                            {{ month.month }}
+
+                        </td>
+
+                        <td class="text-warning fw-bold">
+
+                            ₹{{ month.total }}
+
+                        </td>
+
+                        <td>
+
+                            {{ month.count }}
+
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="3"
+                            class="text-center text-muted">
+
+                            No Monthly Collection Found
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

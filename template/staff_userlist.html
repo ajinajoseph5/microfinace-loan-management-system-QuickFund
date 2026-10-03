@@ -1,0 +1,834 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Staff User List | QuickFund
+    </title>
+
+    <!-- Bootstrap -->
+
+    <link rel="stylesheet"
+          href="{% static 'home/css/bootstrap.min.css' %}">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="{% static 'home/css/font-awesome.min.css' %}">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+
+            background:#f4f6f9;
+            font-family:'Segoe UI', sans-serif;
+            overflow-x:hidden;
+
+        }
+
+        /* =========================
+            HEADER
+        ========================= */
+
+        .top-header{
+
+            background:#000;
+            height:75px;
+
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            padding:0 35px;
+
+            border-bottom:4px solid #ff6600;
+
+        }
+
+        .logo{
+
+            color:#ff6600;
+            font-size:28px;
+            font-weight:700;
+
+        }
+
+        .header-right{
+
+            color:#fff;
+            font-size:15px;
+            font-weight:500;
+
+        }
+
+        /* =========================
+            PAGE TITLE
+        ========================= */
+
+        .page-header{
+
+            background:#fff;
+
+            margin:30px;
+
+            padding:25px 30px;
+
+            border-radius:14px;
+
+            box-shadow:0 4px 15px rgba(0,0,0,0.08);
+
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            flex-wrap:wrap;
+            gap:15px;
+
+        }
+
+        .page-title h2{
+
+            color:#000;
+            font-size:36px;
+            font-weight:700;
+            margin-bottom:5px;
+
+        }
+
+        .page-title p{
+
+            color:#777;
+            margin:0;
+            font-size:15px;
+
+        }
+
+        /* =========================
+            BUTTONS
+        ========================= */
+
+        .theme-btn{
+
+            background:#ff6600;
+            color:#fff;
+
+            border:none;
+
+            height:45px;
+            min-width:140px;
+
+            padding:0 22px;
+
+            border-radius:8px;
+
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+
+            text-decoration:none;
+
+            font-weight:600;
+            font-size:15px;
+
+            transition:0.3s;
+
+        }
+
+        .theme-btn:hover{
+
+            background:#e65c00;
+            color:#fff;
+            text-decoration:none;
+
+        }
+
+        .theme-btn i{
+
+            margin-right:8px;
+
+        }
+
+        .dark-btn{
+
+            background:#000;
+            color:#fff;
+
+            border:none;
+
+            height:45px;
+            min-width:140px;
+
+            padding:0 22px;
+
+            border-radius:8px;
+
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+
+            text-decoration:none;
+
+            font-weight:600;
+            font-size:15px;
+
+            transition:0.3s;
+
+        }
+
+        .dark-btn:hover{
+
+            background:#ff6600;
+            color:#fff;
+            text-decoration:none;
+
+        }
+
+        .dark-btn i{
+
+            margin-right:8px;
+
+        }
+
+        /* =========================
+            INFO CARDS
+        ========================= */
+
+        .info-section{
+
+            margin:0 30px 30px 30px;
+
+        }
+
+        .info-card{
+
+            background:#fff;
+
+            border-radius:14px;
+
+            padding:25px;
+
+            box-shadow:0 4px 15px rgba(0,0,0,0.08);
+
+            transition:0.3s;
+
+        }
+
+        .info-card:hover{
+
+            transform:translateY(-3px);
+
+        }
+
+        .info-icon{
+
+            width:60px;
+            height:60px;
+
+            border-radius:12px;
+
+            background:#ff6600;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            margin-bottom:18px;
+
+        }
+
+        .info-icon i{
+
+            color:#fff;
+            font-size:24px;
+
+        }
+
+        .info-card h3{
+
+            font-size:32px;
+            font-weight:700;
+            color:#000;
+
+        }
+
+        .info-card p{
+
+            margin:0;
+            color:#666;
+            font-size:15px;
+
+        }
+
+        /* =========================
+            TABLE SECTION
+        ========================= */
+
+        .table-section{
+
+            margin:0 30px 30px 30px;
+
+            background:#fff;
+
+            border-radius:14px;
+
+            padding:30px;
+
+            box-shadow:0 4px 15px rgba(0,0,0,0.08);
+
+            overflow-x:auto;
+
+        }
+
+        .table-title{
+
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            margin-bottom:25px;
+            flex-wrap:wrap;
+            gap:15px;
+
+        }
+
+        .table-title h3{
+
+            margin:0;
+            color:#000;
+            font-size:28px;
+            font-weight:700;
+
+        }
+
+        /* =========================
+            TABLE
+        ========================= */
+
+        .table{
+
+            margin-bottom:0;
+
+        }
+
+        .table thead{
+
+            background:#000;
+            color:#fff;
+
+        }
+
+        .table thead th{
+
+            border:none;
+            padding:16px;
+            white-space:nowrap;
+
+            font-size:14px;
+            font-weight:600;
+
+        }
+
+        .table td{
+
+            vertical-align:middle;
+            padding:15px;
+            font-size:14px;
+
+        }
+
+        .table tbody tr:hover{
+
+            background:#fff7f2;
+
+        }
+
+        /* =========================
+            USER PROFILE
+        ========================= */
+
+        .user-box{
+
+            display:flex;
+            align-items:center;
+            gap:12px;
+
+        }
+
+        .user-avatar{
+
+            width:45px;
+            height:45px;
+
+            border-radius:50%;
+
+            background:#ff6600;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+            color:#fff;
+            font-size:18px;
+            font-weight:700;
+
+        }
+
+        .user-name{
+
+            font-weight:600;
+            color:#000;
+
+        }
+
+        .user-email{
+
+            color:#777;
+            font-size:13px;
+
+        }
+
+        /* =========================
+            STATUS
+        ========================= */
+
+        .badge-approved{
+
+            background:#198754;
+            color:#fff;
+
+            padding:8px 15px;
+
+            border-radius:30px;
+
+            font-size:12px;
+            font-weight:600;
+
+        }
+
+        .badge-pending{
+
+            background:#ffc107;
+            color:#000;
+
+            padding:8px 15px;
+
+            border-radius:30px;
+
+            font-size:12px;
+            font-weight:600;
+
+        }
+
+        /* =========================
+            ACTION BUTTON
+        ========================= */
+
+        .view-btn{
+
+            background:#ff6600;
+            color:#fff;
+
+            border:none;
+
+            height:38px;
+            width:110px;
+
+            border-radius:6px;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            text-decoration:none;
+
+            font-size:13px;
+            font-weight:600;
+
+            transition:0.3s;
+
+        }
+
+        .view-btn:hover{
+
+            background:#e65c00;
+            color:#fff;
+            text-decoration:none;
+
+        }
+
+        .view-btn i{
+
+            margin-right:6px;
+
+        }
+
+        /* =========================
+            MOBILE
+        ========================= */
+
+        @media(max-width:768px){
+
+            .top-header{
+
+                flex-direction:column;
+                justify-content:center;
+                gap:8px;
+
+                height:auto;
+                padding:15px;
+
+            }
+
+            .page-header{
+
+                margin:20px;
+                padding:20px;
+
+            }
+
+            .page-title h2{
+
+                font-size:28px;
+
+            }
+
+            .table-section{
+
+                margin:20px;
+                padding:20px;
+
+            }
+
+            .info-section{
+
+                margin:0 20px 20px 20px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="top-header">
+
+    <div class="logo">
+
+        QuickFund Staff Panel
+
+    </div>
+
+    <div class="header-right">
+
+        Branch : {{ branch }}
+
+    </div>
+
+</div>
+
+<!-- PAGE HEADER -->
+
+<div class="page-header">
+
+    <div class="page-title">
+
+        <h2>
+            Registered Users
+        </h2>
+
+        <p>
+            Manage and view all users from your branch
+        </p>
+
+    </div>
+
+    <a href="{% url 'staff' %}"
+       class="dark-btn">
+
+        <i class="fa fa-arrow-left"></i>
+
+        Back
+
+    </a>
+
+</div>
+
+<!-- INFO CARDS -->
+
+<div class="info-section">
+
+    <div class="row">
+
+        <div class="col-md-4 mb-4">
+
+            <div class="info-card">
+
+                <div class="info-icon">
+
+                    <i class="fa fa-users"></i>
+
+                </div>
+
+                <h3>
+
+                    {{ users|length }}
+
+                </h3>
+
+                <p>
+                    Total Registered Users
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-4">
+
+            <div class="info-card">
+
+                <div class="info-icon">
+
+                    <i class="fa fa-building"></i>
+
+                </div>
+
+                <h3>
+
+                    {{ branch }}
+
+                </h3>
+
+                <p>
+                    Current Staff Branch
+                </p>
+
+            </div>
+
+        </div>
+
+        <div class="col-md-4 mb-4">
+
+            <div class="info-card">
+
+                <div class="info-icon">
+
+                    <i class="fa fa-check-circle"></i>
+
+                </div>
+
+                <h3>
+
+                    Active
+
+                </h3>
+
+                <p>
+                    User Management System
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+<!-- TABLE SECTION -->
+
+<div class="table-section">
+
+    <div class="table-title">
+
+        <h3>
+
+            User List
+
+        </h3>
+
+    </div>
+
+    <table class="table table-bordered table-hover">
+
+        <thead>
+
+            <tr>
+
+                <th>ID</th>
+                <th>User</th>
+                <th>Phone</th>
+                <th>Gender</th>
+                <th>DOB</th>
+                <th>Branch</th>
+                <th>Status</th>
+                <th>Action</th>
+
+            </tr>
+
+        </thead>
+
+        <tbody>
+
+            {% for u in users %}
+
+            <tr>
+
+                <td>
+
+                    {{ u.id }}
+
+                </td>
+
+                <!-- USER -->
+
+                <td>
+
+                    <div class="user-box">
+
+                        <div class="user-avatar">
+
+                            {{ u.name|slice:":1" }}
+
+                        </div>
+
+                        <div>
+
+                            <div class="user-name">
+
+                                {{ u.name }}
+
+                            </div>
+
+                            <div class="user-email">
+
+                                {{ u.email }}
+
+                            </div>
+
+                        </div>
+
+                    </div>
+
+                </td>
+
+                <!-- PHONE -->
+
+                <td>
+
+                    {{ u.phone }}
+
+                </td>
+
+                <!-- GENDER -->
+
+                <td>
+
+                    {{ u.gender }}
+
+                </td>
+
+                <!-- DOB -->
+
+                <td>
+
+                    {{ u.dob }}
+
+                </td>
+
+                <!-- BRANCH -->
+
+                <td>
+
+                    {{ u.branch_type }}
+
+                </td>
+
+                <!-- STATUS -->
+
+                <td>
+
+                    {% if u.is_approved %}
+
+                        <span class="badge-approved">
+
+                            Approved
+
+                        </span>
+
+                    {% else %}
+
+                        <span class="badge-pending">
+
+                            Pending
+
+                        </span>
+
+                    {% endif %}
+
+                </td>
+
+                <!-- ACTION -->
+
+                <td>
+
+                    <a href="{% url 'user_loan_history' u.id %}"
+                       class="view-btn">
+
+                        <i class="fa fa-eye"></i>
+
+                        View
+
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% empty %}
+
+            <tr>
+
+                <td colspan="8"
+                    class="text-center">
+
+                    No Users Found
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </tbody>
+
+    </table>
+
+</div>
+
+<!-- JS -->
+
+<script src="{% static 'home/js/jquery-3.2.1.min.js' %}"></script>
+
+<script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,158 @@
+/* BODY */
+body{
+font-family:Arial;
+margin:0;
+background: url("{% static 'home/img/microfinance.jpg' %}") no-repeat center center fixed;
+ background-size: cover;
+}
+
+
+/* NAVBAR */
+.header-section{
+background:black;
+padding:15px;
+}
+
+.header-nav{
+display:flex;
+justify-content:space-between;
+align-items:center;
+}
+
+.logo{
+color:#f43f00;
+font-weight:bold;
+}
+
+.main-menu{
+display:flex;
+gap:20px;
+list-style:none;
+}
+
+.main-menu a{
+color:white;
+text-decoration:none;
+}
+
+.main-menu a:hover{
+color:#f43f00;
+}
+
+.active{
+color:#f43f00;
+}
+
+
+/* HERO */
+.hero{
+background:url("../img/microfinance.jpg") no-repeat center;
+background-size:cover;
+height:280px;
+position:relative;
+}
+
+.overlay{
+background:rgba(0,0,0,0.6);
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:white;
+}
+
+
+/* SECTION TITLE */
+.section-title{
+text-align:center;
+margin-bottom:30px;
+font-weight:bold;
+}
+
+
+/* DASHBOARD CARDS */
+.dashboard-card{
+background:white;
+padding:20px;
+text-align:center;
+border-radius:8px;
+border-top:4px solid #f43f00;
+box-shadow:0 5px 10px rgba(0,0,0,0.1);
+transition:0.3s;
+}
+
+.dashboard-card i{
+font-size:25px;
+color:#f43f00;
+}
+
+.dashboard-card:hover{
+transform:translateY(-5px);
+}
+
+
+/* TABLE */
+table th{
+background:#f43f00;
+color:white;
+}
+
+
+/* CHATBOT */
+.chatbot{
+position:fixed;
+bottom:20px;
+right:20px;
+width:250px;
+background:white;
+border-radius:10px;
+box-shadow:0 5px 15px rgba(0,0,0,0.2);
+}
+
+.chat-header{
+background:#f43f00;
+color:white;
+padding:10px;
+font-weight:bold;
+}
+
+.chat-body{
+padding:10px;
+height:100px;
+overflow:auto;
+}
+
+.chatbot input{
+width:100%;
+border:none;
+padding:10px;
+border-top:1px solid #ccc;
+}
+
+
+/* FOOTER */
+.footer{
+background:black;
+color:white;
+text-align:center;
+padding:15px;
+margin-top:40px;
+}
+/* HERO */
+.hero {
+    background: url("{% static 'home/img/download7.jpg' %}") no-repeat center;
+    background-size: cover;
+    height: 300px;
+}
+
+.overlay{
+background:rgba(0,0,0,0.6);
+height:100%;
+display:flex;
+flex-direction:column;
+justify-content:center;
+align-items:center;
+color:white;
+text-align:center;
+}

@@ -1,0 +1,2044 @@
+<!--&lt;!&ndash;{% load static %}&ndash;&gt;-->
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html lang="en">&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<meta charset="UTF-8">&ndash;&gt;-->
+<!--&lt;!&ndash;<meta name="viewport" content="width=device-width, initial-scale=1">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<title>QuickFund Admin Dashboard</title>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<link rel="stylesheet"&ndash;&gt;-->
+<!--&lt;!&ndash;href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"&ndash;&gt;-->
+<!--&lt;!&ndash;rel="stylesheet">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<style>&ndash;&gt;-->
+
+<!--&lt;!&ndash;:root{&ndash;&gt;-->
+<!--&lt;!&ndash;    &#45;&#45;black:#111111;&ndash;&gt;-->
+<!--&lt;!&ndash;    &#45;&#45;orange:#ff8800;&ndash;&gt;-->
+<!--&lt;!&ndash;    &#45;&#45;white:#ffffff;&ndash;&gt;-->
+<!--&lt;!&ndash;    &#45;&#45;light:#f4f5f7;&ndash;&gt;-->
+<!--&lt;!&ndash;    &#45;&#45;grey:#dcdcdc;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;/* =========================&ndash;&gt;-->
+<!--&lt;!&ndash;   BODY&ndash;&gt;-->
+<!--&lt;!&ndash;========================= */&ndash;&gt;-->
+
+<!--&lt;!&ndash;body{&ndash;&gt;-->
+<!--&lt;!&ndash;    margin:0;&ndash;&gt;-->
+<!--&lt;!&ndash;    font-family:'Segoe UI',sans-serif;&ndash;&gt;-->
+<!--&lt;!&ndash;    background:linear-gradient(135deg,#1a1a1a,#333);&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;/* =========================&ndash;&gt;-->
+<!--&lt;!&ndash;   MAIN WRAPPER&ndash;&gt;-->
+<!--&lt;!&ndash;========================= */&ndash;&gt;-->
+
+<!--&lt;!&ndash;.dashboard-wrapper{&ndash;&gt;-->
+<!--&lt;!&ndash;    width:95%;&ndash;&gt;-->
+<!--&lt;!&ndash;    margin:30px auto;&ndash;&gt;-->
+<!--&lt;!&ndash;    background:#dfe3ea;&ndash;&gt;-->
+<!--&lt;!&ndash;    border-radius:25px;&ndash;&gt;-->
+<!--&lt;!&ndash;    overflow:hidden;&ndash;&gt;-->
+<!--&lt;!&ndash;    box-shadow:0 20px 50px rgba(0,0,0,0.4);&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;/* =========================&ndash;&gt;-->
+<!--&lt;!&ndash;   DASHBOARD BOX&ndash;&gt;-->
+<!--&lt;!&ndash;========================= */&ndash;&gt;-->
+
+<!--&lt;!&ndash;.dashboard-box{&ndash;&gt;-->
+<!--&lt;!&ndash;    display:flex;&ndash;&gt;-->
+<!--&lt;!&ndash;    min-height:100vh;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;/* =========================&ndash;&gt;-->
+<!--&lt;!&ndash;   SIDEBAR&ndash;&gt;-->
+<!--&lt;!&ndash;========================= */&ndash;&gt;-->
+
+<!--&lt;!&ndash;.sidebar{&ndash;&gt;-->
+<!--&lt;!&ndash;    width:250px;&ndash;&gt;-->
+<!--&lt;!&ndash;    background:var(&#45;&#45;black);&ndash;&gt;-->
+<!--&lt;!&ndash;    color:#fff;&ndash;&gt;-->
+<!--&lt;!&ndash;    padding:30px 20px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.profile{&ndash;&gt;-->
+<!--&lt;!&ndash;    text-align:center;&ndash;&gt;-->
+<!--&lt;!&ndash;    padding-bottom:25px;&ndash;&gt;-->
+<!--&lt;!&ndash;    border-bottom:1px solid #333;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.profile img{&ndash;&gt;-->
+<!--&lt;!&ndash;    width:90px;&ndash;&gt;-->
+<!--&lt;!&ndash;    height:90px;&ndash;&gt;-->
+<!--&lt;!&ndash;    border-radius:50%;&ndash;&gt;-->
+<!--&lt;!&ndash;    background:#fff;&ndash;&gt;-->
+<!--&lt;!&ndash;    padding:8px;&ndash;&gt;-->
+<!--&lt;!&ndash;    box-shadow:0 8px 20px rgba(0,0,0,0.3);&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.profile h4{&ndash;&gt;-->
+<!--&lt;!&ndash;    margin-top:15px;&ndash;&gt;-->
+<!--&lt;!&ndash;    color:var(&#45;&#45;orange);&ndash;&gt;-->
+<!--&lt;!&ndash;    font-weight:700;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.profile p{&ndash;&gt;-->
+<!--&lt;!&ndash;    color:#bbb;&ndash;&gt;-->
+<!--&lt;!&ndash;    font-size:13px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.sidebar ul{&ndash;&gt;-->
+<!--&lt;!&ndash;    list-style:none;&ndash;&gt;-->
+<!--&lt;!&ndash;    padding:0;&ndash;&gt;-->
+<!--&lt;!&ndash;    margin-top:30px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.sidebar ul li{&ndash;&gt;-->
+<!--&lt;!&ndash;    margin-bottom:10px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.sidebar ul li a{&ndash;&gt;-->
+<!--&lt;!&ndash;    text-decoration:none;&ndash;&gt;-->
+<!--&lt;!&ndash;    color:#ccc;&ndash;&gt;-->
+<!--&lt;!&ndash;    display:flex;&ndash;&gt;-->
+<!--&lt;!&ndash;    align-items:center;&ndash;&gt;-->
+<!--&lt;!&ndash;    padding:12px 15px;&ndash;&gt;-->
+<!--&lt;!&ndash;    border-radius:10px;&ndash;&gt;-->
+<!--&lt;!&ndash;    transition:0.3s;&ndash;&gt;-->
+<!--&lt;!&ndash;    font-size:15px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.sidebar ul li a i{&ndash;&gt;-->
+<!--&lt;!&ndash;    width:25px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.sidebar ul li a:hover,&ndash;&gt;-->
+<!--&lt;!&ndash;.sidebar ul li.active a{&ndash;&gt;-->
+<!--&lt;!&ndash;    background:var(&#45;&#45;orange);&ndash;&gt;-->
+<!--&lt;!&ndash;    color:#fff;&ndash;&gt;-->
+<!--&lt;!&ndash;    transform:translateX(5px);&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;/* =========================&ndash;&gt;-->
+<!--&lt;!&ndash;   MAIN CONTENT&ndash;&gt;-->
+<!--&lt;!&ndash;========================= */&ndash;&gt;-->
+
+<!--&lt;!&ndash;.main-content{&ndash;&gt;-->
+<!--&lt;!&ndash;    flex:1;&ndash;&gt;-->
+<!--&lt;!&ndash;    background:#f7f7f7;&ndash;&gt;-->
+<!--&lt;!&ndash;    padding:30px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;/* TOP BAR */&ndash;&gt;-->
+
+<!--&lt;!&ndash;.top-bar{&ndash;&gt;-->
+<!--&lt;!&ndash;    display:flex;&ndash;&gt;-->
+<!--&lt;!&ndash;    justify-content:space-between;&ndash;&gt;-->
+<!--&lt;!&ndash;    align-items:center;&ndash;&gt;-->
+<!--&lt;!&ndash;    margin-bottom:30px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.top-bar h3{&ndash;&gt;-->
+<!--&lt;!&ndash;    margin:0;&ndash;&gt;-->
+<!--&lt;!&ndash;    font-weight:700;&ndash;&gt;-->
+<!--&lt;!&ndash;    color:#222;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.menu-icon{&ndash;&gt;-->
+<!--&lt;!&ndash;    font-size:24px;&ndash;&gt;-->
+<!--&lt;!&ndash;    color:#444;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;/* =========================&ndash;&gt;-->
+<!--&lt;!&ndash;   STAT CARDS&ndash;&gt;-->
+<!--&lt;!&ndash;========================= */&ndash;&gt;-->
+
+<!--&lt;!&ndash;.stats-grid{&ndash;&gt;-->
+<!--&lt;!&ndash;    display:grid;&ndash;&gt;-->
+<!--&lt;!&ndash;    grid-template-columns:repeat(4,1fr);&ndash;&gt;-->
+<!--&lt;!&ndash;    gap:20px;&ndash;&gt;-->
+<!--&lt;!&ndash;    margin-bottom:30px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.stat-card{&ndash;&gt;-->
+<!--&lt;!&ndash;    background:#fff;&ndash;&gt;-->
+<!--&lt;!&ndash;    border-radius:15px;&ndash;&gt;-->
+<!--&lt;!&ndash;    padding:20px;&ndash;&gt;-->
+<!--&lt;!&ndash;    box-shadow:0 5px 15px rgba(0,0,0,0.08);&ndash;&gt;-->
+<!--&lt;!&ndash;    position:relative;&ndash;&gt;-->
+<!--&lt;!&ndash;    transition:0.3s;&ndash;&gt;-->
+<!--&lt;!&ndash;    border-left:5px solid var(&#45;&#45;orange);&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.stat-card:hover{&ndash;&gt;-->
+<!--&lt;!&ndash;    transform:translateY(-5px);&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.stat-card h6{&ndash;&gt;-->
+<!--&lt;!&ndash;    font-size:13px;&ndash;&gt;-->
+<!--&lt;!&ndash;    color:#777;&ndash;&gt;-->
+<!--&lt;!&ndash;    margin-bottom:10px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.stat-card h2{&ndash;&gt;-->
+<!--&lt;!&ndash;    margin:0;&ndash;&gt;-->
+<!--&lt;!&ndash;    font-size:35px;&ndash;&gt;-->
+<!--&lt;!&ndash;    font-weight:bold;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.stat-card i{&ndash;&gt;-->
+<!--&lt;!&ndash;    position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;    right:20px;&ndash;&gt;-->
+<!--&lt;!&ndash;    top:20px;&ndash;&gt;-->
+<!--&lt;!&ndash;    font-size:24px;&ndash;&gt;-->
+<!--&lt;!&ndash;    color:var(&#45;&#45;orange);&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.dark-card{&ndash;&gt;-->
+<!--&lt;!&ndash;    background:var(&#45;&#45;black);&ndash;&gt;-->
+<!--&lt;!&ndash;    color:#fff;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.dark-card h6{&ndash;&gt;-->
+<!--&lt;!&ndash;    color:#ccc;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.dark-card i{&ndash;&gt;-->
+<!--&lt;!&ndash;    color:#fff;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;/* =========================&ndash;&gt;-->
+<!--&lt;!&ndash;   ANALYTICS SECTION&ndash;&gt;-->
+<!--&lt;!&ndash;========================= */&ndash;&gt;-->
+
+<!--&lt;!&ndash;.analytics-row{&ndash;&gt;-->
+<!--&lt;!&ndash;    display:grid;&ndash;&gt;-->
+<!--&lt;!&ndash;    grid-template-columns:2fr 1fr;&ndash;&gt;-->
+<!--&lt;!&ndash;    gap:20px;&ndash;&gt;-->
+<!--&lt;!&ndash;    margin-bottom:30px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;/* CHART BOX */&ndash;&gt;-->
+
+<!--&lt;!&ndash;.chart-box{&ndash;&gt;-->
+<!--&lt;!&ndash;    background:#fff;&ndash;&gt;-->
+<!--&lt;!&ndash;    border-radius:15px;&ndash;&gt;-->
+<!--&lt;!&ndash;    padding:20px;&ndash;&gt;-->
+<!--&lt;!&ndash;    box-shadow:0 5px 15px rgba(0,0,0,0.08);&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;/* BAR GRAPH */&ndash;&gt;-->
+
+<!--&lt;!&ndash;.bar-container{&ndash;&gt;-->
+<!--&lt;!&ndash;    display:flex;&ndash;&gt;-->
+<!--&lt;!&ndash;    align-items:flex-end;&ndash;&gt;-->
+<!--&lt;!&ndash;    justify-content:space-around;&ndash;&gt;-->
+<!--&lt;!&ndash;    height:220px;&ndash;&gt;-->
+<!--&lt;!&ndash;    margin-top:20px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.bar{&ndash;&gt;-->
+<!--&lt;!&ndash;    width:40px;&ndash;&gt;-->
+<!--&lt;!&ndash;    background:var(&#45;&#45;black);&ndash;&gt;-->
+<!--&lt;!&ndash;    border-radius:6px 6px 0 0;&ndash;&gt;-->
+<!--&lt;!&ndash;    position:relative;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.bar.orange{&ndash;&gt;-->
+<!--&lt;!&ndash;    background:var(&#45;&#45;orange);&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.bar span{&ndash;&gt;-->
+<!--&lt;!&ndash;    position:absolute;&ndash;&gt;-->
+<!--&lt;!&ndash;    bottom:-28px;&ndash;&gt;-->
+<!--&lt;!&ndash;    left:50%;&ndash;&gt;-->
+<!--&lt;!&ndash;    transform:translateX(-50%);&ndash;&gt;-->
+<!--&lt;!&ndash;    font-size:12px;&ndash;&gt;-->
+<!--&lt;!&ndash;    color:#555;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;/* CIRCLE */&ndash;&gt;-->
+
+<!--&lt;!&ndash;.circle-card{&ndash;&gt;-->
+<!--&lt;!&ndash;    background:#fff;&ndash;&gt;-->
+<!--&lt;!&ndash;    border-radius:15px;&ndash;&gt;-->
+<!--&lt;!&ndash;    padding:20px;&ndash;&gt;-->
+<!--&lt;!&ndash;    text-align:center;&ndash;&gt;-->
+<!--&lt;!&ndash;    box-shadow:0 5px 15px rgba(0,0,0,0.08);&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.circle{&ndash;&gt;-->
+<!--&lt;!&ndash;    width:150px;&ndash;&gt;-->
+<!--&lt;!&ndash;    height:150px;&ndash;&gt;-->
+<!--&lt;!&ndash;    border-radius:50%;&ndash;&gt;-->
+<!--&lt;!&ndash;    background:conic-gradient(var(&#45;&#45;orange) 0% 80%, var(&#45;&#45;black) 80% 100%);&ndash;&gt;-->
+<!--&lt;!&ndash;    display:flex;&ndash;&gt;-->
+<!--&lt;!&ndash;    align-items:center;&ndash;&gt;-->
+<!--&lt;!&ndash;    justify-content:center;&ndash;&gt;-->
+<!--&lt;!&ndash;    margin:20px auto;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.circle-inner{&ndash;&gt;-->
+<!--&lt;!&ndash;    width:100px;&ndash;&gt;-->
+<!--&lt;!&ndash;    height:100px;&ndash;&gt;-->
+<!--&lt;!&ndash;    background:#fff;&ndash;&gt;-->
+<!--&lt;!&ndash;    border-radius:50%;&ndash;&gt;-->
+<!--&lt;!&ndash;    display:flex;&ndash;&gt;-->
+<!--&lt;!&ndash;    align-items:center;&ndash;&gt;-->
+<!--&lt;!&ndash;    justify-content:center;&ndash;&gt;-->
+<!--&lt;!&ndash;    font-size:28px;&ndash;&gt;-->
+<!--&lt;!&ndash;    font-weight:700;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;/* =========================&ndash;&gt;-->
+<!--&lt;!&ndash;   IMAGE + EMI SECTION&ndash;&gt;-->
+<!--&lt;!&ndash;========================= */&ndash;&gt;-->
+
+<!--&lt;!&ndash;.image-card,&ndash;&gt;-->
+<!--&lt;!&ndash;.table-box{&ndash;&gt;-->
+<!--&lt;!&ndash;    background:#fff;&ndash;&gt;-->
+<!--&lt;!&ndash;    border-radius:15px;&ndash;&gt;-->
+<!--&lt;!&ndash;    padding:20px;&ndash;&gt;-->
+<!--&lt;!&ndash;    box-shadow:0 5px 15px rgba(0,0,0,0.08);&ndash;&gt;-->
+<!--&lt;!&ndash;    height:100%;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.dashboard-image{&ndash;&gt;-->
+<!--&lt;!&ndash;    width:100%;&ndash;&gt;-->
+<!--&lt;!&ndash;    border-radius:12px;&ndash;&gt;-->
+<!--&lt;!&ndash;    margin-bottom:20px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.image-card h5{&ndash;&gt;-->
+<!--&lt;!&ndash;    font-weight:700;&ndash;&gt;-->
+<!--&lt;!&ndash;    margin-bottom:10px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.image-card p{&ndash;&gt;-->
+<!--&lt;!&ndash;    color:#666;&ndash;&gt;-->
+<!--&lt;!&ndash;    line-height:1.7;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;/* =========================&ndash;&gt;-->
+<!--&lt;!&ndash;   TABLE&ndash;&gt;-->
+<!--&lt;!&ndash;========================= */&ndash;&gt;-->
+
+<!--&lt;!&ndash;.table-box h4{&ndash;&gt;-->
+<!--&lt;!&ndash;    font-weight:700;&ndash;&gt;-->
+<!--&lt;!&ndash;    margin-bottom:20px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.table{&ndash;&gt;-->
+<!--&lt;!&ndash;    margin-bottom:0;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.table th{&ndash;&gt;-->
+<!--&lt;!&ndash;    background:var(&#45;&#45;black);&ndash;&gt;-->
+<!--&lt;!&ndash;    color:#fff;&ndash;&gt;-->
+<!--&lt;!&ndash;    text-align:center;&ndash;&gt;-->
+<!--&lt;!&ndash;    padding:14px;&ndash;&gt;-->
+<!--&lt;!&ndash;    font-size:14px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.table td{&ndash;&gt;-->
+<!--&lt;!&ndash;    text-align:center;&ndash;&gt;-->
+<!--&lt;!&ndash;    padding:14px;&ndash;&gt;-->
+<!--&lt;!&ndash;    vertical-align:middle;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.table-hover tbody tr:hover{&ndash;&gt;-->
+<!--&lt;!&ndash;    background:#fff7ed;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;/* BADGES */&ndash;&gt;-->
+
+<!--&lt;!&ndash;.badge.pending{&ndash;&gt;-->
+<!--&lt;!&ndash;    background:#ff9800;&ndash;&gt;-->
+<!--&lt;!&ndash;    color:#fff;&ndash;&gt;-->
+<!--&lt;!&ndash;    padding:8px 12px;&ndash;&gt;-->
+<!--&lt;!&ndash;    border-radius:20px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.badge.approved{&ndash;&gt;-->
+<!--&lt;!&ndash;    background:green;&ndash;&gt;-->
+<!--&lt;!&ndash;    color:#fff;&ndash;&gt;-->
+<!--&lt;!&ndash;    padding:8px 12px;&ndash;&gt;-->
+<!--&lt;!&ndash;    border-radius:20px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.badge.rejected{&ndash;&gt;-->
+<!--&lt;!&ndash;    background:red;&ndash;&gt;-->
+<!--&lt;!&ndash;    color:#fff;&ndash;&gt;-->
+<!--&lt;!&ndash;    padding:8px 12px;&ndash;&gt;-->
+<!--&lt;!&ndash;    border-radius:20px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.text-orange{&ndash;&gt;-->
+<!--&lt;!&ndash;    color:var(&#45;&#45;orange);&ndash;&gt;-->
+<!--&lt;!&ndash;    font-weight:bold;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;/* =========================&ndash;&gt;-->
+<!--&lt;!&ndash;   RESPONSIVE&ndash;&gt;-->
+<!--&lt;!&ndash;========================= */&ndash;&gt;-->
+
+<!--&lt;!&ndash;@media(max-width:992px){&ndash;&gt;-->
+
+<!--&lt;!&ndash;.dashboard-box{&ndash;&gt;-->
+<!--&lt;!&ndash;    flex-direction:column;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.sidebar{&ndash;&gt;-->
+<!--&lt;!&ndash;    width:100%;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.stats-grid{&ndash;&gt;-->
+<!--&lt;!&ndash;    grid-template-columns:repeat(2,1fr);&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.analytics-row{&ndash;&gt;-->
+<!--&lt;!&ndash;    grid-template-columns:1fr;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;@media(max-width:576px){&ndash;&gt;-->
+
+<!--&lt;!&ndash;.stats-grid{&ndash;&gt;-->
+<!--&lt;!&ndash;    grid-template-columns:1fr;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.main-content{&ndash;&gt;-->
+<!--&lt;!&ndash;    padding:15px;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;.dashboard-wrapper{&ndash;&gt;-->
+<!--&lt;!&ndash;    width:100%;&ndash;&gt;-->
+<!--&lt;!&ndash;    margin:0;&ndash;&gt;-->
+<!--&lt;!&ndash;    border-radius:0;&ndash;&gt;-->
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;}&ndash;&gt;-->
+
+<!--&lt;!&ndash;</style>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="dashboard-wrapper">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="dashboard-box">&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash; SIDEBAR &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="sidebar">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="profile">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<h4>ADMIN</h4>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<p>admin@quickfund.com</p>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<ul>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<li class="active">&ndash;&gt;-->
+<!--&lt;!&ndash;<a href="#">&ndash;&gt;-->
+<!--&lt;!&ndash;<i class="fa fa-dashboard"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;Dashboard&ndash;&gt;-->
+<!--&lt;!&ndash;</a>&ndash;&gt;-->
+<!--&lt;!&ndash;</li>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<li>&ndash;&gt;-->
+<!--&lt;!&ndash;<a href="{% url 'admin_users' %}">&ndash;&gt;-->
+<!--&lt;!&ndash;<i class="fa fa-users"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;Users&ndash;&gt;-->
+<!--&lt;!&ndash;</a>&ndash;&gt;-->
+<!--&lt;!&ndash;</li>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<li>&ndash;&gt;-->
+<!--&lt;!&ndash;<a href="{% url 'admin_applications' %}">&ndash;&gt;-->
+<!--&lt;!&ndash;<i class="fa fa-file-text"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;Applications&ndash;&gt;-->
+<!--&lt;!&ndash;</a>&ndash;&gt;-->
+<!--&lt;!&ndash;</li>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<li>&ndash;&gt;-->
+<!--&lt;!&ndash;<a href="#">&ndash;&gt;-->
+<!--&lt;!&ndash;<i class="fa fa-credit-card"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;EMI Details&ndash;&gt;-->
+<!--&lt;!&ndash;</a>&ndash;&gt;-->
+<!--&lt;!&ndash;</li>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<li>&ndash;&gt;-->
+<!--&lt;!&ndash;<a href="{% url 'admin_approve' %}">&ndash;&gt;-->
+<!--&lt;!&ndash;<i class="fa fa-check-circle"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;Approved&ndash;&gt;-->
+<!--&lt;!&ndash;</a>&ndash;&gt;-->
+<!--&lt;!&ndash;</li>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<li>&ndash;&gt;-->
+<!--&lt;!&ndash;<a href="{% url 'admin_rejected' %}">&ndash;&gt;-->
+<!--&lt;!&ndash;<i class="fa fa-times-circle"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;Rejected&ndash;&gt;-->
+<!--&lt;!&ndash;</a>&ndash;&gt;-->
+<!--&lt;!&ndash;</li>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<li>&ndash;&gt;-->
+<!--&lt;!&ndash;<a href="#">&ndash;&gt;-->
+<!--&lt;!&ndash;<i class="fa fa-bar-chart"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;Reports&ndash;&gt;-->
+<!--&lt;!&ndash;</a>&ndash;&gt;-->
+<!--&lt;!&ndash;</li>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<li style="margin-top:40px;">&ndash;&gt;-->
+<!--&lt;!&ndash;<a href="{% url 'home' %}">&ndash;&gt;-->
+<!--&lt;!&ndash;<i class="fa fa-sign-out"></i>&ndash;&gt;-->
+<!--&lt;!&ndash;Logout&ndash;&gt;-->
+<!--&lt;!&ndash;</a>&ndash;&gt;-->
+<!--&lt;!&ndash;</li>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</ul>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash; MAIN CONTENT &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="main-content">&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash; TOP BAR &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="top-bar">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<h3>QuickFund Admin Dashboard</h3>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<i class="fa fa-bars menu-icon"></i>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash; STATISTICS &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="stats-grid">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="stat-card dark-card">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<h6>Total Users</h6>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<h2>{{ total_users }}</h2>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<i class="fa fa-users"></i>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="stat-card">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<h6>Total Applications</h6>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<h2>{{ total_applications }}</h2>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<i class="fa fa-file-text"></i>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="stat-card">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<h6>Pending Loans</h6>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<h2 class="text-warning">{{ pending }}</h2>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<i class="fa fa-clock-o"></i>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="stat-card">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<h6>Approved Loans</h6>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<h2 class="text-success">{{ approved }}</h2>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<i class="fa fa-check-circle"></i>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash; ANALYTICS &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="analytics-row">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="chart-box">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="d-flex justify-content-between align-items-center">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<h5>EMI Analytics</h5>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<button class="btn btn-warning btn-sm">&ndash;&gt;-->
+<!--&lt;!&ndash;View Report&ndash;&gt;-->
+<!--&lt;!&ndash;</button>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="bar-container">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="bar" style="height:100px;">&ndash;&gt;-->
+<!--&lt;!&ndash;<span>JAN</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="bar orange" style="height:160px;">&ndash;&gt;-->
+<!--&lt;!&ndash;<span>FEB</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="bar" style="height:130px;">&ndash;&gt;-->
+<!--&lt;!&ndash;<span>MAR</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="bar orange" style="height:190px;">&ndash;&gt;-->
+<!--&lt;!&ndash;<span>APR</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="bar" style="height:120px;">&ndash;&gt;-->
+<!--&lt;!&ndash;<span>MAY</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="bar orange" style="height:170px;">&ndash;&gt;-->
+<!--&lt;!&ndash;<span>JUN</span>&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="circle-card">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<h5>Loan Success</h5>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="circle">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="circle-inner">&ndash;&gt;-->
+<!--&lt;!&ndash;80%&ndash;&gt;-->
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<p class="text-muted">&ndash;&gt;-->
+<!--&lt;!&ndash;Daily loan approval performance&ndash;&gt;-->
+<!--&lt;!&ndash;</p>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash; IMAGE + EMI SECTION &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="row mt-4">&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash; IMAGE &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="col-lg-4 mb-4">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="image-card">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<img src="https://img.freepik.com/free-vector/banking-finance-concept-illustration_114360-1399.jpg"&ndash;&gt;-->
+<!--&lt;!&ndash;class="dashboard-image">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<h5>QuickFund Loan Management</h5>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<p>&ndash;&gt;-->
+<!--&lt;!&ndash;Manage loan approvals, EMI collections,&ndash;&gt;-->
+<!--&lt;!&ndash;customer applications and financial reports&ndash;&gt;-->
+<!--&lt;!&ndash;from one secure admin dashboard.&ndash;&gt;-->
+<!--&lt;!&ndash;</p>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash; EMI TABLE &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="col-lg-8 mb-4">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="table-box">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<h4>EMI Summary</h4>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="table-responsive">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<table class="table table-bordered table-hover">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<thead>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<tr>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<th>Loan ID</th>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<th>Customer</th>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<th>Loan Amount</th>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<th>Monthly EMI</th>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<th>Total Months</th>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<th>Total Payment</th>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</tr>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</thead>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<tbody>&ndash;&gt;-->
+
+<!--&lt;!&ndash;{% for emi in emi_details %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;<tr>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<td>#{{ emi.loan_id }}</td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<td>{{ emi.customer }}</td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<td>₹ {{ emi.loan_amount }}</td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<td class="text-orange">&ndash;&gt;-->
+<!--&lt;!&ndash;₹ {{ emi.monthly_emi }}&ndash;&gt;-->
+<!--&lt;!&ndash;</td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<span class="badge pending">&ndash;&gt;-->
+
+<!--&lt;!&ndash;{{ emi.months }} Months&ndash;&gt;-->
+
+<!--&lt;!&ndash;</span>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<td class="fw-bold text-success">&ndash;&gt;-->
+
+<!--&lt;!&ndash;₹ {{ emi.total_payment }}&ndash;&gt;-->
+
+<!--&lt;!&ndash;</td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</tr>&ndash;&gt;-->
+
+<!--&lt;!&ndash;{% empty %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;<tr>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<td colspan="6">&ndash;&gt;-->
+
+<!--&lt;!&ndash;No EMI Details Found&ndash;&gt;-->
+
+<!--&lt;!&ndash;</td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</tr>&ndash;&gt;-->
+
+<!--&lt;!&ndash;{% endfor %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;</tbody>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</table>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash; RECENT APPLICATIONS &ndash;&gt;&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="table-box mt-4">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<h4>Recent Applications</h4>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<div class="table-responsive">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<table class="table table-bordered table-hover">&ndash;&gt;-->
+
+<!--&lt;!&ndash;<thead>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<tr>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<th>Name</th>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<th>Loan Amount</th>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<th>Status</th>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<th>Date</th>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</tr>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</thead>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<tbody>&ndash;&gt;-->
+
+<!--&lt;!&ndash;{% for loan in loans %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;<tr>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<td>{{ loan.name }}</td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<td>₹ {{ loan.loan_amount }}</td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;{% if loan.status == 'pending' %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;<span class="badge pending">&ndash;&gt;-->
+<!--&lt;!&ndash;Pending&ndash;&gt;-->
+<!--&lt;!&ndash;</span>&ndash;&gt;-->
+
+<!--&lt;!&ndash;{% elif loan.status == 'approved' %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;<span class="badge approved">&ndash;&gt;-->
+<!--&lt;!&ndash;Approved&ndash;&gt;-->
+<!--&lt;!&ndash;</span>&ndash;&gt;-->
+
+<!--&lt;!&ndash;{% else %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;<span class="badge rejected">&ndash;&gt;-->
+<!--&lt;!&ndash;Rejected&ndash;&gt;-->
+<!--&lt;!&ndash;</span>&ndash;&gt;-->
+
+<!--&lt;!&ndash;{% endif %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;</td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<td>{{ loan.created_at|date:"d M Y" }}</td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</tr>&ndash;&gt;-->
+
+<!--&lt;!&ndash;{% empty %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;<tr>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<td colspan="4">&ndash;&gt;-->
+
+<!--&lt;!&ndash;No Application Data Found&ndash;&gt;-->
+
+<!--&lt;!&ndash;</td>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</tr>&ndash;&gt;-->
+
+<!--&lt;!&ndash;{% endfor %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;</tbody>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</table>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+<!--{% load static %}-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+
+<!--<meta charset="UTF-8">-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1">-->
+
+<!--<title>QuickFund Admin Dashboard</title>-->
+
+<!--<link rel="stylesheet"-->
+<!--href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+
+<!--<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"-->
+<!--rel="stylesheet">-->
+
+<!--<link rel="stylesheet" href="{% static 'admin.css' %}">-->
+
+<!--</head>-->
+
+<!--<body>-->
+
+<!--<div class="dashboard-wrapper">-->
+
+<!--<div class="dashboard-box">-->
+
+<!--&lt;!&ndash; SIDEBAR &ndash;&gt;-->
+
+<!--<div class="sidebar">-->
+
+<!--<div class="profile">-->
+
+<!--<img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">-->
+
+<!--<h4>ADMIN</h4>-->
+
+<!--<p>admin@quickfund.com</p>-->
+
+<!--</div>-->
+<!--<ul>-->
+
+<!--<li class="active">-->
+<!--    <a href="#">-->
+<!--        <i class="fa fa-dashboard"></i>-->
+<!--        Dashboard-->
+<!--    </a>-->
+<!--</li>-->
+
+<!--<li>-->
+<!--    <a href="{% url 'admin_users' %}">-->
+<!--        <i class="fa fa-users"></i>-->
+<!--        Users-->
+<!--    </a>-->
+<!--</li>-->
+
+<!--&lt;!&ndash; STAFF VIEW &ndash;&gt;-->
+<!--<li>-->
+<!--    <a href="{% url 'admin_staff' %}">-->
+<!--        <i class="fa fa-user-secret"></i>-->
+<!--        Staff View-->
+<!--    </a>-->
+<!--</li>-->
+
+<!--<li>-->
+<!--    <a href="{% url 'admin_applications' %}">-->
+<!--        <i class="fa fa-file-text"></i>-->
+<!--        Applications-->
+<!--    </a>-->
+<!--</li>-->
+
+<!--<li>-->
+<!--    <a href="{% url 'staff_emi_list' %}">-->
+<!--        <i class="fa fa-credit-card"></i>-->
+<!--        EMI List-->
+<!--    </a>-->
+<!--</li>-->
+
+<!--<li>-->
+<!--    <a href="{% url 'admin_approve' %}">-->
+<!--        <i class="fa fa-check-circle"></i>-->
+<!--        Approved-->
+<!--    </a>-->
+<!--</li>-->
+
+<!--<li>-->
+<!--    <a href="{% url 'admin_rejected' %}">-->
+<!--        <i class="fa fa-times-circle"></i>-->
+<!--        Rejected-->
+<!--    </a>-->
+<!--</li>-->
+<!--    <li>-->
+<!--    <a href="{% url 'returned_applications' %}">-->
+<!--        <i class="fa fa-undo"></i>-->
+<!--        Returned Applications-->
+<!--    </a>-->
+<!--</li>-->
+
+<!--<li>-->
+<!--    <a href="{% url 'daily_collection' %}">-->
+<!--        <i class="fa fa-money"></i>-->
+<!--        Daily Collection-->
+<!--    </a>-->
+<!--</li>-->
+
+<!--<li style="margin-top:40px;">-->
+<!--    <a href="{% url 'admin_logout' %}">-->
+<!--        <i class="fa fa-sign-out"></i>-->
+<!--        Logout-->
+<!--    </a>-->
+<!--</li>-->
+
+<!--</ul>-->
+
+
+<!--</div>-->
+
+<!--&lt;!&ndash; MAIN CONTENT &ndash;&gt;-->
+
+<!--<div class="main-content">-->
+
+<!--&lt;!&ndash; TOP BAR &ndash;&gt;-->
+
+<!--<div class="top-bar">-->
+
+<!--<h3>QuickFund Admin Dashboard</h3>-->
+
+<!--<i class="fa fa-bars menu-icon"></i>-->
+
+<!--</div>-->
+
+<!--&lt;!&ndash; STATISTICS &ndash;&gt;-->
+
+<!--<div class="stats-grid">-->
+
+<!--<div class="stat-card">-->
+
+<!--<h6>Total Users</h6>-->
+
+<!--<h2>{{ total_users }}</h2>-->
+
+<!--<i class="fa fa-users"></i>-->
+
+<!--</div>-->
+
+<!--<div class="stat-card">-->
+
+<!--<h6>Total Applications</h6>-->
+
+<!--<h2>{{ total_applications }}</h2>-->
+
+<!--<i class="fa fa-file-text"></i>-->
+
+<!--</div>-->
+
+<!--<div class="stat-card">-->
+
+<!--<h6>Pending Loans</h6>-->
+
+<!--<h2 class="text-warning">{{ pending }}</h2>-->
+
+<!--<i class="fa fa-clock-o"></i>-->
+
+<!--</div>-->
+
+<!--<div class="stat-card">-->
+
+<!--<h6>Approved Loans</h6>-->
+
+<!--<h2 class="text-success">{{ approved }}</h2>-->
+
+<!--<i class="fa fa-check-circle"></i>-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+<!--&lt;!&ndash; ANALYTICS &ndash;&gt;-->
+
+<!--<div class="analytics-row">-->
+
+<!--&lt;!&ndash; EMI ANALYTICS &ndash;&gt;-->
+
+<!--<div class="chart-box">-->
+
+<!--<div class="d-flex justify-content-between align-items-center">-->
+
+<!--<h5>EMI Analytics</h5>-->
+
+<!--<button class="btn btn-warning btn-sm">-->
+<!--View Report-->
+<!--</button>-->
+
+<!--</div>-->
+
+<!--<div class="bar-container">-->
+
+<!--<div class="bar" style="height:100px;">-->
+<!--<span>JAN</span>-->
+<!--</div>-->
+
+<!--<div class="bar orange" style="height:160px;">-->
+<!--<span>FEB</span>-->
+<!--</div>-->
+
+<!--<div class="bar" style="height:130px;">-->
+<!--<span>MAR</span>-->
+<!--</div>-->
+
+<!--<div class="bar orange" style="height:200px;">-->
+<!--<span>APR</span>-->
+<!--</div>-->
+
+<!--<div class="bar" style="height:150px;">-->
+<!--<span>MAY</span>-->
+<!--</div>-->
+
+<!--<div class="bar orange" style="height:180px;">-->
+<!--<span>JUN</span>-->
+<!--</div>-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+<!--&lt;!&ndash; LOAN SUCCESS &ndash;&gt;-->
+
+<!--<div class="circle-card">-->
+
+<!--<h5>Loan Success</h5>-->
+
+<!--<div class="circle">-->
+
+<!--<div class="circle-inner">-->
+<!--80%-->
+<!--</div>-->
+
+<!--</div>-->
+
+<!--<p class="text-muted">-->
+<!--Daily loan approval performance-->
+<!--</p>-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+<!--&lt;!&ndash; IMAGE + EMI SUMMARY &ndash;&gt;-->
+
+<!--<div class="row mt-4">-->
+
+<!--&lt;!&ndash; IMAGE SECTION &ndash;&gt;-->
+
+<!--<div class="col-lg-4 mb-4">-->
+
+<!--<div class="image-card">-->
+
+<!--<img src="https://img.freepik.com/free-vector/banking-finance-concept-illustration_114360-1399.jpg"-->
+<!--class="dashboard-image">-->
+
+<!--<h5>QuickFund Loan Management</h5>-->
+
+<!--<p>-->
+
+<!--Manage customer loans, EMI tracking,-->
+<!--loan approvals and payment collections-->
+<!--with secure dashboard management.-->
+
+<!--</p>-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+<!--&lt;!&ndash; EMI SUMMARY &ndash;&gt;-->
+
+<!--<div class="col-lg-8 mb-4">-->
+
+<!--<div class="table-box">-->
+
+<!--<div class="d-flex justify-content-between align-items-center mb-3">-->
+
+<!--<h4 class="mb-0">-->
+<!--EMI Summary-->
+<!--</h4>-->
+
+<!--<span class="badge approved">-->
+<!--Active Loans-->
+<!--</span>-->
+
+<!--</div>-->
+
+<!--<div class="table-responsive">-->
+
+<!--<table class="table table-bordered table-hover">-->
+
+<!--<thead>-->
+
+<!--<tr>-->
+
+<!--<th>Loan ID</th>-->
+
+<!--<th>Customer</th>-->
+
+<!--<th>Loan Amount</th>-->
+
+<!--<th>Monthly EMI</th>-->
+
+<!--<th>Total Months</th>-->
+
+<!--<th>Total Payment</th>-->
+
+<!--</tr>-->
+
+<!--</thead>-->
+
+<!--<tbody>-->
+
+<!--{% for emi in emi_details %}-->
+
+<!--<tr>-->
+
+<!--<td>#{{ emi.loan_id }}</td>-->
+
+<!--<td>{{ emi.customer }}</td>-->
+
+<!--<td>₹ {{ emi.loan_amount }}</td>-->
+
+<!--<td class="text-orange">-->
+<!--₹ {{ emi.monthly_emi }}-->
+<!--</td>-->
+
+<!--<td>-->
+
+<!--<span class="badge pending">-->
+
+<!--{{ emi.months }} Months-->
+
+<!--</span>-->
+
+<!--</td>-->
+
+<!--<td class="fw-bold text-success">-->
+
+<!--₹ {{ emi.total_payment }}-->
+
+<!--</td>-->
+
+<!--</tr>-->
+
+<!--{% empty %}-->
+
+<!--<tr>-->
+
+<!--<td colspan="6" class="text-center">-->
+
+<!--No EMI Details Found-->
+
+<!--</td>-->
+
+<!--</tr>-->
+
+<!--{% endfor %}-->
+
+<!--</tbody>-->
+
+<!--</table>-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+<!--&lt;!&ndash; RECENT APPLICATIONS &ndash;&gt;-->
+
+<!--<div class="table-box mt-4">-->
+
+<!--<div class="d-flex justify-content-between align-items-center mb-3">-->
+
+<!--<h4 class="mb-0">-->
+<!--Recent Applications-->
+<!--</h4>-->
+
+<!--<span class="badge pending">-->
+<!--Daily Applications-->
+<!--</span>-->
+
+<!--</div>-->
+
+<!--<div class="table-responsive">-->
+
+<!--<table class="table table-bordered table-hover">-->
+
+<!--<thead>-->
+
+<!--<tr>-->
+
+<!--<th>Name</th>-->
+
+<!--<th>Loan Amount</th>-->
+
+<!--<th>Status</th>-->
+
+<!--<th>Date</th>-->
+
+<!--</tr>-->
+
+<!--</thead>-->
+
+<!--<tbody>-->
+
+<!--{% for loan in loans %}-->
+
+<!--<tr>-->
+
+<!--<td>{{ loan.name }}</td>-->
+
+<!--<td>₹ {{ loan.loan_amount }}</td>-->
+
+<!--<td>-->
+
+<!--{% if loan.status == 'pending' %}-->
+
+<!--<span class="badge pending">-->
+<!--Pending-->
+<!--</span>-->
+
+<!--{% elif loan.status == 'approved' %}-->
+
+<!--<span class="badge approved">-->
+<!--Approved-->
+<!--</span>-->
+
+<!--{% else %}-->
+
+<!--<span class="badge rejected">-->
+<!--Rejected-->
+<!--</span>-->
+
+<!--{% endif %}-->
+
+<!--</td>-->
+
+<!--<td>{{ loan.created_at|date:"d M Y" }}</td>-->
+
+<!--</tr>-->
+
+<!--{% empty %}-->
+
+<!--<tr>-->
+
+<!--<td colspan="4">-->
+
+<!--No Application Data Found-->
+
+<!--</td>-->
+
+<!--</tr>-->
+
+<!--{% endfor %}-->
+
+<!--</tbody>-->
+
+<!--</table>-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+<!--</body>-->
+
+<!--</html>-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+    content="width=device-width, initial-scale=1.0">
+
+    <title>
+        QuickFund Admin Dashboard
+    </title>
+
+    <!-- Bootstrap -->
+
+    <link rel="stylesheet"
+    href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+
+    <style>
+
+        *{
+
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+
+        }
+
+        body{
+
+            background:#f4f6f9;
+            font-family:'Segoe UI', sans-serif;
+
+        }
+
+        /* =========================
+           SIDEBAR
+        ========================= */
+
+        .sidebar{
+
+            width:250px;
+            height:100vh;
+            background:#111827;
+            position:fixed;
+            left:0;
+            top:0;
+            overflow-y:auto;
+
+        }
+
+        .logo-box{
+
+            text-align:center;
+            padding:30px 20px;
+            border-bottom:1px solid #2c3547;
+
+        }
+
+        .logo-box img{
+
+            width:80px;
+            margin-bottom:10px;
+
+        }
+
+        .logo-box h3{
+
+            color:#fff;
+            margin:0;
+
+        }
+
+        .logo-box p{
+
+            color:#aaa;
+            font-size:13px;
+
+        }
+
+        .sidebar ul{
+
+            list-style:none;
+            padding:20px 0;
+
+        }
+
+        .sidebar ul li{
+
+            margin-bottom:5px;
+
+        }
+
+        .sidebar ul li a{
+
+            display:flex;
+            align-items:center;
+            gap:12px;
+            color:#ddd;
+            text-decoration:none;
+            padding:14px 25px;
+            transition:0.3s;
+
+        }
+
+        .sidebar ul li a:hover,
+        .sidebar ul li.active a{
+
+            background:#ff8800;
+            color:#fff;
+
+        }
+
+        .sidebar ul li a i{
+
+            width:20px;
+
+        }
+
+        /* =========================
+           MAIN CONTENT
+        ========================= */
+
+        .main-content{
+
+            margin-left:250px;
+            padding:30px;
+
+        }
+
+        /* HEADER */
+
+        .topbar{
+
+            background:#fff;
+            padding:18px 25px;
+            border-radius:12px;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            margin-bottom:25px;
+            box-shadow:0 2px 10px rgba(0,0,0,0.08);
+
+        }
+
+        .topbar h2{
+
+            margin:0;
+            font-size:28px;
+            font-weight:700;
+            color:#111827;
+
+        }
+
+        .admin-box{
+
+            display:flex;
+            align-items:center;
+            gap:10px;
+
+        }
+
+        .admin-box img{
+
+            width:45px;
+            height:45px;
+            border-radius:50%;
+
+        }
+
+        /* =========================
+           CARDS
+        ========================= */
+
+        .dashboard-cards{
+
+            display:grid;
+            grid-template-columns:repeat(4,1fr);
+            gap:20px;
+            margin-bottom:30px;
+
+        }
+
+        .card-box{
+
+            background:#fff;
+            padding:25px;
+            border-radius:15px;
+            position:relative;
+            overflow:hidden;
+            box-shadow:0 2px 10px rgba(0,0,0,0.08);
+
+        }
+
+        .card-box h5{
+
+            color:#666;
+            margin-bottom:10px;
+
+        }
+
+        .card-box h2{
+
+            font-size:35px;
+            font-weight:700;
+
+        }
+
+        .card-box i{
+
+            position:absolute;
+            right:20px;
+            top:25px;
+            font-size:45px;
+            opacity:0.2;
+
+        }
+
+        .users{
+
+            border-left:5px solid #0d6efd;
+
+        }
+
+        .applications{
+
+            border-left:5px solid #ff8800;
+
+        }
+
+        .approved{
+
+            border-left:5px solid #198754;
+
+        }
+
+        .rejected{
+
+            border-left:5px solid #dc3545;
+
+        }
+
+        /* =========================
+           TABLE
+        ========================= */
+
+        .table-section{
+
+            background:#fff;
+            padding:25px;
+            border-radius:15px;
+            box-shadow:0 2px 10px rgba(0,0,0,0.08);
+
+        }
+
+        .table-section h4{
+
+            margin-bottom:20px;
+            font-weight:700;
+
+        }
+
+        table th{
+
+            background:#111827;
+            color:#fff;
+
+        }
+
+        .badge-pending{
+
+            background:#ffc107;
+            color:#000;
+            padding:6px 12px;
+            border-radius:20px;
+
+        }
+
+        .badge-approved{
+
+            background:#198754;
+            color:#fff;
+            padding:6px 12px;
+            border-radius:20px;
+
+        }
+
+        .badge-rejected{
+
+            background:#dc3545;
+            color:#fff;
+            padding:6px 12px;
+            border-radius:20px;
+
+        }
+
+        /* =========================
+           RESPONSIVE
+        ========================= */
+
+        @media(max-width:991px){
+
+            .dashboard-cards{
+
+                grid-template-columns:repeat(2,1fr);
+
+            }
+
+        }
+
+        @media(max-width:768px){
+
+            .sidebar{
+
+                width:100%;
+                height:auto;
+                position:relative;
+
+            }
+
+            .main-content{
+
+                margin-left:0;
+
+            }
+
+            .dashboard-cards{
+
+                grid-template-columns:1fr;
+
+            }
+
+            .topbar{
+
+                flex-direction:column;
+                gap:15px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar">
+
+    <div class="logo-box">
+
+        <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+
+        <h3>
+            QuickFund
+        </h3>
+
+        <p>
+            Admin Dashboard
+        </p>
+
+    </div>
+
+    <ul>
+
+        <li class="active">
+
+            <a href="{% url 'admin_home' %}">
+
+                <i class="fa fa-dashboard"></i>
+
+                Dashboard
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="{% url 'admin_users' %}">
+
+                <i class="fa fa-users"></i>
+
+                Users
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="{% url 'admin_staff' %}">
+
+                <i class="fa fa-user-secret"></i>
+
+                Staff Management
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="{% url 'add_staff' %}">
+
+                <i class="fa fa-user-plus"></i>
+
+                Add Staff
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="{% url 'admin_applications' %}">
+
+                <i class="fa fa-file-text"></i>
+
+                Applications
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="{% url 'admin_emi_list' %}">
+
+                <i class="fa fa-credit-card"></i>
+
+                EMI List
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="{% url 'admin_approve' %}">
+
+                <i class="fa fa-check-circle"></i>
+
+                Approved Loans
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="{% url 'admin_rejected' %}">
+
+                <i class="fa fa-times-circle"></i>
+
+                Rejected Loans
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="{% url 'returned_applications' %}">
+
+                <i class="fa fa-undo"></i>
+
+                Returned Applications
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="{% url 'admin_collection' %}">
+
+                <i class="fa fa-money"></i>
+
+                Daily Collection
+
+            </a>
+
+        </li>
+
+        <li>
+
+            <a href="{% url 'admin_logout' %}">
+
+                <i class="fa fa-sign-out"></i>
+
+                Logout
+
+            </a>
+
+        </li>
+
+    </ul>
+
+</div>
+
+
+<!-- MAIN CONTENT -->
+
+<div class="main-content">
+
+    <!-- TOPBAR -->
+
+    <div class="topbar">
+
+        <h2>
+            QuickFund Admin Dashboard
+        </h2>
+
+        <div class="admin-box">
+
+            <img src="https://cdn-icons-png.flaticon.com/512/3135/3135715.png">
+
+            <div>
+
+                <strong>
+                    Admin
+                </strong>
+
+                <br>
+
+                <small>
+                    admin@quickfund.com
+                </small>
+
+            </div>
+
+        </div>
+
+    </div>
+
+
+    <!-- CARDS -->
+
+    <div class="dashboard-cards">
+
+        <div class="card-box users">
+
+            <h5>
+                Total Users
+            </h5>
+
+            <h2>
+                {{ total_users }}
+            </h2>
+
+            <i class="fa fa-users"></i>
+
+        </div>
+
+
+        <div class="card-box applications">
+
+            <h5>
+                Applications
+            </h5>
+
+            <h2>
+                {{ total_applications }}
+            </h2>
+
+            <i class="fa fa-file-text"></i>
+
+        </div>
+
+
+        <div class="card-box approved">
+
+            <h5>
+                Approved
+            </h5>
+
+            <h2>
+                {{ approved }}
+            </h2>
+
+            <i class="fa fa-check-circle"></i>
+
+        </div>
+
+
+        <div class="card-box rejected">
+
+            <h5>
+                Rejected
+            </h5>
+
+            <h2>
+                {{ rejected }}
+            </h2>
+
+            <i class="fa fa-times-circle"></i>
+
+        </div>
+
+    </div>
+
+
+    <!-- RECENT APPLICATIONS -->
+
+    <div class="table-section">
+
+        <h4>
+            Recent Loan Applications
+        </h4>
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover">
+
+                <thead>
+
+                    <tr>
+
+                        <th>Name</th>
+
+                        <th>Loan Amount</th>
+
+                        <th>Status</th>
+
+                        <th>Date</th>
+
+                    </tr>
+
+                </thead>
+
+                <tbody>
+
+                    {% for loan in loans %}
+
+                    <tr>
+
+                        <td>
+                            {{ loan.name }}
+                        </td>
+
+                        <td>
+                            ₹ {{ loan.loan_amount }}
+                        </td>
+
+                        <td>
+
+                            {% if loan.status == 'pending' %}
+
+                                <span class="badge-pending">
+                                    Pending
+                                </span>
+
+                            {% elif loan.status == 'approved' %}
+
+                                <span class="badge-approved">
+                                    Approved
+                                </span>
+
+                            {% else %}
+
+                                <span class="badge-rejected">
+                                    Rejected
+                                </span>
+
+                            {% endif %}
+
+                        </td>
+
+                        <td>
+                            {{ loan.created_at|date:"d M Y" }}
+                        </td>
+
+                    </tr>
+
+                    {% empty %}
+
+                    <tr>
+
+                        <td colspan="4"
+                        class="text-center">
+
+                            No Applications Found
+
+                        </td>
+
+                    </tr>
+
+                    {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+</html>

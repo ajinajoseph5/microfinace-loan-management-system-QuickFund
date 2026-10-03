@@ -1,0 +1,132 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>User Loan History | QuickFund</title>
+
+    <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}">
+</head>
+
+<style>
+body {
+    background: #0f0f0f;
+    color: white;
+    font-family: Arial;
+}
+
+.header {
+    background: #000;
+    padding: 15px;
+    border-bottom: 2px solid #ff7b00;
+    text-align: center;
+}
+
+.title {
+    text-align: center;
+    margin: 25px;
+}
+
+.title h2 {
+    color: #ff7b00;
+}
+
+/* TABLE */
+table {
+    background: #1a1a1a;
+    color: white;
+}
+
+th {
+    background: #ff7b00;
+    color: black;
+    text-align: center;
+}
+
+td {
+    text-align: center;
+    color: white;
+}
+
+tr:hover {
+    background: #2a2a2a;
+}
+
+.badge {
+    padding: 5px 10px;
+    border-radius: 20px;
+}
+
+.approved {
+    background: #00ff88;
+    color: black;
+}
+
+.pending {
+    background: #ffb703;
+    color: black;
+}
+
+.rejected {
+    background: #ff4d4d;
+    color: white;
+}
+</style>
+
+<body>
+
+<!-- HEADER -->
+<div class="header">
+    <h3>QuickFund Staff Panel</h3>
+</div>
+
+<!-- USER INFO -->
+<div class="title">
+    <h2>{{ user.username }} - Loan History</h2>
+    <p>Total Applications: {{ loans|length }}</p>
+</div>
+
+<!-- TABLE -->
+<div class="container">
+
+<table class="table table-bordered">
+
+    <thead>
+        <tr>
+            <th>ID</th>
+            <th>Loan Amount</th>
+            <th>Loan Type</th>
+            <th>Date</th>
+            <th>Status</th>
+        </tr>
+    </thead>
+
+    <tbody>
+
+    {% for loan in loans %}
+        <tr>
+            <td>{{ loan.id }}</td>
+            <td>₹{{ loan.loan_amount }}</td>
+            <td>{{ loan.loan_type }}</td>
+            <td>{{ loan.created_at }}</td>
+
+            <td>
+                {% if loan.status == "Approved" %}
+                    <span class="badge approved">Approved</span>
+                {% elif loan.status == "Pending" %}
+                    <span class="badge pending">Pending</span>
+                {% else %}
+                    <span class="badge rejected">Rejected</span>
+                {% endif %}
+            </td>
+        </tr>
+    {% endfor %}
+
+    </tbody>
+
+</table>
+
+</div>
+
+</body>
+</html>

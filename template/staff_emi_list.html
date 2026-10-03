@@ -1,0 +1,594 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        EMI Dashboard | QuickFund
+    </title>
+
+    <!-- GOOGLE FONT -->
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+          rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+
+            background:#000;
+            font-family:'Poppins',sans-serif;
+            color:#fff;
+            min-height:100vh;
+
+        }
+
+        /* HEADER */
+
+        .header{
+
+            background:#111;
+
+            padding:18px 35px;
+
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            border-bottom:2px solid #ff6600;
+
+            box-shadow:0 4px 12px rgba(0,0,0,0.5);
+
+        }
+
+        .header-left{
+
+            display:flex;
+            align-items:center;
+            gap:14px;
+
+        }
+
+        .header-icon{
+
+            width:52px;
+            height:52px;
+
+            border-radius:12px;
+
+            background:#ff6600;
+
+            display:flex;
+            justify-content:center;
+            align-items:center;
+
+        }
+
+        .header-icon i{
+
+            font-size:24px;
+            color:#fff;
+
+        }
+
+        .header-text h2{
+
+            margin:0;
+            color:#ff6600;
+            font-size:24px;
+            font-weight:700;
+            letter-spacing:1px;
+
+        }
+
+        .header-text p{
+
+            margin:0;
+            color:#bbb;
+            font-size:13px;
+
+        }
+
+        /* BACK BUTTON */
+
+        .back-btn{
+
+            background:#ff6600;
+            color:#fff;
+
+            padding:12px 22px;
+
+            border-radius:10px;
+
+            text-decoration:none;
+
+            display:flex;
+            align-items:center;
+            gap:8px;
+
+            font-size:14px;
+            font-weight:600;
+
+            transition:0.3s;
+
+        }
+
+        .back-btn:hover{
+
+            background:#fff;
+            color:#ff6600;
+
+            text-decoration:none;
+
+            transform:translateY(-2px);
+
+        }
+
+        /* MAIN CONTAINER */
+
+        .main-container{
+
+            padding:35px;
+
+        }
+
+        /* TOP BAR */
+
+        .top-bar{
+
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            margin-bottom:25px;
+
+            flex-wrap:wrap;
+            gap:15px;
+
+        }
+
+        .page-title{
+
+            font-size:30px;
+            font-weight:700;
+            color:#fff;
+
+        }
+
+        .page-title span{
+
+            color:#ff6600;
+
+        }
+
+        /* ADD BUTTON */
+
+        .add-btn{
+
+            background:#fff;
+            color:#ff6600;
+
+            border:none;
+
+            padding:12px 20px;
+
+            border-radius:10px;
+
+            text-decoration:none;
+
+            display:flex;
+            align-items:center;
+            gap:8px;
+
+            font-weight:600;
+
+            transition:0.3s;
+
+        }
+
+        .add-btn:hover{
+
+            background:#ff6600;
+            color:#fff;
+
+            text-decoration:none;
+
+        }
+
+        /* TABLE BOX */
+
+        .table-box{
+
+            background:#111;
+
+            border-radius:18px;
+
+            overflow:hidden;
+
+            border:1px solid #222;
+
+            box-shadow:0 10px 25px rgba(0,0,0,0.6);
+
+        }
+
+        /* TABLE */
+
+        table{
+
+            width:100%;
+            border-collapse:collapse;
+
+        }
+
+        thead{
+
+            background:#ff6600;
+
+        }
+
+        thead th{
+
+            padding:18px 15px;
+
+            color:#fff;
+
+            font-size:14px;
+            font-weight:600;
+
+            text-transform:uppercase;
+
+            letter-spacing:0.5px;
+
+            border:none;
+
+            text-align:center;
+
+        }
+
+        tbody td{
+
+            padding:18px 15px;
+
+            text-align:center;
+
+            border-bottom:1px solid #222;
+
+            color:#eee;
+
+            font-size:14px;
+
+        }
+
+        tbody tr{
+
+            transition:0.3s;
+
+        }
+
+        tbody tr:hover{
+
+            background:#1b1b1b;
+
+        }
+
+        /* LOAN ID */
+
+        .loan-id{
+
+            color:#ff6600;
+            font-weight:700;
+
+        }
+
+        /* EMI BUTTON */
+
+        .view-btn{
+
+            background:#ff6600;
+            color:#fff;
+
+            padding:10px 16px;
+
+            border-radius:8px;
+
+            text-decoration:none;
+
+            display:inline-flex;
+            align-items:center;
+            gap:8px;
+
+            font-size:13px;
+            font-weight:600;
+
+            transition:0.3s;
+
+        }
+
+        .view-btn:hover{
+
+            background:#fff;
+            color:#ff6600;
+
+            text-decoration:none;
+
+        }
+
+        /* EMPTY */
+
+        .empty-row{
+
+            padding:30px;
+            color:#aaa;
+            font-size:15px;
+
+        }
+
+        /* RESPONSIVE */
+
+        @media(max-width:991px){
+
+            .header{
+
+                padding:18px 20px;
+
+                flex-direction:column;
+                gap:18px;
+
+            }
+
+            .main-container{
+
+                padding:20px;
+
+            }
+
+            .top-bar{
+
+                flex-direction:column;
+                align-items:flex-start;
+
+            }
+
+            .page-title{
+
+                font-size:24px;
+
+            }
+
+            .table-box{
+
+                overflow-x:auto;
+
+            }
+
+            table{
+
+                min-width:950px;
+
+            }
+
+        }
+
+        @media(max-width:576px){
+
+            .header-text h2{
+
+                font-size:20px;
+
+            }
+
+            .back-btn{
+
+                width:100%;
+                justify-content:center;
+
+            }
+
+            .add-btn{
+
+                width:100%;
+                justify-content:center;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <div class="header-left">
+
+        <div class="header-icon">
+
+            <i class="fa fa-money"></i>
+
+        </div>
+
+        <div class="header-text">
+
+            <h2>
+                QuickFund EMI
+            </h2>
+
+            <p>
+                Loan EMI Management Dashboard
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- BACK BUTTON -->
+
+    <a href="{% url 'staff' %}"
+       class="back-btn">
+
+        <i class="fa fa-arrow-left"></i>
+
+        Back
+
+    </a>
+
+</div>
+
+<!-- MAIN -->
+
+<div class="main-container">
+
+    <!-- TOP BAR -->
+
+    <div class="top-bar">
+
+        <div class="page-title">
+
+            EMI <span>Dashboard</span>
+
+        </div>
+
+        <!-- OPTIONAL BUTTON -->
+
+        <a href="#"
+           class="add-btn">
+
+            <i class="fa fa-plus-circle"></i>
+
+            EMI Reports
+
+        </a>
+
+    </div>
+
+    <!-- TABLE -->
+
+    <div class="table-box">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Loan ID</th>
+
+                    <th>Customer Name</th>
+
+                    <th>Loan Amount</th>
+
+                    <th>Interest</th>
+
+                    <th>Months</th>
+
+                    <th>Monthly EMI</th>
+
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for l in loan_data %}
+
+                <tr>
+
+                    <td class="loan-id">
+
+                        #{{ l.loan_id }}
+
+                    </td>
+
+                    <td>
+
+                        {{ l.name }}
+
+                    </td>
+
+                    <td>
+
+                        ₹{{ l.loan_amount }}
+
+                    </td>
+
+                    <td>
+
+                        ₹{{ l.interest }}
+
+                    </td>
+
+                    <td>
+
+                        {{ l.months }}
+
+                    </td>
+
+                    <td>
+
+                        ₹{{ l.monthly_emi }}
+
+                    </td>
+
+                    <td>
+
+                        <a href="{% url 'emi_detail' l.loan_id %}"
+                           class="view-btn">
+
+                            <i class="fa fa-eye"></i>
+
+                            View EMI
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="7"
+                        class="empty-row">
+
+                        No EMI Data Found
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+</html>

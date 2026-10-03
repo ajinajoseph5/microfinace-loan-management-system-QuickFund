@@ -1,0 +1,891 @@
+<!--{% load static %}-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="zxx">-->
+<!--<head>-->
+<!--<title>QuickFund | Microfinance Services</title>-->
+
+<!--<meta charset="UTF-8">-->
+<!--<meta name="description" content="QuickFund Microfinance Services">-->
+<!--<meta name="keywords" content="microfinance, loans, quickfund">-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+
+<!--<link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}">-->
+<!--<link rel="stylesheet" href="{% static 'home/css/font-awesome.min.css' %}">-->
+<!--<link rel="stylesheet" href="{% static 'home/css/owl.carousel.min.css' %}">-->
+<!--<link rel="stylesheet" href="{% static 'home/css/flaticon.css' %}">-->
+<!--<link rel="stylesheet" href="{% static 'home/css/slicknav.min.css' %}">-->
+<!--<link rel="stylesheet" href="{% static 'home/css/style.css' %}">-->
+<!--<STYLE>-->
+<!--    /* =========================-->
+<!--   LOGIN BOTTOM LINKS-->
+<!--========================= */-->
+
+<!--.login-links{-->
+
+<!--    display:flex;-->
+<!--    justify-content:space-between;-->
+<!--    align-items:center;-->
+<!--    margin-top:25px;-->
+<!--    gap:20px;-->
+
+<!--}-->
+
+<!--.left-link,-->
+<!--.right-link{-->
+
+<!--    display:flex;-->
+<!--    flex-direction:column;-->
+
+<!--}-->
+
+<!--.right-link{-->
+
+<!--    text-align:right;-->
+
+<!--}-->
+
+<!--.login-links span{-->
+
+<!--    font-size:13px;-->
+<!--    color:#cfcfcf;-->
+<!--    margin-bottom:5px;-->
+
+<!--}-->
+
+<!--.login-links a{-->
+
+<!--    color:#f43f00;-->
+<!--    font-size:15px;-->
+<!--    font-weight:700;-->
+<!--    text-decoration:none;-->
+<!--    transition:0.3s;-->
+
+<!--}-->
+
+<!--.login-links a:hover{-->
+
+<!--    color:#ffffff;-->
+
+<!--}-->
+
+<!--/* MOBILE */-->
+
+<!--@media only screen and (max-width: 576px){-->
+
+<!--    .login-links{-->
+
+<!--        flex-direction:column;-->
+<!--        text-align:center;-->
+
+<!--    }-->
+
+<!--    .right-link{-->
+
+<!--        text-align:center;-->
+
+<!--    }-->
+
+<!--}-->
+<!--</STYLE>-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--&lt;!&ndash; Header &ndash;&gt;-->
+<!--<header class="header-section">-->
+
+<!--<nav class="header-nav">-->
+
+<!--<ul class="main-menu">-->
+
+<!--<li><a href="#" class="active">Home</a></li>-->
+<!--<li><a href="{% url 'about' %}">About QuickFund</a></li>-->
+
+<!--<li><a href="{% url 'service' %}">Services</a>-->
+<!--<ul class="sub-menu">-->
+<!--<li><a href="{% url 'service' %}">Loan Services</a></li>-->
+<!--<li><a href="#">Features</a></li>-->
+<!--</ul>-->
+<!--</li>-->
+
+<!--<li><a href="#">Contact</a></li>-->
+
+<!--</ul>-->
+
+<!--<div class="header-right">-->
+<!--<a href="#" class="hr-btn"><i class="flaticon-029-telephone-1"></i>Call QuickFund</a>-->
+<!--<div class="hr-btn hr-btn-2">+91 98765 43210</div>-->
+<!--</div>-->
+
+<!--</nav>-->
+
+<!--</header>-->
+
+<!--&lt;!&ndash; Hero Section &ndash;&gt;-->
+<!--<section class="hero-section">-->
+
+<!--<div class="container">-->
+<!--<div class="row">-->
+
+<!--<div class="col-lg-6">-->
+
+<!--<div class="hs-text">-->
+
+<!--<h2>Need a Quick Microfinance Loan?</h2>-->
+
+<!--<p>-->
+<!--QuickFund provides fast and reliable microfinance solutions for-->
+<!--small businesses, farmers, and individuals.-->
+<!--</p>-->
+
+<!--<a href="#" class="site-btn sb-dark">Learn More</a>-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+
+<!--&lt;!&ndash; LOGIN FORM &ndash;&gt;-->
+<!--<div class="col-lg-6">-->
+
+<!--<form class="hero-form" method="POST" action="{% url 'home' %}">-->
+<!--    {% csrf_token %}-->
+
+<!--<input type="email" name="email" placeholder="Email" required>-->
+
+<!--<input type="password" name="password" placeholder="Password" required>-->
+
+<!--<p>-->
+<!--Login to access your QuickFund account and manage your loans.-->
+<!--</p>-->
+
+<!--<button type="submit" class="site-btn">-->
+<!--Sign In-->
+<!--</button>-->
+
+<!--<div class="login-links">-->
+
+<!--    <div class="left-link">-->
+<!--        <span>Employee Login</span>-->
+<!--        <a href="{% url 'employee_register' %}">Career</a>-->
+<!--    </div>-->
+
+<!--    <div class="right-link">-->
+<!--        <span>New User?</span>-->
+<!--        <a href="{% url 'reg' %}">Create Account</a>-->
+<!--    </div>-->
+
+<!--</div>-->
+
+<!--</form>-->
+
+<!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+
+
+<!--&lt;!&ndash; Background Images &ndash;&gt;-->
+<!--<div class="hero-slider owl-carousel">-->
+
+<!--<div class="hs-item set-bg"-->
+<!--data-setbg="{% static 'home/img/hero-slider/1.jpg' %}">-->
+<!--</div>-->
+
+<!--<div class="hs-item set-bg"-->
+<!--data-setbg="{% static 'home/img/hero-slider/2.jpg' %}">-->
+<!--</div>-->
+
+<!--<div class="hs-item set-bg"-->
+<!--data-setbg="{% static 'home/img/hero-slider/3.jpg' %}">-->
+<!--</div>-->
+
+<!--</div>-->
+
+<!--</section>-->
+
+
+<!--&lt;!&ndash; Why Choose Us &ndash;&gt;-->
+<!--<section class="why-section spad">-->
+
+<!--<div class="container">-->
+
+<!--<div class="text-center mb-5 pb-4">-->
+<!--<h2>Why Choose QuickFund?</h2>-->
+<!--</div>-->
+
+<!--<div class="row">-->
+
+<!--<div class="col-md-4">-->
+<!--<div class="icon-box-item">-->
+<!--<div class="ib-icon">-->
+<!--<i class="flaticon-012-24-hours"></i>-->
+<!--</div>-->
+
+<!--<div class="ib-text">-->
+<!--<h5>Fast Loan Processing</h5>-->
+<!--<p>Quick approval and simple loan procedures.</p>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+
+
+<!--<div class="col-md-4">-->
+<!--<div class="icon-box-item">-->
+
+<!--<div class="ib-icon">-->
+<!--<i class="flaticon-036-customer-service"></i>-->
+<!--</div>-->
+
+<!--<div class="ib-text">-->
+<!--<h5>Friendly Support</h5>-->
+<!--<p>Our support team helps customers at every step.</p>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+
+
+<!--<div class="col-md-4">-->
+
+<!--<div class="icon-box-item">-->
+
+<!--<div class="ib-icon">-->
+<!--<i class="flaticon-039-info"></i>-->
+<!--</div>-->
+
+<!--<div class="ib-text">-->
+<!--<h5>Flexible Loan Options</h5>-->
+<!--<p>Loans for individuals and small businesses.</p>-->
+<!--</div>-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+<!--</section>-->
+
+
+<!--&lt;!&ndash; CTA &ndash;&gt;-->
+<!--<section class="cta-section set-bg"-->
+<!--data-setbg="{% static 'home/img/cta-bg.jpg' %}">-->
+
+<!--<div class="container">-->
+
+<!--<h2>Already a QuickFund Customer?</h2>-->
+
+<!--<h5>Need another loan to grow your business?</h5>-->
+
+<!--<a href="#" class="site-btn sb-dark sb-big">-->
+<!--Learn More-->
+<!--</a>-->
+
+<!--</div>-->
+
+<!--</section>-->
+
+
+<!--&lt;!&ndash; Footer &ndash;&gt;-->
+<!--<footer class="footer-section">-->
+
+<!--<div class="container">-->
+
+<!--<img src="{% static 'home/img/logo.png' %}" alt="">-->
+
+<!--<p>-->
+<!--QuickFund Microfinance helps individuals and small-->
+<!--businesses access reliable financial support.-->
+<!--</p>-->
+
+<!--<div class="copyright">-->
+
+<!--Copyright ©-->
+<!--<script>document.write(new Date().getFullYear());</script>-->
+<!--QuickFund Microfinance-->
+
+<!--</div>-->
+
+<!--</div>-->
+
+<!--</footer>-->
+
+
+<!--&lt;!&ndash; JS &ndash;&gt;-->
+<!--<script src="{% static 'home/js/jquery-3.2.1.min.js' %}"></script>-->
+<!--<script src="{% static 'home/js/bootstrap.min.js' %}"></script>-->
+<!--<script src="{% static 'home/js/jquery.slicknav.min.js' %}"></script>-->
+<!--<script src="{% static 'home/js/owl.carousel.min.js' %}"></script>-->
+<!--<script src="{% static 'home/js/jquery-ui.min.js' %}"></script>-->
+<!--<script src="{% static 'home/js/main.js' %}"></script>-->
+
+<!--</body>-->
+<!--</html>-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="zxx">
+
+<head>
+
+    <title>QuickFund | Microfinance Services</title>
+
+    <meta charset="UTF-8">
+    <meta name="description" content="QuickFund Microfinance Services">
+    <meta name="keywords" content="microfinance, loans, quickfund">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- CSS -->
+
+    <link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/font-awesome.min.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/slicknav.min.css' %}">
+    <link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+
+<style>
+
+/* LOGIN LINKS */
+
+.login-links{
+
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-top:25px;
+    gap:20px;
+
+}
+
+.left-link,
+.right-link{
+
+    display:flex;
+    flex-direction:column;
+
+}
+
+.right-link{
+
+    text-align:right;
+
+}
+
+.login-links span{
+
+    font-size:13px;
+    color:#cfcfcf;
+    margin-bottom:5px;
+
+}
+
+.login-links a{
+
+    color:#f43f00;
+    font-size:15px;
+    font-weight:700;
+    text-decoration:none;
+    transition:0.3s;
+
+}
+
+.login-links a:hover{
+
+    color:#ffffff;
+
+}
+
+/* APPROVAL MESSAGE */
+
+.approval-msg{
+
+    background:#0f5132;
+    color:#ffffff;
+    padding:14px 20px;
+    border-radius:6px;
+    margin-bottom:20px;
+    border-left:5px solid #00ff88;
+    font-weight:600;
+    font-size:15px;
+
+}
+
+/* ERROR MESSAGE */
+
+.error-msg{
+
+    background:#842029;
+    color:#ffffff;
+    padding:14px 20px;
+    border-radius:6px;
+    margin-bottom:20px;
+    border-left:5px solid #ff4d6d;
+    font-weight:600;
+    font-size:15px;
+
+}
+/* Forgot Password */
+
+.forgot-link{
+    color:#f43f00;
+    font-size:14px;
+    font-weight:600;
+    text-decoration:none;
+    transition:0.3s;
+}
+
+.forgot-link:hover{
+    color:#ffffff;
+    text-decoration:underline;
+}
+
+/* MOBILE */
+
+@media only screen and (max-width:576px){
+
+    .login-links{
+
+        flex-direction:column;
+        text-align:center;
+
+    }
+
+    .right-link{
+
+        text-align:center;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- Header -->
+
+<header class="header-section">
+
+<nav class="header-nav">
+
+<ul class="main-menu">
+
+<li>
+    <a href="#" class="active">Home</a>
+</li>
+
+<li>
+    <a href="{% url 'about' %}">About QuickFund</a>
+</li>
+
+<li>
+
+    <a href="{% url 'service' %}">Services</a>
+
+    <ul class="sub-menu">
+
+        <li>
+            <a href="{% url 'service' %}">Loan Services</a>
+        </li>
+
+        <li>
+            <a href="#">Features</a>
+        </li>
+
+    </ul>
+
+</li>
+
+<li>
+    <a href="#">Contact</a>
+</li>
+
+</ul>
+
+<div class="header-right">
+
+<a href="#" class="hr-btn">
+
+<i class="flaticon-029-telephone-1"></i>
+
+Call QuickFund
+
+</a>
+
+<div class="hr-btn hr-btn-2">
+
++91 98765 43210
+
+</div>
+
+</div>
+
+</nav>
+
+</header>
+
+<!-- HERO SECTION -->
+
+<section class="hero-section">
+
+<div class="container">
+
+<div class="row">
+
+<!-- LEFT TEXT -->
+
+<div class="col-lg-6">
+
+<div class="hs-text">
+
+<h2>
+
+Need a Quick Microfinance Loan?
+
+</h2>
+
+<p>
+
+QuickFund provides fast and reliable microfinance solutions for
+small businesses, farmers, and individuals.
+
+</p>
+
+<a href="#" class="site-btn sb-dark">
+
+Learn More
+
+</a>
+
+</div>
+
+</div>
+
+<!-- LOGIN FORM -->
+
+<div class="col-lg-6">
+
+<!-- MESSAGE SECTION -->
+
+{% if messages %}
+
+    {% for message in messages %}
+
+        {% if message.tags == 'success' %}
+
+            <div class="approval-msg">
+
+                {{ message }}
+
+            </div>
+
+        {% else %}
+
+            <div class="error-msg">
+
+                {{ message }}
+
+            </div>
+
+        {% endif %}
+
+    {% endfor %}
+
+{% endif %}
+
+<form class="hero-form"
+method="POST"
+action="{% url 'home' %}">
+
+{% csrf_token %}
+
+<input type="email"
+name="email"
+placeholder="Email"
+required>
+
+<input type="password"
+name="password"
+placeholder="Password"
+required>
+
+<p>
+
+Login to access your QuickFund account and manage your loans.
+
+</p>
+
+<button type="submit" class="site-btn">
+
+Sign In
+
+</button>
+<div class="text-right mt-2">
+    <a href="{% url 'forgot_password' %}" class="forgot-link">
+        Forgot Password?
+    </a>
+</div>
+<!-- LOGIN LINKS -->
+
+<div class="login-links">
+
+<div class="left-link">
+
+<span>
+
+Employee Login
+
+</span>
+
+<a href="{% url 'employee_register' %}">
+
+Career
+
+</a>
+
+</div>
+
+<div class="right-link">
+
+<span>
+
+New User?
+
+</span>
+
+<a href="{% url 'reg' %}">
+
+Create Account
+
+</a>
+
+</div>
+
+</div>
+
+</form>
+
+</div>
+
+</div>
+
+</div>
+
+<!-- Background Slider -->
+
+<div class="hero-slider owl-carousel">
+
+<div class="hs-item set-bg"
+data-setbg="{% static 'home/img/hero-slider/1.jpg' %}">
+</div>
+
+<div class="hs-item set-bg"
+data-setbg="{% static 'home/img/hero-slider/2.jpg' %}">
+</div>
+
+<div class="hs-item set-bg"
+data-setbg="{% static 'home/img/hero-slider/3.jpg' %}">
+</div>
+
+</div>
+
+</section>
+
+<!-- WHY SECTION -->
+
+<section class="why-section spad">
+
+<div class="container">
+
+<div class="text-center mb-5 pb-4">
+
+<h2>
+
+Why Choose QuickFund?
+
+</h2>
+
+</div>
+
+<div class="row">
+
+<div class="col-md-4">
+
+<div class="icon-box-item">
+
+<div class="ib-icon">
+
+<i class="flaticon-012-24-hours"></i>
+
+</div>
+
+<div class="ib-text">
+
+<h5>
+
+Fast Loan Processing
+
+</h5>
+
+<p>
+
+Quick approval and simple loan procedures.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="icon-box-item">
+
+<div class="ib-icon">
+
+<i class="flaticon-036-customer-service"></i>
+
+</div>
+
+<div class="ib-text">
+
+<h5>
+
+Friendly Support
+
+</h5>
+
+<p>
+
+Our support team helps customers at every step.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="col-md-4">
+
+<div class="icon-box-item">
+
+<div class="ib-icon">
+
+<i class="flaticon-039-info"></i>
+
+</div>
+
+<div class="ib-text">
+
+<h5>
+
+Flexible Loan Options
+
+</h5>
+
+<p>
+
+Loans for individuals and small businesses.
+
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- CTA -->
+
+<section class="cta-section set-bg"
+data-setbg="{% static 'home/img/cta-bg.jpg' %}">
+
+<div class="container">
+
+<h2>
+
+Already a QuickFund Customer?
+
+</h2>
+
+<h5>
+
+Need another loan to grow your business?
+
+</h5>
+
+<a href="#" class="site-btn sb-dark sb-big">
+
+Learn More
+
+</a>
+
+</div>
+
+</section>
+
+<!-- FOOTER -->
+
+<footer class="footer-section">
+
+<div class="container">
+
+<img src="{% static 'home/img/logo.png' %}" alt="">
+
+<p>
+
+QuickFund Microfinance helps individuals and small
+businesses access reliable financial support.
+
+</p>
+
+<div class="copyright">
+
+Copyright ©
+
+<script>
+
+document.write(new Date().getFullYear());
+
+</script>
+
+QuickFund Microfinance
+
+</div>
+
+</div>
+
+</footer>
+
+<!-- JS -->
+
+<script src="{% static 'home/js/jquery-3.2.1.min.js' %}"></script>
+
+<script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+
+<script src="{% static 'home/js/jquery.slicknav.min.js' %}"></script>
+
+<script src="{% static 'home/js/owl.carousel.min.js' %}"></script>
+
+<script src="{% static 'home/js/jquery-ui.min.js' %}"></script>
+
+<script src="{% static 'home/js/main.js' %}"></script>
+
+</body>
+</html>

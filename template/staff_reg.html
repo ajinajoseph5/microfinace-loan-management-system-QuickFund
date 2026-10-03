@@ -1,0 +1,837 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Staff Registration | QuickFund
+    </title>
+
+    <!-- Bootstrap -->
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- Google Font -->
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap"
+          rel="stylesheet">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:#000;
+
+    font-family:'Poppins',sans-serif;
+
+    min-height:100vh;
+
+    padding:25px 10px;
+
+}
+
+/* TOP BAR */
+
+.top-bar{
+
+    max-width:850px;
+
+    margin:0 auto 18px auto;
+
+    display:flex;
+
+    align-items:center;
+
+    gap:15px;
+
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+
+    width:45px;
+
+    height:45px;
+
+    border-radius:12px;
+
+    background:#111;
+
+    border:1px solid #333;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    color:#fff;
+
+    text-decoration:none;
+
+    font-size:18px;
+
+    transition:0.3s;
+
+}
+
+.back-btn:hover{
+
+    background:#ff6600;
+
+    color:#fff;
+
+    text-decoration:none;
+
+}
+
+/* PAGE TITLE */
+
+.page-title{
+
+    color:#ff6600;
+
+    font-size:24px;
+
+    font-weight:700;
+
+}
+
+/* MAIN CARD */
+
+.register-card{
+
+    width:100%;
+
+    max-width:850px;
+
+    margin:auto;
+
+    background:#0d0d0d;
+
+    border-radius:18px;
+
+    overflow:hidden;
+
+    display:flex;
+
+    box-shadow:0 10px 35px rgba(0,0,0,0.7);
+
+    border:1px solid #1f1f1f;
+
+}
+
+/* LEFT SIDE */
+
+.left-side{
+
+    width:38%;
+
+    background:linear-gradient(135deg,#ff6600,#ff8533);
+
+    padding:40px 30px;
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+
+}
+
+/* ICON */
+
+.logo-icon{
+
+    width:70px;
+
+    height:70px;
+
+    border:3px solid #fff;
+
+    border-radius:50%;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    margin-bottom:20px;
+
+}
+
+.logo-icon i{
+
+    color:#fff;
+
+    font-size:30px;
+
+}
+
+/* TITLE */
+
+.brand-title{
+
+    color:#fff;
+
+    font-size:38px;
+
+    font-weight:700;
+
+    margin-bottom:15px;
+
+}
+
+/* TEXT */
+
+.brand-text{
+
+    color:#fff;
+
+    line-height:1.8;
+
+    font-size:15px;
+
+}
+
+/* RIGHT SIDE */
+
+.right-side{
+
+    width:62%;
+
+    background:#0d0d0d;
+
+    padding:35px 30px;
+
+}
+
+/* FORM TITLE */
+
+.form-title{
+
+    text-align:center;
+
+    color:#ff6600;
+
+    font-size:30px;
+
+    font-weight:700;
+
+    margin-bottom:25px;
+
+}
+
+/* LABEL */
+
+label{
+
+    color:#fff;
+
+    font-size:13px;
+
+    margin-bottom:8px;
+
+    font-weight:500;
+
+}
+
+.required{
+
+    color:red;
+
+}
+
+/* FORM GROUP */
+
+.form-group{
+
+    margin-bottom:16px;
+
+}
+
+/* INPUT */
+
+.form-control{
+
+    height:46px;
+
+    border-radius:10px;
+
+    background:#181818;
+
+    border:1px solid #2f2f2f;
+
+    color:#fff;
+
+    box-shadow:none;
+
+    font-size:14px;
+
+}
+
+.form-control:focus{
+
+    background:#181818;
+
+    border-color:#ff6600;
+
+    color:#fff;
+
+    box-shadow:0 0 10px rgba(255,102,0,0.3);
+
+}
+
+.form-control::placeholder{
+
+    color:#888;
+
+}
+
+/* SELECT */
+
+select option{
+
+    background:#111;
+
+    color:#fff;
+
+}
+
+/* DATE */
+
+input[type="date"]::-webkit-calendar-picker-indicator{
+
+    filter:invert(1);
+
+}
+
+/* RADIO */
+
+.gender-box{
+
+    display:flex;
+
+    gap:20px;
+
+    margin-top:6px;
+
+}
+
+.gender-box label{
+
+    display:flex;
+
+    align-items:center;
+
+    gap:5px;
+
+    margin-bottom:0;
+
+    font-size:14px;
+
+}
+
+input[type="radio"]{
+
+    accent-color:#ff6600;
+
+}
+
+/* PASSWORD NOTE */
+
+.password-note{
+
+    margin-top:10px;
+
+    background:#1a1a1a;
+
+    border-left:4px solid #ff6600;
+
+    padding:10px 12px;
+
+    border-radius:8px;
+
+    color:#bbb;
+
+    font-size:12px;
+
+    line-height:22px;
+
+}
+
+/* BUTTON */
+
+.register-btn{
+
+    width:100%;
+
+    height:48px;
+
+    border:none;
+
+    border-radius:10px;
+
+    background:#ff6600;
+
+    color:#fff;
+
+    font-size:15px;
+
+    font-weight:700;
+
+    margin-top:20px;
+
+    transition:0.3s;
+
+}
+
+.register-btn:hover{
+
+    background:#e65c00;
+
+}
+
+/* LOGIN */
+
+.login-text{
+
+    text-align:center;
+
+    margin-top:20px;
+
+    color:#aaa;
+
+    font-size:14px;
+
+}
+
+.login-text a{
+
+    color:#ff6600;
+
+    text-decoration:none;
+
+    font-weight:600;
+
+}
+
+.login-text a:hover{
+
+    color:#fff;
+
+}
+
+/* MESSAGE */
+
+.alert{
+
+    border-radius:10px;
+
+    margin-bottom:20px;
+
+}
+
+/* MOBILE */
+
+@media(max-width:991px){
+
+    .register-card{
+
+        flex-direction:column;
+
+        max-width:500px;
+
+    }
+
+    .left-side,
+    .right-side{
+
+        width:100%;
+
+    }
+
+    .left-side{
+
+        text-align:center;
+
+        align-items:center;
+
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="top-bar">
+
+    <a href="{% url 'home' %}"
+       class="back-btn">
+
+        <i class="fa fa-arrow-left"></i>
+
+    </a>
+
+    <div class="page-title">
+
+        Staff Registration
+
+    </div>
+
+</div>
+
+<!-- MAIN CARD -->
+
+<div class="register-card">
+
+    <!-- LEFT SIDE -->
+
+    <div class="left-side">
+
+        <div class="logo-icon">
+
+            <i class="fa fa-user"></i>
+
+        </div>
+
+        <div class="brand-title">
+
+            QuickFund
+
+        </div>
+
+        <div class="brand-text">
+
+            Create staff accounts to manage customer loans,
+            EMI tracking, approvals, and branch operations securely.
+
+        </div>
+
+    </div>
+
+    <!-- RIGHT SIDE -->
+
+    <div class="right-side">
+
+        <h2 class="form-title">
+
+            Register Staff
+
+        </h2>
+
+        <!-- DJANGO MESSAGE -->
+
+        {% if messages %}
+
+            {% for message in messages %}
+
+                <div class="alert alert-warning">
+
+                    {{ message }}
+
+                </div>
+
+            {% endfor %}
+
+        {% endif %}
+
+        <!-- FORM -->
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <!-- NAME -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Full Name
+                    <span class="required">*</span>
+
+                </label>
+
+                <input type="text"
+                       name="name"
+                       class="form-control"
+                       placeholder="Enter full name"
+                       minlength="3"
+                       required>
+
+            </div>
+
+            <!-- EMAIL -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Email Address
+                    <span class="required">*</span>
+
+                </label>
+
+                <input type="email"
+                       name="email"
+                       class="form-control"
+                       placeholder="Enter Gmail address"
+                       required>
+
+            </div>
+
+            <!-- PHONE -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Phone Number
+                    <span class="required">*</span>
+
+                </label>
+
+                <input type="tel"
+                       name="phone"
+                       class="form-control"
+                       placeholder="Enter 10 digit number"
+                       pattern="[0-9]{10}"
+                       maxlength="10"
+                       minlength="10"
+                       required>
+
+            </div>
+
+            <!-- GENDER -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Gender
+                    <span class="required">*</span>
+
+                </label>
+
+                <div class="gender-box">
+
+                    <label>
+
+                        <input type="radio"
+                               name="gender"
+                               value="Male"
+                               checked
+                               required>
+
+                        Male
+
+                    </label>
+
+                    <label>
+
+                        <input type="radio"
+                               name="gender"
+                               value="Female">
+
+                        Female
+
+                    </label>
+
+                    <label>
+
+                        <input type="radio"
+                               name="gender"
+                               value="Other">
+
+                        Other
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <!-- DOB -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Date of Birth
+                    <span class="required">*</span>
+
+                </label>
+
+                <input type="date"
+                       name="dob"
+                       class="form-control"
+                       required>
+
+            </div>
+
+            <!-- BRANCH -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Branch
+                    <span class="required">*</span>
+
+                </label>
+
+                <select name="branch_type"
+                        class="form-control"
+                        required>
+
+                    <option value="">
+                        Select Branch
+                    </option>
+
+                    <option value="Trivandrum">
+                        Trivandrum
+                    </option>
+
+                    <option value="Kollam">
+                        Kollam
+                    </option>
+
+                    <option value="Kottayam">
+                        Kottayam
+                    </option>
+
+                    <option value="Ernakulam">
+                        Ernakulam
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- HIDDEN ROLE -->
+
+            <input type="hidden"
+                   name="role"
+                   value="staff">
+
+            <!-- PASSWORD -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Password
+                    <span class="required">*</span>
+
+                </label>
+
+                <input type="password"
+                       name="password"
+                       class="form-control"
+                       placeholder="Create password"
+                       pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).{6,}$"
+                       minlength="6"
+                       required>
+
+                <div class="password-note">
+
+                    Password must contain:
+                    <br>
+
+                    • Minimum 6 characters
+                    <br>
+
+                    • One uppercase letter
+                    <br>
+
+                    • One lowercase letter
+                    <br>
+
+                    • One number
+                    <br>
+
+                    • One special character
+
+                </div>
+
+            </div>
+
+            <!-- CONFIRM PASSWORD -->
+
+            <div class="form-group">
+
+                <label>
+
+                    Confirm Password
+                    <span class="required">*</span>
+
+                </label>
+
+                <input type="password"
+                       name="confirm_password"
+                       class="form-control"
+                       placeholder="Confirm password"
+                       required>
+
+            </div>
+
+            <!-- BUTTON -->
+
+            <button type="submit"
+                    class="register-btn">
+
+                <i class="fa fa-user-plus"></i>
+
+                Register Staff
+
+            </button>
+
+            <!-- LOGIN -->
+
+            <div class="login-text">
+
+                Already have an account?
+
+                <a href="{% url 'home' %}">
+
+                    Login Here
+
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

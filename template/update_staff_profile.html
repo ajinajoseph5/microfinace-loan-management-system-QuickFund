@@ -1,0 +1,454 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+      content="width=device-width, initial-scale=1.0">
+
+<title>
+    Update Staff Profile
+</title>
+
+<!-- GOOGLE FONT -->
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+      rel="stylesheet">
+
+<!-- FONT AWESOME -->
+
+<link rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+<style>
+
+:root{
+
+    --black:#050505;
+    --dark:#111111;
+    --orange:#ff6600;
+    --light-orange:#ff944d;
+    --white:#ffffff;
+    --gray:#b8b8b8;
+    --border:#262626;
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:
+    radial-gradient(
+    circle at top right,
+    rgba(255,102,0,0.15),
+    transparent 30%
+    ),
+
+    linear-gradient(
+    135deg,
+    #050505,
+    #0d0d0d,
+    #111111
+    );
+
+    font-family:'Poppins',sans-serif;
+
+    min-height:100vh;
+
+    padding:40px;
+
+    color:white;
+}
+
+/* CONTAINER */
+
+.container{
+
+    width:100%;
+    max-width:750px;
+
+    margin:auto;
+}
+
+/* HEADER */
+
+.page-header{
+
+    display:flex;
+
+    align-items:center;
+
+    margin-bottom:25px;
+}
+
+/* BACK BUTTON */
+/* BACK BUTTON */
+
+.back-btn{
+
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    gap:8px;
+
+    padding:12px 18px;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,0.05);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    color:white;
+
+    text-decoration:none;
+
+    font-size:15px;
+
+    font-weight:500;
+
+    transition:0.3s;
+}
+
+.back-btn:hover{
+
+    background:rgba(255,102,0,0.18);
+
+    border-color:rgba(255,102,0,0.4);
+
+    transform:translateY(-2px);
+}
+
+.back-btn i{
+
+    font-size:16px;
+}
+
+/* FORM BOX */
+
+.form-box{
+
+    width:100%;
+
+    background:rgba(255,255,255,0.04);
+
+    border-radius:30px;
+
+    padding:40px;
+
+    border:1px solid rgba(255,255,255,0.06);
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.45);
+}
+
+/* TITLE */
+
+.form-box h2{
+
+    color:#ff6600;
+
+    margin-bottom:30px;
+
+    text-align:center;
+
+    font-size:30px;
+}
+
+/* INPUT BOX */
+
+.input-box{
+
+    margin-bottom:22px;
+}
+
+.input-box label{
+
+    color:white;
+
+    display:block;
+
+    margin-bottom:10px;
+
+    font-size:15px;
+
+    font-weight:500;
+}
+
+/* INPUT */
+
+.input-box input,
+.input-box select{
+
+    width:100%;
+
+    height:55px;
+
+    background:#111111;
+
+    border:1px solid #262626;
+
+    border-radius:14px;
+
+    padding:0 18px;
+
+    color:white;
+
+    outline:none;
+
+    font-size:15px;
+
+    transition:0.3s;
+}
+
+.input-box input:focus,
+.input-box select:focus{
+
+    border-color:#ff6600;
+
+    box-shadow:
+    0 0 10px rgba(255,102,0,0.2);
+}
+
+/* BUTTON */
+
+.btn-orange{
+
+    width:100%;
+
+    height:55px;
+
+    border:none;
+
+    border-radius:14px;
+
+    background:
+    linear-gradient(
+    135deg,
+    #ff6600,
+    #ff944d
+    );
+
+    color:white;
+
+    font-size:16px;
+
+    font-weight:600;
+
+    cursor:pointer;
+
+    transition:0.3s;
+}
+
+.btn-orange:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 10px 25px rgba(255,102,0,0.35);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    body{
+
+        padding:20px;
+    }
+
+    .form-box{
+
+        padding:25px;
+    }
+
+    .form-box h2{
+
+        font-size:24px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="container">
+
+    <!-- HEADER -->
+
+    <div class="page-header">
+
+        <a href="{% url 'staff_profile' %}"
+           class="back-btn">
+
+            <i class="fa fa-arrow-left"></i>
+                 Back
+        </a>
+
+    </div>
+
+    <!-- FORM -->
+
+    <div class="form-box">
+
+        <h2>
+            Update Staff Profile
+        </h2>
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <!-- NAME -->
+
+            <div class="input-box">
+
+                <label>
+                    Full Name
+                </label>
+
+                <input type="text"
+                       name="name"
+                       value="{{staff.name}}">
+
+            </div>
+
+            <!-- EMAIL -->
+
+            <div class="input-box">
+
+                <label>
+                    Email
+                </label>
+
+                <input type="email"
+                       name="email"
+                       value="{{staff.email}}">
+
+            </div>
+
+            <!-- PHONE -->
+
+            <div class="input-box">
+
+                <label>
+                    Phone
+                </label>
+
+                <input type="text"
+                       name="phone"
+                       value="{{staff.phone}}">
+
+            </div>
+
+            <!-- GENDER -->
+
+            <div class="input-box">
+
+                <label>
+                    Gender
+                </label>
+
+                <select name="gender">
+
+                    <option value="{{staff.gender}}">
+                        {{staff.gender}}
+                    </option>
+
+                    <option value="Male">
+                        Male
+                    </option>
+
+                    <option value="Female">
+                        Female
+                    </option>
+
+                    <option value="Other">
+                        Other
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- DOB -->
+
+            <div class="input-box">
+
+                <label>
+                    Date Of Birth
+                </label>
+
+                <input type="date"
+                       name="dob"
+                       value="{{staff.dob|date:'Y-m-d'}}">
+
+            </div>
+
+            <!-- BRANCH -->
+
+            <div class="input-box">
+
+                <label>
+                    Branch
+                </label>
+
+                <select name="branch_type">
+
+                    <option value="{{staff.branch_type}}">
+                        {{staff.branch_type}}
+                    </option>
+
+                    <option value="Trivandrum">
+                        Trivandrum
+                    </option>
+
+                    <option value="Kollam">
+                        Kollam
+                    </option>
+
+                    <option value="Kottayam">
+                        Kottayam
+                    </option>
+
+                    <option value="Ernakulam">
+                        Ernakulam
+                    </option>
+
+                </select>
+
+            </div>
+
+            <!-- BUTTON -->
+
+            <button type="submit"
+                    class="btn-orange">
+
+                Update Profile
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

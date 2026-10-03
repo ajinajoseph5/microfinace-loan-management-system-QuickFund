@@ -1,0 +1,280 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Loan Details | QuickFund</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'staff_view_a.css' %}">
+
+</head>
+
+<body>
+<div class="header bg-dark text-white p-3">
+
+    <div class="position-relative">
+
+        <a href="{% url 'staff' %}"
+           class="btn btn-warning position-absolute start-0">
+
+            ← Back
+
+        </a>
+
+        <h3 class="text-center mb-0">
+            Loan Application Details
+        </h3>
+
+    </div>
+
+</div>
+
+<div class="container mt-4">
+
+<div class="main-card p-4 shadow">
+
+<form method="POST">
+{% csrf_token %}
+
+<!-- APPLICANT -->
+<div class="section mb-4">
+<h4 class="section-title">Applicant Details</h4>
+
+<p><b>Name:</b> {{ application.name }}</p>
+<p><b>Email:</b> {{ application.email }}</p>
+<p><b>Phone:</b> {{ application.phone }}</p>
+<p><b>Job:</b> {{ application.job }}</p>
+<p><b>Income:</b> ₹ {{ application.income }}</p>
+<p><b>Address:</b> {{ application.address }}</p>
+</div>
+
+<!-- LOAN -->
+<div class="section mb-4">
+<h4 class="section-title">Loan Details</h4>
+
+<p><b>Loan Type:</b> {{ application.loan_type }}</p>
+<p><b>Amount:</b> ₹ {{ application.loan_amount }}</p>
+<p><b>Purpose:</b> {{ application.purpose }}</p>
+
+<p><b>Status:</b>
+{% if application.status == "approved" %}
+<span class="badge bg-success">Approved</span>
+{% elif application.status == "rejected" %}
+<span class="badge bg-danger">Rejected</span>
+{% elif application.status == "returned" %}
+<span class="badge bg-warning text-dark">Returned</span>
+{% else %}
+<span class="badge bg-secondary">Pending</span>
+{% endif %}
+</p>
+
+<!-- DOCUMENTS -->
+<div class="section mb-4">
+<h4 class="section-title">Documents</h4>
+
+<p><b>Photo:</b><br>
+{% if application.photo %}
+    <img src="{{ application.photo.url }}" width="120">
+{% else %}
+    <span class="text-muted">No file</span>
+{% endif %}
+</p>
+
+<p><b>ID Proof:</b><br>
+{% if application.id_proof %}
+    <img src="{{ application.id_proof.url }}" width="120">
+{% else %}
+    <span class="text-muted">No file</span>
+{% endif %}
+</p>
+
+<p><b>Age Proof:</b><br>
+{% if application.age_proof %}
+    <img src="{{ application.age_proof.url }}" width="120">
+{% else %}
+    <span class="text-muted">No file</span>
+{% endif %}
+</p>
+
+<p><b>Income Proof:</b><br>
+{% if application.income_proof %}
+    <img src="{{ application.income_proof.url }}" width="120">
+{% else %}
+    <span class="text-muted">No file</span>
+{% endif %}
+</p>
+
+</div>
+<!-- CO-APPLICANT -->
+{% if application.loan_co_app_set.all %}
+<div class="section mb-4">
+<h4 class="section-title">Co-Applicant Details</h4>
+
+{% for c in application.loan_co_app_set.all %}
+<p><b>Name:</b> {{ c.name }}</p>
+<p><b>Email:</b> {{ c.email }}</p>
+<p><b>Phone:</b> {{ c.phone }}</p>
+<p><b>Relationship:</b> {{ c.relationship }}</p>
+<p><b>Income:</b> ₹ {{ c.income }}</p>
+
+
+
+<p><b>Photo:</b><br>
+{% if c.photo %}
+    <img src="{{ c.photo.url }}" width="120">
+{% else %}
+    No file
+{% endif %}
+</p>
+
+<p><b>ID Proof:</b><br>
+{% if c.id_proof %}
+    <img src="{{ c.id_proof.url }}" width="120">
+{% else %}
+    No file
+{% endif %}
+</p>
+
+<p><b>Age Proof:</b><br>
+{% if c.age_proof %}
+    <img src="{{ c.age_proof.url }}" width="120">
+{% else %}
+    No file
+{% endif %}
+</p>
+
+<p><b>Relational Proof:</b><br>
+{% if c.relational_proof %}
+    <img src="{{ c.relational_proof.url }}" width="120">
+{% else %}
+    No file
+{% endif %}
+</p>
+
+<hr>
+
+
+{% endfor %}
+
+</div>
+{% endif %}
+
+
+<div class="section text-center">
+
+{% if application.status == "approved" %}
+
+    <div class="alert alert-success">
+        Application Approved Successfully
+    </div>
+
+    <button class="btn btn-success" disabled>
+        Approved
+    </button>
+
+{% elif application.status == "returned" %}
+
+    <div class="alert alert-warning">
+        Application Returned
+    </div>
+
+    <button class="btn btn-warning" disabled>
+        Returned
+    </button>
+
+{% elif application.status == "rejected" %}
+
+    <div class="alert alert-danger">
+        Application Rejected
+    </div>
+
+    <button class="btn btn-danger" disabled>
+        Rejected
+    </button>
+
+{% else %}
+
+    <textarea
+        id="messageBox"
+        name="message"
+        class="form-control mb-3"
+        style="display:none;">
+    </textarea>
+
+    <input
+        type="hidden"
+        name="action"
+        id="actionField">
+
+    <div id="actionButtons">
+
+        <button
+            type="submit"
+            onclick="setAction('approve')"
+            class="btn btn-success">
+            Approve
+        </button>
+
+        <button
+            type="button"
+            onclick="showReason('return')"
+            class="btn btn-warning">
+            Return
+        </button>
+
+        <button
+            type="button"
+            onclick="showReason('reject')"
+            class="btn btn-danger">
+            Reject
+        </button>
+
+    </div>
+
+    <button
+        type="submit"
+        id="submitBtn"
+        class="btn btn-primary mt-2"
+        style="display:none;">
+        Submit
+    </button>
+
+{% endif %}
+
+</div>
+</form>
+
+
+</div>
+</div>
+<script>
+
+function setAction(action){
+
+    document.getElementById("actionField").value = action;
+}
+
+function showReason(action){
+
+    document.getElementById("actionButtons").style.display = "none";
+
+    document.getElementById("messageBox").style.display = "block";
+
+    document.getElementById("submitBtn").style.display = "inline-block";
+
+    document.getElementById("actionField").value = action;
+
+    if(action == "return"){
+        document.getElementById("messageBox").placeholder =
+        "Enter return reason";
+    }
+
+    if(action == "reject"){
+        document.getElementById("messageBox").placeholder =
+        "Enter rejection reason";
+    }
+}
+
+</script>
+</body>
+</html>

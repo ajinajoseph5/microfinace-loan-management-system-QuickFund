@@ -1,0 +1,214 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Admin | Application View</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+    background: #f4f6f9;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* HEADER */
+.header {
+    background: #111;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+/* MAIN CARD */
+.main-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+/* SECTION */
+.section {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+.section-title {
+    font-weight: 600;
+    border-left: 5px solid #ff6600;
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+/* IMAGE */
+img {
+    width: 120px;
+    height: auto;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+}
+
+/* STATUS BADGE */
+.badge {
+    font-size: 14px;
+}
+
+/* LABEL */
+p b {
+    color: #333;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h4>Loan Application Details</h4>
+</div>
+
+<div class="container mt-4">
+
+<div class="main-card shadow">
+
+<!-- APPLICANT DETAILS -->
+<div class="section">
+<h5 class="section-title">Applicant Details</h5>
+
+<p><b>Name:</b> {{ application.name }}</p>
+<p><b>Email:</b> {{ application.email }}</p>
+<p><b>Phone:</b> {{ application.phone }}</p>
+<p><b>Job:</b> {{ application.job }}</p>
+<p><b>Income:</b> ₹ {{ application.income }}</p>
+<p><b>Address:</b> {{ application.address }}</p>
+
+</div>
+
+<!-- LOAN DETAILS -->
+<div class="section">
+<h5 class="section-title">Loan Details</h5>
+
+<p><b>Loan Type:</b> {{ application.loan_type }}</p>
+<p><b>Amount:</b> ₹ {{ application.loan_amount }}</p>
+<p><b>Purpose:</b> {{ application.purpose }}</p>
+
+<p><b>Status:</b>
+{% if application.status == "approved" %}
+<span class="badge bg-success">Approved</span>
+{% elif application.status == "rejected" %}
+<span class="badge bg-danger">Rejected</span>
+{% elif application.status == "returned" %}
+<span class="badge bg-warning text-dark">Returned</span>
+{% else %}
+<span class="badge bg-secondary">Pending</span>
+{% endif %}
+</p>
+
+<p><b>Approved Date:</b> {{ application.approved_date|default:"-" }}</p>
+
+</div>
+
+<!-- APPLICANT DOCUMENTS -->
+<div class="section">
+<h5 class="section-title">Applicant Documents</h5>
+
+<p><b>Photo:</b><br>
+{% if application.photo %}
+    <img src="{{ application.photo.url }}">
+{% else %}
+    <span class="text-muted">No file</span>
+{% endif %}
+</p>
+
+<p><b>ID Proof:</b><br>
+{% if application.id_proof %}
+    <img src="{{ application.id_proof.url }}">
+{% else %}
+    <span class="text-muted">No file</span>
+{% endif %}
+</p>
+
+<p><b>Age Proof:</b><br>
+{% if application.age_proof %}
+    <img src="{{ application.age_proof.url }}">
+{% else %}
+    <span class="text-muted">No file</span>
+{% endif %}
+</p>
+
+<p><b>Income Proof:</b><br>
+{% if application.income_proof %}
+    <img src="{{ application.income_proof.url }}">
+{% else %}
+    <span class="text-muted">No file</span>
+{% endif %}
+</p>
+
+</div>
+
+<!-- CO-APPLICANT -->
+{% if application.loan_co_app_set.all %}
+<div class="section">
+<h5 class="section-title">Co-Applicant Details</h5>
+
+{% for c in application.loan_co_app_set.all %}
+
+<div class="mb-4">
+
+<p><b>Name:</b> {{ c.name }}</p>
+<p><b>Email:</b> {{ c.email }}</p>
+<p><b>Phone:</b> {{ c.phone }}</p>
+<p><b>Job:</b> {{ c.job }}</p>
+<p><b>Income:</b> ₹ {{ c.income }}</p>
+<p><b>Relationship:</b> {{ c.relationship }}</p>
+<p><b>Address:</b> {{ c.co_address }}</p>
+
+<p><b>Photo:</b><br>
+{% if c.photo %}
+    <img src="{{ c.photo.url }}">
+{% else %}
+    <span class="text-muted">No file</span>
+{% endif %}
+</p>
+
+<p><b>ID Proof:</b><br>
+{% if c.id_proof %}
+    <img src="{{ c.id_proof.url }}">
+{% else %}
+    <span class="text-muted">No file</span>
+{% endif %}
+</p>
+
+<p><b>Age Proof:</b><br>
+{% if c.age_proof %}
+    <img src="{{ c.age_proof.url }}">
+{% else %}
+    <span class="text-muted">No file</span>
+{% endif %}
+</p>
+
+<p><b>Relational Proof:</b><br>
+{% if c.relational_proof %}
+    <img src="{{ c.relational_proof.url }}">
+{% else %}
+    <span class="text-muted">No file</span>
+{% endif %}
+</p>
+
+<hr>
+
+</div>
+
+{% endfor %}
+
+</div>
+{% endif %}
+
+</div>
+
+</div>
+
+</body>
+</html>

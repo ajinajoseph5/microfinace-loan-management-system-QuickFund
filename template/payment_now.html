@@ -1,0 +1,504 @@
+<!--{% load static %}-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+<!--<head>-->
+<!--<meta charset="UTF-8">-->
+<!--<meta name="viewport" content="width=device-width, initial-scale=1.0">-->
+
+<!--<title>EMI Payment</title>-->
+
+<!--<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">-->
+
+<!--<style>-->
+
+<!--*{-->
+<!--    margin:0;-->
+<!--    padding:0;-->
+<!--    box-sizing:border-box;-->
+<!--    font-family:'Poppins',sans-serif;-->
+<!--}-->
+
+<!--body{-->
+<!--    background:#111;-->
+<!--    min-height:100vh;-->
+<!--    display:flex;-->
+<!--    justify-content:center;-->
+<!--    align-items:center;-->
+<!--}-->
+
+<!--.payment-container{-->
+<!--    width:420px;-->
+<!--    background:#1c1c1c;-->
+<!--    padding:35px;-->
+<!--    border-radius:20px;-->
+<!--    box-shadow:0 0 25px rgba(255,140,0,0.2);-->
+<!--    border:1px solid #ff8800;-->
+<!--}-->
+
+<!--.logo{-->
+<!--    text-align:center;-->
+<!--    margin-bottom:25px;-->
+<!--}-->
+
+<!--.logo h1{-->
+<!--    color:#ff8800;-->
+<!--    font-size:34px;-->
+<!--    font-weight:700;-->
+<!--}-->
+
+<!--.logo p{-->
+<!--    color:#aaa;-->
+<!--    margin-top:5px;-->
+<!--}-->
+
+<!--.payment-box{-->
+<!--    background:#2a2a2a;-->
+<!--    padding:20px;-->
+<!--    border-radius:15px;-->
+<!--    margin-bottom:20px;-->
+<!--}-->
+
+<!--.payment-box h3{-->
+<!--    color:#ff8800;-->
+<!--    margin-bottom:15px;-->
+<!--}-->
+
+<!--.payment-box p{-->
+<!--    color:#ddd;-->
+<!--    margin:10px 0;-->
+<!--    font-size:15px;-->
+<!--}-->
+
+<!--.amount{-->
+<!--    text-align:center;-->
+<!--    color:#00ff99;-->
+<!--    font-size:38px;-->
+<!--    font-weight:bold;-->
+<!--    margin:25px 0;-->
+<!--}-->
+
+<!--/* RAZORPAY BUTTON */-->
+
+<!--.razorpay-payment-button{-->
+<!--    width:100%;-->
+<!--    padding:15px;-->
+<!--    border:none;-->
+<!--    border-radius:12px;-->
+<!--    background:#ff8800;-->
+<!--    color:white;-->
+<!--    font-size:17px;-->
+<!--    font-weight:600;-->
+<!--    cursor:pointer;-->
+<!--    transition:0.3s;-->
+<!--}-->
+
+<!--.razorpay-payment-button:hover{-->
+<!--    background:#ff6a00;-->
+<!--    transform:scale(1.02);-->
+<!--}-->
+
+<!--.secure{-->
+<!--    text-align:center;-->
+<!--    color:#999;-->
+<!--    margin-top:20px;-->
+<!--    font-size:13px;-->
+<!--}-->
+
+<!--</style>-->
+<!--</head>-->
+
+<!--<body>-->
+
+<!--<div class="payment-container">-->
+
+<!--    <div class="logo">-->
+<!--        <h1>Micro Finance</h1>-->
+<!--        <p>Secure EMI Payment</p>-->
+<!--    </div>-->
+
+<!--    <div class="payment-box">-->
+
+<!--        <h3>Loan Details</h3>-->
+
+<!--        <p><strong>Loan ID :</strong> {{ emi.loan.id }}</p>-->
+
+<!--        <p><strong>Customer :</strong> {{ user.name }}</p>-->
+
+<!--        <p><strong>EMI Number :</strong> {{ emi.emi_number }}</p>-->
+
+<!--        <p><strong>Due Date :</strong> {{ emi.due_date }}</p>-->
+
+<!--    </div>-->
+
+<!--    <div class="amount">-->
+<!--        ₹ {{ emi.amount }}-->
+<!--    </div>-->
+
+<!--    &lt;!&ndash; PAYMENT FORM &ndash;&gt;-->
+
+<!--    <form action="{% url 'payment_success' %}" method="POST">-->
+
+<!--        {% csrf_token %}-->
+
+<!--        <script-->
+<!--            src="https://checkout.razorpay.com/v1/checkout.js"-->
+<!--            data-key="rzp_test_SROSnyInFv81S4"-->
+<!--            data-amount="{{ amount }}"-->
+<!--            data-currency="INR"-->
+<!--            data-order_id="{{ payment.id }}"-->
+<!--            data-buttontext="Pay EMI Now"-->
+<!--            data-name="Micro Finance"-->
+<!--            data-description="Loan EMI Payment"-->
+<!--            data-theme.color="#ff8800"-->
+<!--            data-callback_url="http://127.0.0.1:8000/payment_success/"-->
+<!--            data-prefill.name="{{ user.name }}"-->
+<!--            data-prefill.email="{{ user.email }}"-->
+<!--            data-prefill.contact="{{ user.phone }}"-->
+<!--        ></script>-->
+
+<!--    </form>-->
+
+<!--    <div class="secure">-->
+<!--        🔒 100% Secure Payment Powered by Razorpay-->
+<!--    </div>-->
+
+<!--</div>-->
+
+<!--</body>-->
+<!--</html>-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>EMI Payment</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:'Poppins',sans-serif;
+}
+
+/* BODY */
+
+body{
+    background:#111;
+    min-height:100vh;
+    padding:30px 15px;
+}
+
+/* TOP BAR */
+
+.top-bar{
+    width:100%;
+    max-width:420px;
+    margin:0 auto 20px auto;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+/* BACK BUTTON */
+
+.back-btn a{
+    width:55px;
+    height:55px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#1c1c1c;
+    border:1px solid #333;
+    border-radius:15px;
+    color:white;
+    text-decoration:none;
+    font-size:22px;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,0.4);
+}
+
+.back-btn a:hover{
+    background:#ff8800;
+    border-color:#ff8800;
+    transform:translateX(-4px);
+}
+
+/* PAGE TITLE */
+
+.page-title{
+    color:#ff8800;
+    font-size:30px;
+    font-weight:600;
+}
+
+/* PAYMENT CONTAINER */
+
+.payment-container{
+    width:100%;
+    max-width:420px;
+    margin:auto;
+    background:#1c1c1c;
+    padding:35px;
+    border-radius:20px;
+    box-shadow:0 0 25px rgba(255,140,0,0.2);
+    border:1px solid #ff8800;
+}
+
+/* LOGO */
+
+.logo{
+    text-align:center;
+    margin-bottom:25px;
+}
+
+.logo h1{
+    color:#ff8800;
+    font-size:34px;
+    font-weight:700;
+}
+
+.logo p{
+    color:#aaa;
+    margin-top:5px;
+}
+
+/* PAYMENT BOX */
+
+.payment-box{
+    background:#2a2a2a;
+    padding:20px;
+    border-radius:15px;
+    margin-bottom:20px;
+}
+
+.payment-box h3{
+    color:#ff8800;
+    margin-bottom:15px;
+}
+
+.payment-box p{
+    color:#ddd;
+    margin:10px 0;
+    font-size:15px;
+}
+
+/* AMOUNT */
+
+.amount{
+    text-align:center;
+    color:#00ff99;
+    font-size:38px;
+    font-weight:bold;
+    margin:25px 0;
+}
+
+/* RAZORPAY BUTTON */
+
+.razorpay-payment-button{
+    width:100%;
+    padding:15px;
+    border:none;
+    border-radius:12px;
+    background:#ff8800;
+    color:white;
+    font-size:17px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+.razorpay-payment-button:hover{
+    background:#ff6a00;
+    transform:scale(1.02);
+}
+
+/* SECURE TEXT */
+
+.secure{
+    text-align:center;
+    color:#999;
+    margin-top:20px;
+    font-size:13px;
+}
+
+/* MOBILE */
+
+@media(max-width:500px){
+
+    .payment-container{
+        padding:25px;
+    }
+
+    .page-title{
+        font-size:24px;
+    }
+
+    .logo h1{
+        font-size:28px;
+    }
+
+    .amount{
+        font-size:32px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="top-bar">
+
+    <!-- BACK BUTTON -->
+
+    <div class="back-btn">
+
+        <a href="{% url 'user_emi' %}">
+
+            <i class="fa-solid fa-arrow-left"></i>
+
+        </a>
+
+    </div>
+
+    <!-- PAGE TITLE -->
+
+    <div class="page-title">
+
+        EMI Payment
+
+    </div>
+
+</div>
+
+<!-- PAYMENT CONTAINER -->
+
+<div class="payment-container">
+
+    <!-- LOGO -->
+
+    <div class="logo">
+
+        <h1>Micro Finance</h1>
+
+        <p>Secure EMI Payment</p>
+
+    </div>
+
+    <!-- LOAN DETAILS -->
+
+    <div class="payment-box">
+
+        <h3>Loan Details</h3>
+
+        <p>
+
+            <strong>Loan ID :</strong>
+
+            {{ emi.loan.id }}
+
+        </p>
+
+        <p>
+
+            <strong>Customer :</strong>
+
+            {{ user.name }}
+
+        </p>
+
+        <p>
+
+            <strong>EMI Number :</strong>
+
+            {{ emi.emi_number }}
+
+        </p>
+
+        <p>
+
+            <strong>Due Date :</strong>
+
+            {{ emi.due_date }}
+
+        </p>
+
+    </div>
+
+    <!-- EMI AMOUNT -->
+
+    <div class="amount">
+
+        ₹ {{ emi.amount }}
+
+    </div>
+
+    <!-- PAYMENT FORM -->
+  <form action="{% url 'payment_success' %}"
+      method="POST">
+
+    {% csrf_token %}
+
+    <input type="hidden"
+           name="emi_id"
+           value="{{ emi.id }}">
+
+    <script
+        src="https://checkout.razorpay.com/v1/checkout.js"
+
+        data-key="rzp_test_SROSnyInFv81S4"
+
+        data-amount="{{ amount }}"
+
+        data-currency="INR"
+
+        data-order_id="{{ payment.id }}"
+
+        data-buttontext="Pay EMI Now"
+
+        data-name="Quick Fund Microfinance"
+
+        data-description="Quick Fund EMI Payment"
+
+        data-theme.color="#ff8800"
+
+        data-callback_url="http://127.0.0.1:8000/payment_success/?emi_id={{ emi.id }}"
+
+        data-prefill.name="{{ user.name }}"
+
+        data-prefill.email="{{ user.email }}"
+
+        data-prefill.contact="{{ user.phone }}"
+
+    ></script>
+
+</form>
+
+    <!-- SECURITY -->
+
+    <div class="secure">
+
+        🔒 100% Secure Payment Powered by Razorpay
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

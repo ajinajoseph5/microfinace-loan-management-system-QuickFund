@@ -1,0 +1,469 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>
+        Admin - Applications | QuickFund
+    </title>
+
+    <!-- Bootstrap -->
+
+    <link rel="stylesheet"
+          href="{% static 'admin/assets/vendor/bootstrap/css/bootstrap.css' %}">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="{% static 'admin/assets/vendor/font-awesome/css/font-awesome.css' %}">
+
+<style>
+
+body{
+    background:#f4f6f9;
+    font-family:'Segoe UI',sans-serif;
+    margin:0;
+}
+
+/* HEADER */
+
+.header{
+    background:#111;
+    color:#fff;
+    padding:15px 25px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    border-bottom:3px solid #ff6600;
+}
+
+.header h3{
+    margin:0;
+    color:#ff6600;
+    font-weight:700;
+}
+
+/* SIDEBAR */
+
+.sidebar-left{
+    width:220px;
+    position:fixed;
+    height:100%;
+    background:#1c1c1c;
+    top:0;
+    left:0;
+    padding-top:80px;
+}
+
+.sidebar-left ul{
+    list-style:none;
+    padding:0;
+    margin:0;
+}
+
+.sidebar-left ul li{
+    padding:14px 20px;
+    transition:0.3s;
+}
+
+.sidebar-left ul li:hover{
+    background:#ff6600;
+}
+
+.sidebar-left ul li a{
+    color:#ccc;
+    text-decoration:none;
+    display:block;
+    font-size:14px;
+}
+
+.sidebar-left ul li a i{
+    margin-right:10px;
+}
+
+/* CONTENT */
+
+.content-body{
+    margin-left:230px;
+    padding:25px;
+}
+
+/* TOP ACTION */
+
+.top-action{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:20px;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+    background:#ff6600;
+    color:#fff;
+    padding:10px 18px;
+    border-radius:8px;
+    text-decoration:none;
+    font-size:13px;
+    font-weight:600;
+    transition:0.3s;
+}
+
+.back-btn:hover{
+    background:#ff8533;
+    color:#fff;
+    text-decoration:none;
+}
+
+/* TABLE BOX */
+
+.table-box{
+    background:#fff;
+    padding:20px;
+    border-radius:12px;
+    box-shadow:0px 4px 15px rgba(0,0,0,0.08);
+}
+
+/* TABLE */
+
+.table{
+    margin-bottom:0;
+}
+
+.table th{
+    background:#111;
+    color:#fff;
+    text-align:center;
+    vertical-align:middle;
+    border:none;
+    padding:14px;
+    font-size:13px;
+}
+
+.table td{
+    text-align:center;
+    vertical-align:middle;
+    padding:14px;
+    font-size:13px;
+}
+
+.table-hover tbody tr:hover{
+    background:#f9f9f9;
+}
+
+/* BADGES */
+
+.badge-pending{
+    background:orange;
+    color:#fff;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:11px;
+}
+
+.badge-approved{
+    background:green;
+    color:#fff;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:11px;
+}
+
+.badge-rejected{
+    background:red;
+    color:#fff;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:11px;
+}
+
+.badge-return{
+    background:#6c757d;
+    color:#fff;
+    padding:6px 12px;
+    border-radius:20px;
+    font-size:11px;
+}
+
+/* BUTTONS */
+
+.btn-sm{
+    padding:6px 12px;
+    font-size:12px;
+    border-radius:6px;
+    margin:2px;
+}
+
+.btn-info{
+    background:#17a2b8;
+    border:none;
+}
+
+.btn-danger{
+    background:#dc3545;
+    border:none;
+}
+
+/* RESPONSIVE */
+
+.table-responsive{
+    overflow-x:auto;
+}
+
+@media(max-width:768px){
+
+    .sidebar-left{
+        width:100%;
+        height:auto;
+        position:relative;
+        padding-top:0;
+    }
+
+    .content-body{
+        margin-left:0;
+    }
+
+    .top-action{
+        flex-direction:column;
+        gap:15px;
+        align-items:flex-start;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <h3>
+        QuickFund Admin
+    </h3>
+
+    <div>
+        Loan Applications
+    </div>
+
+</div>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar-left">
+
+    <ul>
+
+        <li>
+            <a href="{% url 'admin_home' %}">
+                <i class="fa fa-home"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'admin_users' %}">
+                <i class="fa fa-users"></i>
+                Users
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'admin_staff' %}">
+                <i class="fa fa-user"></i>
+                Staff
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'admin_applications' %}">
+                <i class="fa fa-file-text"></i>
+                Applications
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'admin_approve' %}">
+                <i class="fa fa-check"></i>
+                Approved
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'admin_rejected' %}">
+                <i class="fa fa-times"></i>
+                Rejected
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'admin_logout' %}">
+                <i class="fa fa-power-off"></i>
+                Logout
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- CONTENT -->
+
+<div class="content-body">
+
+    <!-- TOP ACTION -->
+
+    <div class="top-action">
+
+        <h2>
+            All Loan Applications
+        </h2>
+
+        <!-- BACK BUTTON -->
+
+        <a href="{% url 'admin_home' %}"
+           class="back-btn">
+
+            <i class="fa fa-arrow-left"></i>
+
+            Back Dashboard
+
+        </a>
+
+    </div>
+
+    <!-- TABLE -->
+
+    <div class="table-box">
+
+        <div class="table-responsive">
+
+            <table class="table table-bordered table-hover">
+
+                <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>User</th>
+                    <th>Email</th>
+                    <th>Amount</th>
+                    <th>Loan Type</th>
+                    <th>Branch</th>
+                    <th>Status</th>
+                    <th>Date</th>
+
+
+                </tr>
+
+                </thead>
+
+                <tbody>
+
+                {% for app in applications %}
+
+                <tr>
+
+                    <td>
+                        {{ app.id }}
+                    </td>
+
+                    <td>
+                        {{ app.name }}
+                    </td>
+
+                    <td>
+                        {{ app.email }}
+                    </td>
+
+                    <td>
+                        ₹ {{ app.loan_amount }}
+                    </td>
+
+                    <td>
+                        {{ app.loan_type }}
+                    </td>
+
+                    <td>
+                        {{ app.branch_type }}
+                    </td>
+
+                    <!-- STATUS -->
+
+                    <td>
+
+                        {% if app.status == 'pending' %}
+
+                            <span class="badge-pending">
+                                Pending
+                            </span>
+
+                        {% elif app.status == 'approved' %}
+
+                            <span class="badge-approved">
+                                Approved
+                            </span>
+
+                        {% elif app.status == 'return' %}
+
+                            <span class="badge-return">
+                                Returned
+                            </span>
+
+                        {% elif app.status == 'rejected' %}
+
+                            <span class="badge-rejected">
+                                Rejected
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <!-- DATE -->
+
+                    <td>
+
+                        {{ app.approved_date|default:"-" }}
+
+                    </td>
+
+                    <!-- ACTION -->
+
+
+
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="9"
+                        class="text-center">
+
+                        No Applications Found
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+                </tbody>
+
+            </table>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

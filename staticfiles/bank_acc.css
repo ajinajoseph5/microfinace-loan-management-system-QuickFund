@@ -1,0 +1,85 @@
+body{
+    background:#000;
+    font-family:'Segoe UI',sans-serif;
+    margin:0;
+    padding:40px 15px;
+    color:#fff;
+}
+
+/* Container */
+.bank-container{
+    max-width:800px;
+    margin:auto;
+    background:#111;
+    padding:35px;
+    border-radius:14px;
+    border-left:5px solid #ff6600;
+    box-shadow:0 15px 40px rgba(0,0,0,0.8);
+}
+
+/* Title */
+.bank-title{
+    text-align:center;
+    color:#ff6600;
+    margin-bottom:35px;
+    font-weight:300;
+    text-transform:uppercase;
+    letter-spacing:3px;
+}
+
+/* Labels */
+label{
+    color:#bbb;
+    font-size:13px;
+    margin-bottom:6px;
+}
+
+/* Inputs */
+.form-control{
+    background:#1a1a1a;
+    border:1px solid #333;
+    color:#fff;
+    height:45px;
+    border-radius:6px;
+    box-shadow:none;
+}
+
+.form-control:focus{
+    background:#000;
+    color:#fff;
+    border-color:#ff6600;
+    box-shadow:0 0 8px rgba(255,102,0,0.4);
+}
+
+/* Placeholder */
+.form-control::placeholder{
+    color:#777;
+}
+
+/* Button */
+.btn-save{
+    width:100%;
+    background:#ff6600;
+    color:#fff;
+    border:none;
+    padding:13px;
+    border-radius:6px;
+    font-weight:bold;
+    text-transform:uppercase;
+    transition:0.3s;
+}
+
+.btn-save:hover{
+    background:#ff8533;
+    transform:translateY(-2px);
+    box-shadow:0 5px 15px rgba(255,102,0,0.5);
+}
+
+/* Responsive */
+@media(max-width:768px){
+
+    .bank-container{
+        padding:25px;
+    }
+
+}

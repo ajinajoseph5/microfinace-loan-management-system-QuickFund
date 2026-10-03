@@ -1,0 +1,121 @@
+
+
+body{
+background:white;
+font-family:Arial;
+color:#333;
+}
+
+/* NAVBAR */
+
+.navbar{
+background:black;
+}
+
+.navbar a{
+color:white !important;
+font-weight:500;
+}
+
+.navbar a:hover{
+color:#f43f00 !important;
+}
+
+/* HERO */
+
+.loan-header{
+background:black;
+color:white;
+padding:80px 0;
+text-align:center;
+}
+
+.loan-header h1{
+font-size:42px;
+font-weight:bold;
+}
+
+.loan-header p{
+font-size:18px;
+color:#ccc;
+}
+
+/* TITLES */
+
+.section-title{
+margin-top:70px;
+margin-bottom:35px;
+text-align:center;
+font-weight:bold;
+color:black;
+}
+
+/* LOAN CARDS */
+
+.loan-card{
+background:white;
+padding:30px;
+border-radius:8px;
+border:1px solid #eee;
+transition:0.3s;
+margin-bottom:25px;
+}
+
+.loan-card:hover{
+transform:translateY(-8px);
+box-shadow:0 10px 25px rgba(0,0,0,0.1);
+border-top:4px solid #f43f00;
+}
+
+.loan-card h4{
+color:#f43f00;
+font-weight:bold;
+}
+
+/* LIST GROUP */
+
+.list-group-item{
+border-left:4px solid #f43f00;
+}
+
+/* PROCESS */
+
+.process-box{
+padding:20px;
+}
+
+.process-box h5{
+color:#f43f00;
+font-weight:bold;
+}
+
+/* DIFFERENCE SECTION */
+
+.difference{
+background:#111;
+color:white;
+padding:70px 0;
+margin-top:70px;
+}
+
+.difference i{
+color:#f43f00;
+margin-bottom:15px;
+}
+
+/* APPLY BUTTON */
+
+.apply-btn{
+background:#f43f00;
+color:white;
+padding:15px 35px;
+font-size:18px;
+border:none;
+border-radius:5px;
+}
+
+.apply-btn:hover{
+background:black;
+color:white;
+}
+

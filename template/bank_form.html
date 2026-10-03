@@ -1,0 +1,225 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+<title>Bank Details</title>
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600" rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<style>
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    background:#0d0d0d;
+    font-family:Poppins,sans-serif;
+    color:white;
+    min-height:100vh;
+    padding:40px 15px;
+}
+
+/* WRAPPER */
+
+.wrapper{
+    width:100%;
+    max-width:500px;
+    margin:auto;
+}
+
+/* TOP BAR */
+
+.top-bar{
+    display:flex;
+    align-items:center;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+/* BACK BUTTON */
+
+.back-btn a{
+    width:52px;
+    height:52px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    background:#151515;
+    border:1px solid #242424;
+    border-radius:14px;
+    color:white;
+    text-decoration:none;
+    font-size:20px;
+    transition:0.3s;
+    box-shadow:0 5px 15px rgba(0,0,0,0.4);
+}
+
+.back-btn a:hover{
+    background:#ff6600;
+    border-color:#ff6600;
+    transform:translateX(-4px);
+}
+
+/* HEADING */
+
+.heading{
+    font-size:30px;
+    font-weight:600;
+}
+
+/* CONTAINER */
+
+.container{
+    background:#111;
+    padding:30px;
+    border-radius:18px;
+    box-shadow:0 10px 30px rgba(0,0,0,0.6);
+}
+
+/* INPUTS */
+
+input{
+    width:100%;
+    padding:14px;
+    margin-top:10px;
+    margin-bottom:20px;
+    border:none;
+    border-radius:8px;
+    background:#1a1a1a;
+    color:white;
+    font-size:15px;
+}
+
+input:focus{
+    outline:none;
+    border:1px solid #ff6600;
+    box-shadow:0 0 5px rgba(255,102,0,0.4);
+}
+
+/* BUTTON */
+
+button{
+    width:100%;
+    padding:14px;
+    background:#ff6600;
+    border:none;
+    color:white;
+    border-radius:8px;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.3s;
+}
+
+button:hover{
+    background:#e65c00;
+}
+
+/* RESPONSIVE */
+
+@media(max-width:600px){
+
+    .container{
+        padding:25px;
+    }
+
+    .heading{
+        font-size:24px;
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="wrapper">
+
+    <!-- TOP BAR -->
+
+    <div class="top-bar">
+
+        <!-- BACK BUTTON -->
+
+        <div class="back-btn">
+
+            <a href="javascript:history.back()">
+
+                <i class="fa-solid fa-arrow-left"></i>
+
+            </a>
+
+        </div>
+
+        <!-- HEADING -->
+
+        <div class="heading">
+
+            Bank Details
+
+        </div>
+
+    </div>
+
+    <!-- FORM CONTAINER -->
+
+    <div class="container">
+
+        <form method="POST">
+
+            {% csrf_token %}
+
+            <input type="text"
+                   name="account_holder"
+                   placeholder="Account Holder Name"
+                   value="{{ bank.account_holder|default:'' }}"
+                   required>
+
+            <input type="text"
+                   name="bank_name"
+                   placeholder="Bank Name"
+                   value="{{ bank.bank_name|default:'' }}"
+                   required>
+
+            <input type="text"
+                   name="account_number"
+                   placeholder="Account Number"
+                   value="{{ bank.account_number|default:'' }}"
+                   required>
+
+            <input type="text"
+                   name="ifsc_code"
+                   placeholder="IFSC Code"
+                   value="{{ bank.ifsc_code|default:'' }}"
+                   required>
+
+            <input type="text"
+                   name="branch_name"
+                   placeholder="Branch Name"
+                   value="{{ bank.branch_name|default:'' }}"
+                   required>
+
+            <button type="submit">
+
+                Save Bank Details
+
+            </button>
+
+        </form>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

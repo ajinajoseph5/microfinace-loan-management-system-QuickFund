@@ -1,0 +1,24 @@
+
+.custom-table thead {
+    background: #ff6600;
+    color: #fff;
+}
+
+.custom-table tbody tr:hover {
+    background: #f9f9f9;
+}
+
+.badge {
+    padding: 5px 10px;
+    font-size: 12px;
+    border-radius: 5px;
+}
+
+.btn-primary {
+    background: #ff6600;
+    border: none;
+}
+
+.btn-primary:hover {
+    background: #ff8533;
+}

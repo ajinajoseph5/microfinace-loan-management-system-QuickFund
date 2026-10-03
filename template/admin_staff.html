@@ -1,0 +1,957 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Admin Staff Management | QuickFund
+    </title>
+
+    <!-- Bootstrap -->
+
+    <link rel="stylesheet"
+          href="{% static 'admin/assets/vendor/bootstrap/css/bootstrap.css' %}">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="{% static 'admin/assets/vendor/font-awesome/css/font-awesome.css' %}">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+
+            background:#f4f6f9;
+            font-family:'Segoe UI', sans-serif;
+            overflow-x:hidden;
+
+        }
+
+        /* =========================
+            HEADER
+        ========================= */
+
+        .header{
+
+            height:70px;
+            background:#000;
+            border-bottom:3px solid #ff6600;
+
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            padding:0 30px;
+
+            position:fixed;
+            top:0;
+            left:0;
+            width:100%;
+            z-index:999;
+
+        }
+
+        .header h3{
+
+            color:#ff6600;
+            font-size:28px;
+            font-weight:700;
+            margin:0;
+
+        }
+
+        .header-right{
+
+            color:#fff;
+            font-size:15px;
+            font-weight:500;
+
+        }
+
+        /* =========================
+            SIDEBAR
+        ========================= */
+
+        .sidebar-left{
+
+            width:240px;
+            height:100vh;
+
+            background:#000;
+
+            position:fixed;
+            top:70px;
+            left:0;
+
+            overflow-y:auto;
+
+        }
+
+        .sidebar-left ul{
+
+            list-style:none;
+            padding:20px 0;
+            margin:0;
+
+        }
+
+        .sidebar-left ul li{
+
+            transition:0.3s;
+
+        }
+
+        .sidebar-left ul li a{
+
+            display:flex;
+            align-items:center;
+
+            padding:16px 25px;
+
+            color:#fff;
+            text-decoration:none;
+
+            font-size:16px;
+            font-weight:500;
+
+            transition:0.3s;
+
+        }
+
+        .sidebar-left ul li a i{
+
+            width:25px;
+            font-size:16px;
+
+        }
+
+        .sidebar-left ul li:hover{
+
+            background:#ff6600;
+
+        }
+
+        .sidebar-left ul li.active{
+
+            background:#ff6600;
+
+        }
+
+        /* =========================
+            CONTENT
+        ========================= */
+
+        .content-body{
+
+            margin-left:240px;
+            margin-top:70px;
+
+            padding:35px;
+
+        }
+
+        /* =========================
+            PAGE TOP
+        ========================= */
+
+        .page-top{
+
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+
+            margin-bottom:25px;
+            gap:15px;
+            flex-wrap:wrap;
+
+        }
+
+        .page-title{
+
+            font-size:38px;
+            font-weight:700;
+            color:#000;
+            margin:0;
+
+        }
+
+        /* =========================
+            BUTTONS
+        ========================= */
+
+        .theme-btn,
+        .gray-btn,
+        .dark-btn{
+
+            height:45px;
+            min-width:140px;
+
+            border:none;
+            border-radius:8px;
+
+            display:inline-flex;
+            align-items:center;
+            justify-content:center;
+
+            padding:0 22px;
+
+            font-size:15px;
+            font-weight:600;
+
+            text-decoration:none;
+
+            transition:0.3s;
+
+        }
+
+        .theme-btn i,
+        .gray-btn i,
+        .dark-btn i{
+
+            margin-right:8px;
+
+        }
+
+        /* ORANGE BUTTON */
+
+        .theme-btn{
+
+            background:#ff6600;
+            color:#fff;
+
+        }
+
+        .theme-btn:hover{
+
+            background:#e65c00;
+            color:#fff;
+            text-decoration:none;
+
+        }
+
+        /* GRAY BUTTON */
+
+        .gray-btn{
+
+            background:#6c757d;
+            color:#fff;
+
+        }
+
+        .gray-btn:hover{
+
+            background:#555;
+            color:#fff;
+            text-decoration:none;
+
+        }
+
+        /* BLACK BUTTON */
+
+        .dark-btn{
+
+            background:#000;
+            color:#fff;
+
+        }
+
+        .dark-btn:hover{
+
+            background:#ff6600;
+            color:#fff;
+            text-decoration:none;
+
+        }
+
+        /* =========================
+            MESSAGE
+        ========================= */
+
+        .alert-success{
+
+            background:#198754;
+            color:#fff;
+            border:none;
+            border-radius:8px;
+
+        }
+
+        /* =========================
+            SEARCH BOX
+        ========================= */
+
+        .search-box{
+
+            background:#fff;
+
+            padding:25px;
+
+            border-radius:12px;
+
+            margin-bottom:30px;
+
+            box-shadow:0 4px 15px rgba(0,0,0,0.08);
+
+        }
+
+        .form-control{
+
+            height:45px;
+            border-radius:8px;
+            border:1px solid #ddd;
+
+            box-shadow:none;
+
+        }
+
+        .form-control:focus{
+
+            border-color:#ff6600;
+            box-shadow:0 0 0 0.15rem rgba(255,102,0,0.2);
+
+        }
+
+        .button-group{
+
+            display:flex;
+            gap:12px;
+            flex-wrap:wrap;
+
+        }
+
+        /* =========================
+            TABLE
+        ========================= */
+
+        .table-box{
+
+            background:#fff;
+
+            padding:25px;
+
+            border-radius:12px;
+
+            box-shadow:0 4px 15px rgba(0,0,0,0.08);
+
+            overflow-x:auto;
+
+        }
+
+        .table{
+
+            margin-bottom:0;
+
+        }
+
+        .table thead{
+
+            background:#000;
+            color:#fff;
+
+        }
+
+        .table thead th{
+
+            border:none;
+            padding:15px;
+
+            white-space:nowrap;
+
+        }
+
+        .table td{
+
+            vertical-align:middle;
+            padding:14px;
+
+        }
+
+        /* =========================
+            STATUS BADGES
+        ========================= */
+
+        .badge-approved{
+
+            background:#198754;
+            color:#fff;
+
+            padding:8px 16px;
+
+            border-radius:30px;
+
+            font-size:13px;
+            font-weight:600;
+
+        }
+
+        .badge-pending{
+
+            background:#ffc107;
+            color:#000;
+
+            padding:8px 16px;
+
+            border-radius:30px;
+
+            font-size:13px;
+            font-weight:600;
+
+        }
+
+        /* =========================
+            ACTION BUTTONS
+        ========================= */
+
+        .action-btn{
+
+            width:120px;
+            height:38px;
+
+            border:none;
+            border-radius:6px;
+
+            display:flex;
+            align-items:center;
+            justify-content:center;
+
+            text-decoration:none;
+
+            color:#fff;
+
+            font-size:13px;
+            font-weight:600;
+
+            transition:0.3s;
+
+        }
+
+        .action-btn i{
+
+            margin-right:6px;
+
+        }
+
+        .approve-btn{
+
+            background:#198754;
+
+        }
+
+        .approve-btn:hover{
+
+            background:#157347;
+            color:#fff;
+            text-decoration:none;
+
+        }
+
+        .password-btn{
+
+            background:#ff6600;
+
+        }
+
+        .password-btn:hover{
+
+            background:#e65c00;
+            color:#fff;
+            text-decoration:none;
+
+        }
+
+/* Employment Status */
+
+.badge-active,
+.badge-warning,
+.badge-secondary,
+.badge-danger{
+
+    display:inline-block;
+    min-width:110px;
+    text-align:center;
+
+    padding:8px 16px;
+    border-radius:30px;
+
+    font-size:13px;
+    font-weight:600;
+
+}
+
+.badge-active{
+    background:#0d6efd;
+    color:#fff;
+}
+
+.badge-warning{
+    background:#ffc107;
+    color:#000;
+}
+
+.badge-secondary{
+    background:#6c757d;
+    color:#fff;
+}
+
+.badge-danger{
+    background:#dc3545;
+    color:#fff;
+}
+        /* =========================
+            MOBILE
+        ========================= */
+
+        @media(max-width:991px){
+
+            .sidebar-left{
+
+                width:100%;
+                height:auto;
+
+                position:relative;
+                top:0;
+
+            }
+
+            .content-body{
+
+                margin-left:0;
+                margin-top:20px;
+
+            }
+
+            .header{
+
+                position:relative;
+
+            }
+
+            .page-top{
+
+                flex-direction:column;
+                align-items:flex-start;
+
+            }
+
+            .button-group{
+
+                width:100%;
+
+            }
+
+        }
+
+        @media(max-width:768px){
+
+            .button-group{
+
+                flex-direction:column;
+
+            }
+
+            .theme-btn,
+            .gray-btn,
+            .dark-btn{
+
+                width:100%;
+
+            }
+
+            .page-title{
+
+                font-size:30px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <h3>
+        QuickFund Admin Panel
+    </h3>
+
+    <div class="header-right">
+        Staff Management System
+    </div>
+
+</div>
+
+<!-- SIDEBAR -->
+
+<div class="sidebar-left">
+
+    <ul>
+
+        <li>
+            <a href="{% url 'admin_home' %}">
+                <i class="fa fa-home"></i>
+                Dashboard
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'admin_users' %}">
+                <i class="fa fa-users"></i>
+                Users
+            </a>
+        </li>
+
+        <li class="active">
+            <a href="{% url 'admin_staff' %}">
+                <i class="fa fa-user"></i>
+                Staff
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'admin_applications' %}">
+                <i class="fa fa-file-text"></i>
+                Applications
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'admin_approve' %}">
+                <i class="fa fa-check"></i>
+                Approved Loans
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'admin_rejected' %}">
+                <i class="fa fa-times"></i>
+                Rejected Loans
+            </a>
+        </li>
+
+        <li>
+            <a href="{% url 'admin_logout' %}">
+                <i class="fa fa-power-off"></i>
+                Logout
+            </a>
+        </li>
+
+    </ul>
+
+</div>
+
+<!-- CONTENT -->
+
+<div class="content-body">
+
+    <!-- PAGE TOP -->
+
+    <div class="page-top">
+
+        <h2 class="page-title">
+            All Staff
+        </h2>
+
+        <a href="{% url 'admin_home' %}"
+           class="dark-btn">
+
+            <i class="fa fa-arrow-left"></i>
+
+            Back
+
+        </a>
+
+    </div>
+
+    <!-- SUCCESS MESSAGE -->
+
+    {% if messages %}
+
+        {% for message in messages %}
+
+            <div class="alert alert-success alert-dismissible fade show">
+
+                {{ message }}
+
+                <button type="button"
+                        class="close text-white"
+                        data-dismiss="alert">
+
+                    &times;
+
+                </button>
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+    <!-- SEARCH -->
+
+    <form method="GET"
+          class="search-box">
+
+        <div class="row">
+
+            <div class="col-lg-4 mb-3">
+
+                <input type="text"
+                       name="search"
+                       placeholder="Search Staff Name"
+                       value="{{ request.GET.search }}"
+                       class="form-control">
+
+            </div>
+
+            <div class="col-lg-3 mb-3">
+
+                <select name="branch"
+                        class="form-control">
+
+                    <option value="">
+                        All Branch
+                    </option>
+
+                    <option value="Trivandrum">
+                        Trivandrum
+                    </option>
+
+                    <option value="Kollam">
+                        Kollam
+                    </option>
+
+                    <option value="Kottayam">
+                        Kottayam
+                    </option>
+
+                    <option value="Ernakulam">
+                        Ernakulam
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="col-lg-5 mb-3">
+
+                <div class="button-group">
+
+                    <button type="submit"
+                            class="theme-btn">
+
+                        <i class="fa fa-search"></i>
+
+                        Search
+
+                    </button>
+
+                    <a href="{% url 'admin_staff' %}"
+                       class="gray-btn">
+
+                        Reset
+
+                    </a>
+
+                    <a href="{% url 'add_staff' %}"
+                       class="theme-btn">
+
+                        <i class="fa fa-user-plus"></i>
+
+                        Create Staff
+
+                    </a>
+
+                </div>
+
+            </div>
+
+        </div>
+
+    </form>
+
+    <!-- TABLE -->
+
+    <div class="table-box">
+
+        <table class="table table-bordered table-hover">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Email</th>
+                    <th>Phone</th>
+                    <th>Gender</th>
+                    <th>DOB</th>
+                    <th>Branch</th>
+                    <th>Status</th>
+                    <th>Approve</th>
+                    <th>Password</th>
+                    <th>Employment Status</th>
+                    <th>Update</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+                {% for s in data %}
+
+                <tr>
+
+                    <td>{{ s.id }}</td>
+                    <td>{{ s.name }}</td>
+                    <td>{{ s.email }}</td>
+                    <td>{{ s.phone }}</td>
+                    <td>{{ s.gender }}</td>
+                    <td>{{ s.dob }}</td>
+                    <td>{{ s.branch_type }}</td>
+
+                    <!-- STATUS -->
+
+                    <td>
+
+                        {% if s.is_approved %}
+
+                            <span class="badge-approved">
+
+                                Approved
+
+                            </span>
+
+                        {% else %}
+
+                            <span class="badge-pending">
+
+                                Pending
+
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <!-- APPROVE -->
+
+                    <td>
+
+                        {% if not s.is_approved %}
+
+                        <a href="{% url 'approve_staff' s.id %}"
+                           class="action-btn approve-btn">
+
+                            <i class="fa fa-check"></i>
+
+                            Approve
+
+                        </a>
+
+                        {% else %}
+
+                        <span class="text-success font-weight-bold">
+
+                            Approved
+
+                        </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <!-- PASSWORD -->
+
+                    <td>
+
+                        <a href="{% url 'admin_change_password' s.id %}"
+                           class="action-btn password-btn">
+
+                            <i class="fa fa-key"></i>
+
+                            Password
+
+                        </a>
+
+                    </td>
+
+                    <!-- EMPLOYMENT STATUS -->
+<td>
+<form method="POST" action="{% url 'update_staff_status' s.id %}">
+    {% csrf_token %}
+
+    <select name="staff_status"
+            class="form-control"
+            onchange="this.form.submit()">
+
+        <option value="active" {% if s.staff_status == 'active' %}selected{% endif %}>Active</option>
+
+        <option value="returned" {% if s.staff_status == 'returned' %}selected{% endif %}>Returned</option>
+
+        <option value="resigned" {% if s.staff_status == 'resigned' %}selected{% endif %}>Resigned</option>
+
+        <option value="terminated" {% if s.staff_status == 'terminated' %}selected{% endif %}>Terminated</option>
+
+    </select>
+
+<td>
+    <button type="submit" class="btn btn-primary btn-sm">
+        Update
+    </button>
+</form>
+</td>
+
+
+</td>
+                </tr>
+
+                {% empty %}
+
+                <tr>
+
+                    <td colspan="11"
+                        class="text-center">
+
+                        No Staff Found
+
+                    </td>
+
+                </tr>
+
+                {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+<!-- JS -->
+
+<script src="{% static 'admin/assets/vendor/jquery/jquery.js' %}"></script>
+
+<script src="{% static 'admin/assets/vendor/bootstrap/js/bootstrap.js' %}"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,427 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <title>
+        Admin EMI Dashboard
+    </title>
+
+    <link rel="stylesheet"
+          href="{% static 'home/css/bootstrap.min.css' %}">
+
+    <link rel="stylesheet"
+          href="{% static 'home/css/font-awesome.min.css' %}">
+
+    <style>
+
+        body {
+
+            background:#0f0f0f;
+            color:white;
+            font-family:Poppins;
+            margin:0;
+
+        }
+
+        /* HEADER */
+
+        .header {
+
+            background:#111;
+            padding:20px;
+            border-bottom:2px solid #ff6600;
+            display:flex;
+            justify-content:space-between;
+            align-items:center;
+            flex-wrap:wrap;
+
+        }
+
+        .header h2 {
+
+            color:#ff6600;
+            margin:0;
+
+        }
+
+        /* BUTTON */
+
+        .back-btn {
+
+            background:#222;
+            color:white;
+            padding:10px 18px;
+            border-radius:8px;
+            text-decoration:none;
+            transition:0.3s;
+
+        }
+
+        .back-btn:hover {
+
+            background:#ff6600;
+            color:white;
+
+        }
+
+        /* CONTAINER */
+
+        .container-box {
+
+            padding:30px;
+
+        }
+
+        /* SEARCH */
+
+        .search-box {
+
+            background:#1a1a1a;
+            padding:20px;
+            border-radius:12px;
+            margin-bottom:25px;
+
+        }
+
+        .form-control {
+
+            background:#111;
+            border:1px solid #333;
+            color:white;
+
+        }
+
+        .form-control:focus {
+
+            background:#111;
+            color:white;
+            border-color:#ff6600;
+            box-shadow:none;
+
+        }
+
+        .btn-search {
+
+            background:#ff6600;
+            border:none;
+            color:white;
+            padding:10px 18px;
+            border-radius:6px;
+
+        }
+
+        .btn-search:hover {
+
+            background:#ff8533;
+
+        }
+
+        /* TABLE */
+
+        .table-box {
+
+            background:#1a1a1a;
+            border-radius:12px;
+            overflow:hidden;
+
+        }
+
+        table {
+
+            width:100%;
+            border-collapse:collapse;
+
+        }
+
+        th {
+
+            background:#ff6600;
+            color:black;
+            padding:14px;
+            text-align:center;
+
+        }
+
+        td {
+
+            padding:14px;
+            text-align:center;
+            border-bottom:1px solid #333;
+
+        }
+
+        tr:hover {
+
+            background:#222;
+
+        }
+
+        /* BADGES */
+
+        .paid {
+
+            background:#198754;
+            color:white;
+            padding:5px 12px;
+            border-radius:20px;
+            font-size:12px;
+
+        }
+
+        .pending {
+
+            background:#ffc107;
+            color:black;
+            padding:5px 12px;
+            border-radius:20px;
+            font-size:12px;
+
+        }
+
+        /* VIEW BUTTON */
+
+        .view-btn {
+
+            background:#ff6600;
+            color:white;
+            padding:8px 14px;
+            border-radius:6px;
+            text-decoration:none;
+
+        }
+
+        .view-btn:hover {
+
+            background:#ff8533;
+            color:white;
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- HEADER -->
+
+<div class="header">
+
+    <h2>
+
+        ADMIN EMI DASHBOARD
+
+    </h2>
+
+    <a href="{% url 'admin_home' %}"
+       class="back-btn">
+
+        <i class="fa fa-arrow-left"></i>
+
+        Back
+
+    </a>
+
+</div>
+
+<!-- CONTENT -->
+
+<div class="container-box">
+
+    <!-- SEARCH -->
+
+    <form method="GET"
+          class="search-box">
+
+        <div class="row">
+
+            <div class="col-md-4 mb-3">
+
+                <input type="text"
+                       name="search"
+                       value="{{ request.GET.search }}"
+                       placeholder="Search User Name"
+                       class="form-control">
+
+            </div>
+
+            <div class="col-md-4 mb-3">
+
+                <select name="branch"
+                        class="form-control">
+
+                    <option value="">
+                        All Branch
+                    </option>
+
+                    <option value="Trivandrum">
+                        Trivandrum
+                    </option>
+
+                    <option value="Kollam">
+                        Kollam
+                    </option>
+
+                    <option value="Kottayam">
+                        Kottayam
+                    </option>
+
+                    <option value="Ernakulam">
+                        Ernakulam
+                    </option>
+
+                </select>
+
+            </div>
+
+            <div class="col-md-4 mb-3">
+
+                <button type="submit"
+                        class="btn-search">
+
+                    <i class="fa fa-search"></i>
+
+                    Search
+
+                </button>
+
+            </div>
+
+        </div>
+
+    </form>
+
+    <!-- TABLE -->
+
+    <div class="table-box">
+
+        <table>
+
+            <tr>
+
+                <th>Loan ID</th>
+
+                <th>Name</th>
+
+                <th>Branch</th>
+
+                <th>Loan Amount</th>
+
+                <th>Interest</th>
+
+                <th>Months</th>
+
+                <th>Monthly EMI</th>
+
+                <th>Paid EMI</th>
+
+                <th>Pending EMI</th>
+
+                <th>Action</th>
+
+            </tr>
+
+            {% for l in loan_data %}
+
+            <tr>
+
+                <td>
+
+                    #{{ l.loan_id }}
+
+                </td>
+
+                <td>
+
+                    {{ l.name }}
+
+                </td>
+
+                <td>
+
+                    {{ l.branch }}
+
+                </td>
+
+                <td>
+
+                    ₹{{ l.loan_amount }}
+
+                </td>
+
+                <td>
+
+                    ₹{{ l.interest }}
+
+                </td>
+
+                <td>
+
+                    {{ l.months }}
+
+                </td>
+
+                <td>
+
+                    ₹{{ l.monthly_emi }}
+
+                </td>
+
+                <td>
+
+                    <span class="paid">
+
+                        {{ l.paid_emis }}
+
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <span class="pending">
+
+                        {{ l.pending_emis }}
+
+                    </span>
+
+                </td>
+
+                <td>
+
+                    <a href="{% url 'emi_detail' loan.id %}">View EMI</a>"
+                       class="view-btn">
+
+                        View EMI
+
+                    </a>
+
+                </td>
+
+            </tr>
+
+            {% empty %}
+
+            <tr>
+
+                <td colspan="10">
+
+                    No EMI Data Found
+
+                </td>
+
+            </tr>
+
+            {% endfor %}
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

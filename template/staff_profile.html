@@ -1,0 +1,500 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Staff Profile
+    </title>
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- GOOGLE FONT -->
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+          rel="stylesheet">
+
+<style>
+
+:root{
+
+    --black:#070707;
+    --dark:#111111;
+    --orange:#ff6600;
+    --light-orange:#ff944d;
+    --white:#ffffff;
+    --gray:#b8b8b8;
+    --border:#262626;
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    background:
+    radial-gradient(
+    circle at top right,
+    rgba(255,102,0,0.15),
+    transparent 30%
+    ),
+
+    linear-gradient(
+    135deg,
+    #050505,
+    #0d0d0d,
+    #111111
+    );
+
+    font-family:'Poppins',sans-serif;
+
+    min-height:100vh;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    padding:30px;
+
+    color:white;
+}
+
+/* PROFILE CARD */
+
+.profile-card{
+
+    width:100%;
+    max-width:850px;
+
+    background:rgba(255,255,255,0.04);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    border-radius:28px;
+
+    overflow:hidden;
+
+    backdrop-filter:blur(14px);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.45);
+}
+
+/* TOP SECTION */
+
+.profile-top{
+
+    background:
+    linear-gradient(
+    135deg,
+    #ff6600,
+    #ff944d
+    );
+
+    padding:25px;
+
+    position:relative;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+
+    position:absolute;
+
+    top:20px;
+    left:20px;
+
+    width:42px;
+    height:42px;
+
+    border-radius:12px;
+
+    background:rgba(255,255,255,0.18);
+
+    color:white;
+
+    text-decoration:none;
+
+    display:flex;
+    justify-content:center;
+    align-items:center;
+
+    transition:0.3s;
+
+    z-index:5;
+}
+
+.back-btn:hover{
+
+    background:white;
+
+    color:#ff6600;
+
+    transform:translateX(-3px);
+}
+
+/* PROFILE HEADER */
+
+.profile-header{
+
+    display:flex;
+
+    flex-direction:column;
+
+    justify-content:center;
+    align-items:center;
+}
+
+.profile-top::before{
+
+    content:'';
+
+    position:absolute;
+
+    width:250px;
+    height:250px;
+
+    background:rgba(255,255,255,0.10);
+
+    border-radius:50%;
+
+    top:-120px;
+    right:-80px;
+}
+
+/* PROFILE IMAGE */
+
+.profile-top img{
+
+    width:90px;
+    height:90px;
+
+    border-radius:50%;
+
+    border:4px solid white;
+
+    margin-bottom:12px;
+
+    position:relative;
+    z-index:2;
+}
+
+/* NAME */
+
+.profile-top h2{
+
+    font-size:26px;
+
+    margin-bottom:4px;
+
+    position:relative;
+    z-index:2;
+}
+
+.profile-top p{
+
+    font-size:15px;
+
+    position:relative;
+    z-index:2;
+}
+
+/* BODY */
+
+.profile-body{
+
+    padding:35px;
+}
+
+/* GRID */
+
+.profile-grid{
+
+    display:grid;
+
+    grid-template-columns:1fr 1fr;
+
+    gap:22px;
+}
+
+/* PROFILE ITEM */
+
+.profile-item{
+
+    background:rgba(255,255,255,0.03);
+
+    border:1px solid rgba(255,255,255,0.05);
+
+    border-radius:18px;
+
+    padding:22px;
+
+    transition:0.3s;
+}
+
+.profile-item:hover{
+
+    transform:translateY(-4px);
+
+    border-color:rgba(255,102,0,0.25);
+
+    box-shadow:
+    0 10px 20px rgba(255,102,0,0.08);
+}
+
+.profile-item h5{
+
+    color:var(--orange);
+
+    margin-bottom:10px;
+
+    font-size:13px;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+.profile-item p{
+
+    color:white;
+
+    font-size:16px;
+}
+
+/* BUTTONS */
+
+.btn-group{
+
+    display:flex;
+
+    justify-content:center;
+
+    margin-top:35px;
+}
+
+.btn-orange{
+
+    background:
+    linear-gradient(
+    135deg,
+    #ff6600,
+    #ff944d
+    );
+
+    color:white;
+
+    text-decoration:none;
+
+    padding:14px 32px;
+
+    border-radius:14px;
+
+    display:inline-block;
+
+    font-weight:500;
+
+    transition:0.3s;
+}
+
+.btn-orange:hover{
+
+    transform:translateY(-3px);
+
+    box-shadow:
+    0 10px 25px rgba(255,102,0,0.35);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .profile-grid{
+
+        grid-template-columns:1fr;
+    }
+
+    .profile-body{
+
+        padding:20px;
+    }
+
+    .profile-top{
+
+        padding:25px 18px;
+    }
+
+    .profile-top h2{
+
+        font-size:22px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<div class="profile-card">
+
+    <!-- TOP SECTION -->
+
+    <div class="profile-top">
+
+        <!-- BACK BUTTON -->
+
+        <a href="{% url 'staff' %}"
+           class="back-btn">
+
+            <i class="fa fa-arrow-left"></i>
+
+        </a>
+
+        <!-- PROFILE HEADER -->
+
+        <div class="profile-header">
+
+            <img src="https://ui-avatars.com/api/?name={{staff.name}}&background=ffffff&color=ff6600"
+                 alt="Profile">
+
+            <h2>
+                {{staff.name}}
+            </h2>
+
+            <p>
+                Staff Member
+            </p>
+
+        </div>
+
+    </div>
+
+    <!-- BODY -->
+
+    <div class="profile-body">
+
+        <div class="profile-grid">
+
+            <!-- NAME -->
+
+            <div class="profile-item">
+
+                <h5>
+                    Name
+                </h5>
+
+                <p>
+                    {{staff.name}}
+                </p>
+
+            </div>
+
+            <!-- EMAIL -->
+
+            <div class="profile-item">
+
+                <h5>
+                    Email
+                </h5>
+
+                <p>
+                    {{staff.email}}
+                </p>
+
+            </div>
+
+            <!-- PHONE -->
+
+            <div class="profile-item">
+
+                <h5>
+                    Phone
+                </h5>
+
+                <p>
+                    {{staff.phone}}
+                </p>
+
+            </div>
+
+            <!-- GENDER -->
+
+            <div class="profile-item">
+
+                <h5>
+                    Gender
+                </h5>
+
+                <p>
+                    {{staff.gender}}
+                </p>
+
+            </div>
+
+            <!-- DOB -->
+
+            <div class="profile-item">
+
+                <h5>
+                    Date Of Birth
+                </h5>
+
+                <p>
+                    {{staff.dob}}
+                </p>
+
+            </div>
+
+            <!-- BRANCH -->
+
+            <div class="profile-item">
+
+                <h5>
+                    Branch
+                </h5>
+
+                <p>
+                    {{staff.branch_type}}
+                </p>
+
+            </div>
+
+        </div>
+
+        <!-- UPDATE BUTTON -->
+
+        <div class="btn-group">
+
+            <a href="{% url 'update_staff_profile' %}"
+               class="btn-orange">
+
+                <i class="fa fa-edit"></i>
+
+                Update Profile
+
+            </a>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

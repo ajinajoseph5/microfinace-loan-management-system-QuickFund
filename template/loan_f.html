@@ -1,0 +1,714 @@
+
+
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>QuickFund Microfinance Loan Form</title>
+
+    <!-- GOOGLE FONT -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- FONT AWESOME -->
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <!-- BOOTSTRAP -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css"
+          rel="stylesheet">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<style>
+:root{
+    --orange:#ff9800;
+    --dark:#121212;
+    --border:#dcdcdc;
+}
+
+body{
+    background:#d9d9d9;
+    font-family:'Poppins',sans-serif;
+    margin:0;
+    padding:0;
+}
+
+/* NAVBAR */
+
+.navbar{
+    background:#000;
+    padding:15px 0;
+    box-shadow:0 3px 10px rgba(0,0,0,0.2);
+    margin-bottom:40px;
+}
+
+.navbar-brand{
+    color:#ff9800 !important;
+    font-size:26px;
+    font-weight:700;
+}
+
+.navbar .nav-link{
+    color:#ccc !important;
+    margin-right:15px;
+    font-size:14px;
+    transition:0.3s;
+}
+
+.navbar .nav-link:hover{
+    color:#ff9800 !important;
+}
+
+/* PROFILE MENU */
+
+.dropdown-menu.profile-menu{
+    background:#000;
+    border:none;
+    padding:10px;
+}
+
+.dropdown-menu.profile-menu .dropdown-item{
+    color:#fff;
+    padding:10px;
+}
+
+.dropdown-menu.profile-menu .dropdown-item:hover{
+    background:#ff9800;
+    color:#000;
+}
+
+/* NOTIFICATION */
+
+.notification-box{
+    position:relative;
+    display:flex;
+    align-items:center;
+    margin-right:15px;
+}
+
+.notification-bell{
+    color:#fff !important;
+    font-size:18px;
+    text-decoration:none;
+}
+
+.notification-count{
+    position:absolute;
+    top:-5px;
+    right:-8px;
+    background:red;
+    color:white;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    font-size:10px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+/* FORM WRAPPER */
+
+.form-wrapper{
+    width:55%;
+    max-width:750px;
+    background:#fff;
+    margin:0 auto 40px;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 0 20px rgba(0,0,0,0.15);
+}
+
+/* HEADER */
+
+.form-header{
+    background:linear-gradient(135deg,#121212,#1e1e1e);
+    color:#fff;
+    text-align:center;
+    padding:18px;
+    border-bottom:4px solid #ff9800;
+}
+
+.form-header h2{
+    margin:0;
+    font-size:24px;
+    font-weight:700;
+}
+
+.form-header span{
+    color:#ff9800;
+}
+
+.form-header p{
+    margin-top:5px;
+    font-size:11px;
+    letter-spacing:1px;
+}
+
+/* SECTION */
+
+.section-container{
+    padding:15px 20px;
+}
+
+.section-title{
+    display:flex;
+    align-items:center;
+    font-size:14px;
+    font-weight:700;
+    color:#222;
+    margin-bottom:12px;
+    text-transform:uppercase;
+}
+
+.section-title i{
+    width:28px;
+    height:28px;
+    line-height:28px;
+    text-align:center;
+    border-radius:5px;
+    background:#ff9800;
+    color:#fff;
+    margin-right:8px;
+}
+
+/* CARD */
+
+.card-custom{
+    background:#fafafa;
+    border:1px solid #e5e5e5;
+    border-radius:8px;
+    padding:12px;
+    margin-bottom:18px;
+}
+
+/* LABELS */
+
+.form-label{
+    font-size:12px;
+    font-weight:600;
+    color:#444;
+    margin-bottom:4px;
+}
+
+/* INPUTS */
+
+.form-control,
+.form-select{
+    height:34px;
+    border:1px solid #dcdcdc;
+    border-radius:6px;
+    font-size:12px;
+    padding:6px 10px;
+}
+
+.form-control:focus,
+.form-select:focus{
+    border-color:#ff9800;
+    box-shadow:0 0 0 0.15rem rgba(255,152,0,.2);
+}
+
+/* TEXTAREA */
+
+textarea.form-control{
+    height:70px;
+    resize:none;
+}
+
+/* FILE INPUT */
+
+input[type=file]{
+    padding:4px;
+    font-size:11px;
+}
+
+/* TERMS */
+
+.terms-box{
+    background:#fff8ef;
+    border:1px solid #ffd89c;
+    padding:15px;
+    border-radius:8px;
+}
+
+.condition-item{
+    font-size:12px;
+    color:#555;
+    margin-bottom:8px;
+}
+
+.condition-item i{
+    color:green;
+    margin-right:6px;
+}
+
+/* SUBMIT BUTTON */
+
+.btn-submit{
+    background:#ff9800;
+    color:#fff;
+    border:none;
+    padding:10px 25px;
+    border-radius:6px;
+    font-size:13px;
+    font-weight:600;
+    display:block;
+    margin:20px auto 0;
+}
+
+.btn-submit:hover{
+    background:#e68900;
+}
+
+/* MOBILE */
+
+@media(max-width:992px){
+
+    .form-wrapper{
+        width:95%;
+    }
+
+    .section-container{
+        padding:15px;
+    }
+
+    .navbar .nav-link{
+        margin-right:0;
+    }
+}
+
+</style>
+</head>
+
+<body>
+
+<nav class="navbar navbar-expand-lg">
+
+<div class="container">
+
+<a class="navbar-brand">QuickFund</a>
+
+<ul class="navbar-nav ms-auto">
+
+<li class="nav-item">
+<a  href="{% url 'user_home' %}" class="nav-link"><i class="fa fa-home"></i> Dashboard</a>
+</li>
+
+<li class="nav-item">
+<a  href="{% url 'loan_app' %}"  class="nav-link"><i class="fa fa-file"></i> My Applications</a>
+</li>
+
+<li class="nav-item">
+<a class="nav-link"  href="{% url 'loan_s' %}" ><i class="fa fa-chart-line"></i> Loan Status</a>
+</li>
+<!-- NOTIFICATION BELL -->
+
+<li class="nav-item notification-box">
+
+<a href="{% url 'notification' %}"
+class="notification-bell">
+
+<i class="fa-solid fa-bell"></i>
+
+{% if notification_count > 0 %}
+
+<span class="notification-count">
+
+{{ notification_count }}
+
+</span>
+
+{% endif %}
+
+</a>
+
+</li>
+<li class="nav-item dropdown">
+
+<a class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+<i class="fa fa-user"></i> Profile
+</a>
+
+<ul class="dropdown-menu profile-menu">
+<li><a class="dropdown-item" href="{% url 'user_profile' %}"><i class="fa fa-address-book"></i> Account</a></li>
+
+<li><a class="dropdown-item" href="{% url 'user_emi' %}"><i class="fa fa-credit-card"></i> EMI Payment</a></li>
+
+<li><a class="dropdown-item" href="{% url 'user_payment' %}"> <i class="fa fa-history"></i> Payment History</a></li>
+
+<li><hr class="dropdown-divider"></li>
+
+<li><a href="{% url 'user_logout' %}" class="dropdown-item text-danger"><i class="fa fa-sign-out-alt"></i> Logout</a></li>
+
+</ul>
+
+</li>
+
+</ul>
+
+</div>
+
+</nav>
+
+    <!-- HEADER -->
+
+    <div class="form-header">
+        <h2>Quick<span>Fund</span></h2>
+        <p>MICROFINANCE LOAN APPLICATION FORM</p>
+    </div>
+
+    <form method="POST" enctype="multipart/form-data">
+
+        {% csrf_token %}
+
+        <div class="section-container">
+
+            <!-- APPLICANT DETAILS -->
+
+            <div class="section-title">
+                <i class="fa fa-user"></i>
+                Applicant Details
+            </div>
+
+            <div class="card-custom">
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label">Full Name</label>
+
+                        <input type="text"
+                               name="name"
+                               class="form-control"
+                               value="{{data.name}}"
+                               required>
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Email Address</label>
+
+                        <input type="email"
+                               name="email"
+                               class="form-control"
+                               value="{{data.email}}"
+                               required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Phone Number</label>
+
+                        <input type="text"
+                               name="phone"
+                               class="form-control"
+                               value="{{data.phone}}"
+                               required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Applicant Job</label>
+
+                        <input type="text"
+                               name="job"
+                               class="form-control"
+                               required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Annual Income</label>
+
+                        <input type="number"
+                               name="income"
+                               class="form-control"
+                               required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Relationship Status</label>
+
+                        <input type="text"
+                               name="relationship"
+                               class="form-control"
+                               placeholder="Single / Married"
+                               required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Loan Amount</label>
+
+                        <input type="number"
+                               name="loan_amount"
+                               class="form-control"
+                               required>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Loan Type</label>
+
+                        <select name="loan_type"
+                                class="form-select"
+                                required>
+
+                            <option value="">Select Loan Type</option>
+                            <option value="personal">Personal Loan</option>
+                            <option value="business">Business Loan</option>
+                            <option value="home">Home Loan</option>
+                            <option value="education">Education Loan</option>
+                            <option value="vehicle">Vehicle Loan</option>
+                            <option value="medical">Medical Loan</option>
+
+                        </select>
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Branch</label>
+
+                        <select name="branch_type"
+                                class="form-select"
+                                required>
+
+                            <option value="">Select Branch</option>
+                            <option value="Kottayam">Kottayam</option>
+                            <option value="Ernakulam">Ernakulam</option>
+                            <option value="Kollam">Kollam</option>
+                            <option value="Trivandrum">Trivandrum</option>
+
+                        </select>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label">Residential Address</label>
+
+                        <textarea name="address"
+                                  class="form-control"
+                                  required></textarea>
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label">Loan Purpose</label>
+
+                        <textarea name="purpose"
+                                  class="form-control"
+                                  required></textarea>
+                    </div>
+
+                </div>
+
+                <!-- DOCUMENTS -->
+
+                <div class="row mt-3 g-3">
+
+                    <div class="col-md-3">
+                        <label class="form-label">Applicant Photo</label>
+
+                        <input type="file"
+                               name="photo"
+                               class="form-control"
+                               required>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">ID Proof</label>
+
+                        <input type="file"
+                               name="id_proof"
+                               class="form-control"
+                               required>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Age Proof</label>
+
+                        <input type="file"
+                               name="age_proof"
+                               class="form-control"
+                               required>
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Income Proof</label>
+
+                        <input type="file"
+                               name="income_proof"
+                               class="form-control"
+                               required>
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CO APPLICANT -->
+
+            <div class="section-title">
+                <i class="fa fa-handshake-o"></i>
+                Co-Applicant Details
+            </div>
+
+            <div class="card-custom">
+
+                <div class="row g-3">
+
+                    <div class="col-md-6">
+                        <label class="form-label">Co-Applicant Name</label>
+
+                        <input type="text"
+                               name="co_name"
+                               class="form-control">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">Co-Applicant Email</label>
+
+                        <input type="email"
+                               name="co_email"
+                               class="form-control">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Phone Number</label>
+
+                        <input type="text"
+                               name="co_phone"
+                               class="form-control">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Annual Income</label>
+
+                        <input type="number"
+                               name="co_income"
+                               class="form-control">
+                    </div>
+
+                    <div class="col-md-4">
+                        <label class="form-label">Occupation</label>
+
+                        <input type="text"
+                               name="co_job"
+                               class="form-control">
+                    </div>
+
+                    <div class="col-md-6">
+                        <label class="form-label">
+                            Relationship With Applicant
+                        </label>
+
+                        <input type="text"
+                               name="co_relationship"
+                               class="form-control"
+                               placeholder="Father / Mother / Spouse">
+                    </div>
+
+                    <div class="col-md-12">
+                        <label class="form-label">
+                            Residential Address
+                        </label>
+
+                        <textarea name="co_address"
+                                  class="form-control"></textarea>
+                    </div>
+
+                    <!-- CO DOCUMENTS -->
+
+                    <div class="col-md-3">
+                        <label class="form-label">Co-App Photo</label>
+
+                        <input type="file"
+                               name="co_image"
+                               class="form-control">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Co-App ID Proof</label>
+
+                        <input type="file"
+                               name="co_id_proof"
+                               class="form-control">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Co-App Age Proof</label>
+
+                        <input type="file"
+                               name="co_age_proof"
+                               class="form-control">
+                    </div>
+
+                    <div class="col-md-3">
+                        <label class="form-label">Relationship Proof</label>
+
+                        <input type="file"
+                               name="co_relational_proof"
+                               class="form-control">
+                    </div>
+
+                </div>
+
+            </div>
+
+            <!-- CONDITIONS -->
+
+            <div class="section-title">
+                <i class="fa fa-info-circle"></i>
+                Loan Conditions
+            </div>
+
+            <div class="terms-box">
+
+                <div class="condition-item">
+                    <i class="fa fa-check-circle"></i>
+                    Applicant age must be 18 to 60 years.
+                </div>
+
+                <div class="condition-item">
+                    <i class="fa fa-check-circle"></i>
+                    Interest rate fixed at 5% annually.
+                </div>
+
+                <div class="condition-item">
+                    <i class="fa fa-check-circle"></i>
+                    Processing fee applicable.
+                </div>
+
+                <div class="condition-item">
+                    <i class="fa fa-check-circle"></i>
+                    Valid ID proof mandatory.
+                </div>
+
+                <div class="form-check mt-3">
+
+                    <input class="form-check-input"
+                           type="checkbox"
+                           required>
+
+                    <label class="form-check-label"
+                           style="font-size:13px;">
+
+                        I declare that all information provided is true and correct.
+
+                    </label>
+
+                </div>
+
+            </div>
+
+            <!-- SUBMIT -->
+
+            <button type="submit"
+                    class="btn-submit">
+
+                Submit Loan Application
+
+            </button>
+
+        </div>
+
+    </form>
+
+</div> <!-- form-wrapper -->
+</body>
+</html>

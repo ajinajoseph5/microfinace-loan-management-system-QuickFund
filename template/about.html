@@ -1,0 +1,270 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<title>About | QuickFund Microfinance</title>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<link rel="stylesheet" href="{% static 'home/css/bootstrap.min.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/font-awesome.min.css' %}">
+<link rel="stylesheet" href="{% static 'home/css/style.css' %}">
+
+</head>
+
+<body>
+
+
+<!-- HEADER -->
+
+<header class="header-section">
+
+<nav class="header-nav">
+
+<ul class="main-menu">
+
+<li><a href="/">Home</a></li>
+<li><a href="{% url 'about' %}" class="active">About</a></li>
+<li><a href="#">Services</a></li>
+    <ul class="sub-menu">
+<li><a href="{% url 'service' %}">Loan Services</a></li>
+<li><a href="#">Features</a></li>
+</ul>
+<li><a href="#">Contact</a></li>
+
+</ul>
+
+<div class="header-right">
+
+<a href="tel:+919876543210" class="hr-btn">
+<i class="fa fa-phone"></i> Call QuickFund
+</a>
+
+<div class="hr-btn hr-btn-2">
++91 98765 43210
+</div>
+
+</div>
+
+</nav>
+
+</header>
+
+
+
+<!-- ABOUT SECTION -->
+
+
+<section style="padding:80px 0">
+
+<div class="container">
+
+<div class="row align-items-center">
+
+
+<!-- IMAGE -->
+
+<div class="col-lg-6">
+
+<img src="{% static 'home/img/info-img.jpg' %}" class="img-fluid">
+
+</div>
+
+
+
+<!-- TEXT -->
+
+<div class="col-lg-6">
+
+<h2>About QuickFund</h2>
+
+<p>
+QuickFund Microfinance is a trusted financial service platform
+that supports individuals, farmers, and small businesses by
+providing easy access to micro loans.
+</p>
+
+<p>
+Our goal is to empower communities by offering reliable,
+transparent, and affordable financial solutions.
+</p>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+<!-- PURPOSE & VISION -->
+
+<section style="background:#f5f5f5;padding:70px 0">
+
+<div class="container">
+
+<div class="row">
+
+<div class="col-lg-4">
+<img src="{% static 'home/img/hero-slider/images (15).jpg' %}" class="img-fluid">
+</div>
+
+
+<div class="col-md-6">
+
+<h3>Our Purpose</h3>
+
+<p>
+QuickFund was created to provide financial support to people who
+cannot easily access traditional bank loans. We help individuals
+grow their businesses and improve their financial stability.
+</p>
+
+</div>
+
+
+<div class="col-md-6">
+
+<h3>Our Vision</h3>
+
+<p>
+Our vision is to become a leading microfinance organization
+that promotes financial inclusion and economic growth
+through accessible and responsible lending.
+</p>
+
+</div>
+
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- WHY CHOOSE US -->
+
+<section style="padding:80px 0;">
+
+<div class="container">
+
+<h2 class="text-center mb-5">Why Choose QuickFund</h2>
+
+<div class="row">
+
+<div class="col-md-4 text-center">
+<i class="fa fa-clock-o fa-3x"></i>
+<h4>Fast Loan Approval</h4>
+<p>Get your loan approved quickly with a simple and easy process.</p>
+</div>
+
+<div class="col-md-4 text-center">
+<i class="fa fa-money fa-3x"></i>
+<h4>Low Interest Rates</h4>
+<p>Affordable interest rates designed to support individuals and businesses.</p>
+</div>
+
+<div class="col-md-4 text-center">
+<i class="fa fa-refresh fa-3x"></i>
+<h4>Flexible Repayment</h4>
+<p>Repay your loan in convenient installments.</p>
+</div>
+
+<div class="col-md-4 text-center">
+<i class="fa fa-briefcase fa-3x"></i>
+<h4>Business Growth Support</h4>
+<p>Financial support to expand small businesses and startups.</p>
+</div>
+
+<div class="col-md-4 text-center">
+<i class="fa fa-leaf fa-3x"></i>
+<h4>Agriculture Support</h4>
+<p>Special loan options for farmers and agricultural development.</p>
+</div>
+
+<div class="col-md-4 text-center">
+<i class="fa fa-headphones fa-3x"></i>
+<h4>24/7 Customer Support</h4>
+<p>Friendly team ready to help you with your loan process.</p>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+
+<!-- POLICY SECTION -->
+
+<section style="padding:80px 0">
+
+<div class="container">
+
+<h2 class="text-center mb-4">Our Policies</h2>
+
+<p class="text-center">
+
+QuickFund follows responsible lending practices. We ensure
+transparent policies, fair interest rates, and flexible
+repayment plans to support our customers' financial growth.
+
+</p>
+
+</div>
+
+</section>
+
+
+
+<!-- FOOTER -->
+
+<footer style="background:#222;color:white;padding:40px 0;text-align:center">
+
+<div class="container">
+
+<p>
+
+QuickFund Microfinance helps individuals and small
+businesses access reliable financial support.
+
+</p>
+
+<p>
+
+© <script>document.write(new Date().getFullYear());</script>
+QuickFund Microfinance
+
+</p>
+
+</div>
+
+</footer>
+
+
+
+<!-- JS -->
+
+<script src="{% static 'home/js/jquery-3.2.1.min.js' %}"></script>
+<script src="{% static 'home/js/bootstrap.min.js' %}"></script>
+
+</body>
+</html>

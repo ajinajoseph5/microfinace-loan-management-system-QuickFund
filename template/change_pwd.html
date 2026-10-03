@@ -1,0 +1,106 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Change Password</title>
+
+    <link rel="stylesheet" href="{% static 'admin/assets/vendor/bootstrap/css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'admin/assets/vendor/font-awesome/css/font-awesome.css' %}">
+
+    <style>
+        body {
+            background: #f4f6f9;
+            font-family: 'Segoe UI', sans-serif;
+        }
+
+        .card-box {
+            max-width: 400px;
+            margin: 80px auto;
+            background: #fff;
+            padding: 30px;
+            border-radius: 10px;
+            box-shadow: 0px 4px 15px rgba(0,0,0,0.1);
+        }
+
+        .card-box h3 {
+            text-align: center;
+            margin-bottom: 25px;
+            color: #333;
+        }
+
+        label {
+            font-weight: 500;
+        }
+
+        .form-control {
+            border-radius: 6px;
+            padding: 10px;
+        }
+
+        .btn-success {
+            width: 100%;
+            background: #28a745;
+            border: none;
+            padding: 10px;
+            margin-top: 10px;
+            transition: 0.3s;
+        }
+
+        .btn-success:hover {
+            background: #218838;
+        }
+
+        .btn-back {
+            display: block;
+            text-align: center;
+            margin-top: 15px;
+            text-decoration: none;
+            color: #555;
+        }
+
+        .btn-back:hover {
+            color: #000;
+        }
+
+        .icon-lock {
+            text-align: center;
+            font-size: 30px;
+            color: #ff6600;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+
+<body>
+
+<div class="card-box">
+
+    <div class="icon-lock">
+        <i class="fa fa-lock"></i>
+    </div>
+
+    <h3>Change Password</h3>
+    <p class="text-center text-muted">User: {{ user.name }}</p>
+
+    <form method="POST">
+        {% csrf_token %}
+
+        <div class="mb-3">
+            <label>New Password</label>
+            <input type="password" name="password" class="form-control" placeholder="Enter new password" required>
+        </div>
+
+        <button type="submit" class="btn btn-success">
+            <i class="fa fa-check"></i> Update Password
+        </button>
+
+        <a href="{% url 'admin_staff' %}" class="btn-back">
+            ← Back to Staff
+        </a>
+
+    </form>
+
+</div>
+
+</body>
+</html>

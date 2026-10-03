@@ -1,0 +1,440 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <title>
+        Staff Applications | QuickFund
+    </title>
+
+    <!-- BOOTSTRAP -->
+
+    <link rel="stylesheet"
+          href="{% static 'home/css/bootstrap.min.css' %}">
+
+    <!-- FONT AWESOME -->
+
+    <link rel="stylesheet"
+          href="{% static 'home/css/font-awesome.min.css' %}">
+
+    <!-- GOOGLE FONT -->
+
+    <link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700"
+          rel="stylesheet">
+
+<style>
+
+:root{
+
+    --black:#050505;
+    --dark:#111111;
+    --card:#161616;
+    --orange:#ff6b00;
+    --light-orange:#ff944d;
+    --white:#ffffff;
+    --gray:#b8b8b8;
+    --border:#262626;
+
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+
+    font-family:'Poppins',sans-serif;
+
+    background:
+    radial-gradient(
+    circle at top right,
+    rgba(255,107,0,0.12),
+    transparent 30%
+    ),
+
+    linear-gradient(
+    135deg,
+    #050505,
+    #0d0d0d,
+    #111111
+    );
+
+    color:white;
+
+    min-height:100vh;
+}
+
+/* TOP BAR */
+
+.top-bar{
+
+    padding:25px 0 10px;
+}
+
+/* BACK BUTTON */
+
+.back-btn{
+
+    width:48px;
+    height:48px;
+
+    border-radius:14px;
+
+    background:rgba(255,255,255,0.05);
+
+    border:1px solid rgba(255,255,255,0.08);
+
+    color:white;
+
+    display:flex;
+
+    justify-content:center;
+
+    align-items:center;
+
+    text-decoration:none;
+
+    transition:0.3s;
+}
+
+.back-btn:hover{
+
+    background:rgba(255,107,0,0.15);
+
+    border-color:rgba(255,107,0,0.4);
+
+    color:white;
+
+    transform:translateY(-2px);
+}
+
+.back-btn i{
+
+    font-size:18px;
+}
+
+/* PAGE TITLE */
+
+.page-title{
+
+    text-align:center;
+
+    padding:20px 20px 35px;
+}
+
+.page-title h2{
+
+    font-size:42px;
+
+    font-weight:700;
+
+    color:var(--orange);
+
+    margin-bottom:10px;
+}
+
+.page-title p{
+
+    color:var(--gray);
+
+    font-size:16px;
+}
+
+/* TABLE CARD */
+
+.table-card{
+
+    background:rgba(255,255,255,0.04);
+
+    border:1px solid rgba(255,255,255,0.06);
+
+    border-radius:28px;
+
+    padding:25px;
+
+    backdrop-filter:blur(12px);
+
+    box-shadow:
+    0 10px 40px rgba(0,0,0,0.35);
+
+    overflow:hidden;
+
+    margin-bottom:40px;
+}
+
+/* TABLE */
+
+.table{
+
+    margin-bottom:0;
+
+    color:white;
+}
+
+.table thead th{
+
+    background:
+    linear-gradient(
+    135deg,
+    #ff6b00,
+    #ff944d
+    );
+
+    color:black;
+
+    border:none;
+
+    padding:18px;
+
+    text-align:center;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    text-transform:uppercase;
+
+    letter-spacing:1px;
+}
+
+.table td{
+
+    padding:18px;
+
+    vertical-align:middle;
+
+    text-align:center;
+
+    border-top:1px solid rgba(255,255,255,0.05);
+
+    color:#f1f1f1;
+}
+
+/* ROW HOVER */
+
+.table tbody tr{
+
+    transition:0.3s;
+}
+
+.table tbody tr:hover{
+
+    background:rgba(255,107,0,0.05);
+}
+
+/* STATUS */
+
+.status{
+
+    padding:7px 14px;
+
+    border-radius:30px;
+
+    background:rgba(255,107,0,0.12);
+
+    color:var(--orange);
+
+    border:1px solid rgba(255,107,0,0.3);
+
+    font-size:12px;
+
+    font-weight:600;
+}
+
+/* VIEW BUTTON */
+
+.btn-view{
+
+    background:
+    linear-gradient(
+    135deg,
+    #ff6b00,
+    #ff944d
+    );
+
+    color:black;
+
+    padding:9px 18px;
+
+    border-radius:12px;
+
+    text-decoration:none;
+
+    font-size:13px;
+
+    font-weight:700;
+
+    transition:0.3s;
+
+    display:inline-block;
+}
+
+.btn-view:hover{
+
+    color:black;
+
+    transform:translateY(-2px);
+
+    box-shadow:
+    0 10px 25px rgba(255,107,0,0.3);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+    .page-title h2{
+
+        font-size:30px;
+    }
+
+    .table-card{
+
+        overflow-x:auto;
+    }
+
+    .table{
+
+        min-width:900px;
+    }
+}
+
+</style>
+
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="container top-bar">
+
+    <a href="{% url 'staff' %}"
+       class="back-btn">
+
+        <i class="fa fa-arrow-left"></i>
+
+    </a>
+
+</div>
+
+<!-- PAGE TITLE -->
+
+<section class="page-title">
+
+    <h2>
+        Loan Applications
+    </h2>
+
+    <p>
+        View and manage all submitted loan applications
+    </p>
+
+</section>
+
+<!-- TABLE SECTION -->
+
+<section class="container">
+
+    <div class="table-card">
+
+        <table class="table">
+
+            <thead>
+
+                <tr>
+
+                    <th>ID</th>
+                    <th>Name</th>
+                    <th>Loan Amount</th>
+                    <th>Loan Type</th>
+                    <th>Date</th>
+                    <th>Status</th>
+                    <th>Action</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for app in applications %}
+
+                <tr>
+
+                    <td>
+                        {{ app.id }}
+                    </td>
+
+                    <td>
+                        {{ app.name }}
+                    </td>
+
+                    <td>
+                        ₹{{ app.loan_amount }}
+                    </td>
+
+                    <td>
+                        {{ app.loan_type }}
+                    </td>
+
+                    <td>
+                        {{ app.created_at }}
+                    </td>
+
+                    <td>
+
+                        <span class="status">
+
+                            {{ app.status }}
+
+                        </span>
+
+                    </td>
+
+                    <td>
+
+                        <a href="{% url 'staff_view_app' app.id %}"
+                           class="btn-view">
+
+                            View
+
+                        </a>
+
+                    </td>
+
+                </tr>
+
+            {% empty %}
+
+                <tr>
+
+                    <td colspan="7">
+
+                        No applications found
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</section>
+
+</body>
+
+</html>

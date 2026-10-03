@@ -1,0 +1,570 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>My EMI Loans</title>
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600"
+      rel="stylesheet">
+
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+<link rel="stylesheet"
+href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+<style>
+
+/* RESET */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+/* BODY */
+
+body{
+    font-family:'Poppins', sans-serif;
+    background:#0d0d0d;
+    color:white;
+    min-height:100vh;
+}
+
+/* TOP BAR */
+
+.top-bar{
+    width:95%;
+    margin:30px auto 20px auto;
+    display:flex;
+    align-items:center;
+    gap:15px;
+}
+
+
+
+/* NOTIFICATION */
+
+.notification-box{
+    position:relative;
+}
+
+.notification-bell{
+    color:#fff;
+    font-size:20px;
+    text-decoration:none;
+    position:relative;
+    padding:10px;
+}
+
+.notification-bell:hover{
+    color:#ff6a00;
+}
+
+.notification-count{
+    position:absolute;
+    top:-5px;
+    right:-5px;
+    background:red;
+    color:#fff;
+    width:18px;
+    height:18px;
+    border-radius:50%;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    font-size:10px;
+    font-weight:bold;
+}
+
+/* PROFILE MENU */
+
+.profile-menu{
+    background:#111;
+    border:1px solid #333;
+}
+
+.profile-menu .dropdown-item{
+    color:white;
+}
+
+.profile-menu .dropdown-item:hover{
+    background:#ff6a00;
+    color:white;
+}
+
+
+.navbar{
+background:#000;
+padding:18px 0;
+box-shadow:0 3px 10px rgba(0,0,0,0.2);
+}
+
+.navbar-brand{
+font-size:28px;
+font-weight:bold;
+color:#ff6a00 !important;
+}
+
+.navbar .nav-link{
+color:#ccc !important;
+margin-right:18px;
+font-size:16px;
+transition:0.3s;
+}
+
+.navbar .nav-link:hover{
+color:#ff6a00 !important;
+}
+
+/* TITLE */
+
+.page-title{
+    font-size:32px;
+    font-weight:600;
+    color:#ff6a00;
+}
+
+/* CONTAINER */
+
+.emi-container{
+    width:95%;
+    margin:auto;
+}
+/* ALERT MESSAGE */
+
+.alert-box{
+    background:#198754;
+    color:white;
+    padding:14px;
+    border-radius:10px;
+    margin-bottom:20px;
+    text-align:center;
+    font-size:14px;
+}
+
+/* TABLE BOX */
+
+.table-box{
+    background:#111;
+    border-radius:18px;
+    overflow:hidden;
+    box-shadow:0 10px 30px rgba(0,0,0,0.5);
+}
+
+/* TABLE */
+
+table{
+    width:100%;
+    border-collapse:collapse;
+}
+
+/* TABLE HEADER */
+
+th{
+    background:#ff6a00;
+    color:white;
+    padding:18px;
+    text-align:center;
+    font-size:14px;
+}
+
+/* TABLE DATA */
+
+td{
+    padding:18px;
+    text-align:center;
+    font-size:14px;
+    border-bottom:1px solid #222;
+}
+
+/* ROW DESIGN */
+
+tr:nth-child(even){
+    background:#1a1a1a;
+}
+
+tr:hover{
+    background:#262626;
+    transition:0.3s;
+}
+
+/* EMI AMOUNT */
+
+.amount{
+    color:#ff6a00;
+    font-weight:bold;
+    font-size:16px;
+}
+
+/* STATUS */
+
+.status{
+    padding:7px 16px;
+    border-radius:20px;
+    font-size:12px;
+    font-weight:600;
+}
+
+.paid{
+    background:#198754;
+    color:white;
+}
+
+.pending{
+    background:#dc3545;
+    color:white;
+}
+
+/* BUTTONS */
+
+.btn{
+    padding:10px 16px;
+    border:none;
+    border-radius:8px;
+    text-decoration:none;
+    color:white;
+    font-size:13px;
+    display:inline-block;
+    margin:3px;
+    transition:0.3s;
+    font-weight:500;
+}
+
+/* PAY BUTTON */
+
+.pay-btn{
+    background:#ff6a00;
+}
+
+.pay-btn:hover{
+    background:#e65c00;
+}
+
+/* DISABLED BUTTON */
+
+.disabled{
+    background:#555;
+    cursor:not-allowed;
+}
+
+/* BUTTON HOVER */
+
+.btn:hover{
+    transform:scale(1.05);
+}
+
+/* NO DATA */
+
+.no-data{
+    padding:20px;
+    color:#999;
+    text-align:center;
+}
+
+/* MOBILE RESPONSIVE */
+
+@media(max-width:768px){
+
+    .page-title{
+        font-size:24px;
+    }
+
+    table,
+    thead,
+    tbody,
+    th,
+    td,
+    tr{
+        display:block;
+        width:100%;
+    }
+
+    thead{
+        display:none;
+    }
+
+    tr{
+        margin-bottom:15px;
+        background:#111;
+        border-radius:10px;
+        padding:10px;
+    }
+
+    td{
+        text-align:right;
+        padding-left:50%;
+        position:relative;
+    }
+
+    td::before{
+        position:absolute;
+        left:15px;
+        top:15px;
+        font-weight:bold;
+        color:#ff6a00;
+    }
+
+    td:nth-of-type(1)::before{
+        content:"Loan ID";
+    }
+
+    td:nth-of-type(2)::before{
+        content:"EMI Number";
+    }
+
+    td:nth-of-type(3)::before{
+        content:"Monthly EMI";
+    }
+
+    td:nth-of-type(4)::before{
+        content:"Due Date";
+    }
+
+    td:nth-of-type(5)::before{
+        content:"Status";
+    }
+
+    td:nth-of-type(6)::before{
+        content:"Pay EMI";
+    }
+
+}
+
+</style>
+
+</head>
+
+<body>
+<nav class="navbar navbar-expand-lg navbar-dark">
+
+<div class="container-fluid">
+
+<a class="navbar-brand"
+   href="{% url 'user_home' %}">
+   QuickFund
+</a>
+
+<ul class="navbar-nav ms-auto d-flex flex-row align-items-center">
+
+<li class="nav-item">
+<a href="{% url 'user_home' %}" class="nav-link">
+<i class="fas fa-home"></i> Dashboard
+</a>
+</li>
+
+<li class="nav-item">
+<a href="{% url 'loan_app' %}" class="nav-link">
+<i class="fas fa-file-alt"></i> My Applications
+</a>
+</li>
+
+<li class="nav-item">
+<a href="{% url 'loan_s' %}" class="nav-link">
+<i class="fas fa-chart-line"></i> Loan Status
+</a>
+</li>
+
+<li class="nav-item notification-box">
+<a href="{% url 'notification' %}" class="notification-bell">
+<i class="fas fa-bell"></i>
+</a>
+</li>
+
+<li class="nav-item dropdown">
+<a class="nav-link dropdown-toggle"
+   href="#"
+   role="button"
+   data-bs-toggle="dropdown">
+<i class="fas fa-user"></i> Profile
+</a>
+
+<ul class="dropdown-menu profile-menu">
+<li><a class="dropdown-item" href="{% url 'user_profile' %}">Account</a></li>
+<li><a class="dropdown-item" href="{% url 'user_emi' %}">EMI Payment</a></li>
+<li><a class="dropdown-item" href="{% url 'user_payment' %}">Payment History</a></li>
+<li><hr class="dropdown-divider"></li>
+<li><a class="dropdown-item text-danger" href="{% url 'user_logout' %}">Logout</a></li>
+</ul>
+</li>
+
+</ul>
+
+</div>
+
+</nav>
+
+<!-- TOP BAR -->
+
+<div class="top-bar">
+
+
+    <!-- PAGE TITLE -->
+
+<div class="page-title">
+
+    My EMI Loans
+</div>
+
+</div>
+
+<!-- MAIN CONTAINER -->
+<div class="emi-container">
+
+    <!-- DJANGO MESSAGES -->
+
+    {% if messages %}
+
+        {% for message in messages %}
+
+            <div class="alert-box">
+
+                {{ message }}
+
+            </div>
+
+        {% endfor %}
+
+    {% endif %}
+
+    <!-- TABLE -->
+
+    <div class="table-box">
+
+        <table>
+
+            <thead>
+
+                <tr>
+
+                    <th>Loan ID</th>
+                    <th>EMI Number</th>
+                    <th>Monthly EMI</th>
+                    <th>Due Date</th>
+                    <th>Status</th>
+                    <th>Pay EMI</th>
+
+                </tr>
+
+            </thead>
+
+            <tbody>
+
+            {% for item in emi_data %}
+
+                <tr>
+
+                    <!-- LOAN ID -->
+
+                    <td>
+
+                        LN{{ item.loan.id }}
+
+                    </td>
+
+                    <!-- EMI NUMBER -->
+
+                    <td>
+
+                        EMI {{ item.emi.emi_number }}
+
+                    </td>
+
+                    <!-- EMI AMOUNT -->
+
+                    <td class="amount">
+
+                        ₹{{ item.emi.amount }}
+
+                    </td>
+
+                    <!-- DUE DATE -->
+
+                    <td>
+
+                        {{ item.emi.due_date }}
+
+                    </td>
+
+                    <!-- STATUS -->
+
+                    <td>
+
+                        {% if item.already_paid %}
+
+                            <span class="status paid">
+
+                                Paid
+
+                            </span>
+
+                        {% else %}
+
+                            <span class="status pending">
+
+                                Pending
+
+                            </span>
+
+                        {% endif %}
+
+                    </td>
+
+                    <!-- PAY EMI -->
+
+                    <td>
+
+                        {% if item.already_paid %}
+
+                            <button class="btn disabled">
+
+                                Already Paid
+
+                            </button>
+
+                        {% else %}
+
+                            <a href="{% url 'pay' item.emi.id %}"
+                               class="btn pay-btn">
+
+                                Pay EMI
+
+                            </a>
+
+                        {% endif %}
+
+                    </td>
+
+                </tr>
+
+            {% empty %}
+
+                <tr>
+
+                    <td colspan="6" class="no-data">
+
+                        No EMI data available
+
+                    </td>
+
+                </tr>
+
+            {% endfor %}
+
+            </tbody>
+
+        </table>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

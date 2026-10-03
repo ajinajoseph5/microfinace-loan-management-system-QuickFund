@@ -1,0 +1,357 @@
+{% load static %}
+<!DOCTYPE html>
+<html>
+<head>
+<title>Staff | Application Details</title>
+
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+<style>
+body {
+    background: #f4f6f9;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* HEADER */
+.header {
+    background: #111;
+    color: #fff;
+    padding: 15px;
+    text-align: center;
+}
+
+/* CARD */
+.main-card {
+    background: #fff;
+    border-radius: 12px;
+    padding: 25px;
+}
+
+/* SECTION */
+.section {
+    border-bottom: 1px solid #eee;
+    margin-bottom: 20px;
+    padding-bottom: 15px;
+}
+
+.section-title {
+    font-weight: 600;
+    border-left: 5px solid #28a745;
+    padding-left: 10px;
+    margin-bottom: 15px;
+}
+
+/* IMAGE */
+img {
+    width: 120px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+    margin-top: 5px;
+}
+
+/* BUTTON */
+.transfer-btn {
+    width: 100%;
+    padding: 10px;
+    font-size: 16px;
+}
+    textarea{
+    resize:none;
+    border-radius:8px;
+}
+
+.btn-danger{
+    padding:10px;
+    font-size:16px;
+    font-weight:600;
+}
+</style>
+
+</head>
+
+<body>
+
+<div class="header">
+    <h4>Application Details</h4>
+</div>
+
+<div class="container mt-4">
+
+<div class="main-card shadow">
+
+<!-- APPLICANT -->
+<div class="section">
+<h5 class="section-title">Applicant Details</h5>
+
+<p><b>Name:</b> {{ application.name }}</p>
+<p><b>Email:</b> {{ application.email }}</p>
+<p><b>Phone:</b> {{ application.phone }}</p>
+<p><b>Job:</b> {{ application.job }}</p>
+<p><b>Income:</b> ₹ {{ application.income }}</p>
+<p><b>Address:</b> {{ application.address }}</p>
+</div>
+
+<!-- LOAN -->
+<div class="section">
+<h5 class="section-title">Loan Details</h5>
+
+<p><b>Loan Type:</b> {{ application.loan_type }}</p>
+<p><b>Amount:</b> ₹ {{ application.loan_amount }}</p>
+<p><b>Purpose:</b> {{ application.purpose }}</p>
+
+<p><b>Status:</b>
+<span class="badge bg-success">Approved</span>
+</p>
+
+<p><b>Approved Date:</b>
+{{ application.approved_date|date:"d-m-Y H:i" }}
+</p>
+
+</div>
+
+<!-- DOCUMENTS -->
+<div class="section">
+<h5 class="section-title">Documents</h5>
+
+<p><b>Photo:</b><br>
+{% if application.photo %}
+    <img src="{{ application.photo.url }}">
+{% endif %}
+</p>
+
+<p><b>ID Proof:</b><br>
+{% if application.id_proof %}
+    <img src="{{ application.id_proof.url }}">
+{% endif %}
+</p>
+
+<p><b>Age Proof:</b><br>
+{% if application.age_proof %}
+    <img src="{{ application.age_proof.url }}">
+{% endif %}
+</p>
+
+<p><b>Income Proof:</b><br>
+{% if application.income_proof %}
+    <img src="{{ application.income_proof.url }}">
+{% endif %}
+</p>
+
+</div>
+{% if application.loan_co_app_set.all %}
+<div class="section mb-4">
+<h4 class="section-title">Co-Applicant Details</h4>
+
+{% for c in application.loan_co_app_set.all %}
+<p><b>Name:</b> {{ c.name }}</p>
+<p><b>Email:</b> {{ c.email }}</p>
+<p><b>Phone:</b> {{ c.phone }}</p>
+<p><b>Relationship:</b> {{ c.relationship }}</p>
+<p><b>Income:</b> ₹ {{ c.income }}</p>
+
+
+
+<p><b>Photo:</b><br>
+{% if c.photo %}
+    <img src="{{ c.photo.url }}" width="120">
+{% else %}
+    No file
+{% endif %}
+</p>
+
+<p><b>ID Proof:</b><br>
+{% if c.id_proof %}
+    <img src="{{ c.id_proof.url }}" width="120">
+{% else %}
+    No file
+{% endif %}
+</p>
+
+<p><b>Age Proof:</b><br>
+{% if c.age_proof %}
+    <img src="{{ c.age_proof.url }}" width="120">
+{% else %}
+    No file
+{% endif %}
+</p>
+
+<p><b>Relational Proof:</b><br>
+{% if c.relational_proof %}
+    <img src="{{ c.relational_proof.url }}" width="120">
+{% else %}
+    No file
+{% endif %}
+</p>
+
+<hr>
+
+
+{% endfor %}
+
+</div>
+{% endif %}
+
+
+<!-- TRANSFER SECTION -->
+<!--<div class="section">-->
+
+<!--<h5 class="section-title">Transaction</h5>-->
+<!--<form method="POST" action="{% url 'loan_approve' application.id %}">-->
+<!--{% csrf_token %}-->
+
+<!--{% if application.status == "approved" %}-->
+
+<!--    {% if not application.is_transferred %}-->
+
+<!--        <button type="submit" class="btn btn-success transfer-btn">-->
+<!--            Transfer Amount (₹ {{ application.loan_amount }})-->
+<!--        </button>-->
+
+<!--    {% else %}-->
+
+<!--        <div class="alert alert-success text-center">-->
+<!--             Amount Successfully Transferred-->
+<!--        </div>-->
+
+<!--    {% endif %}-->
+
+<!--{% else %}-->
+
+<!--    <div class="alert alert-warning text-center">-->
+<!--        Application not approved-->
+<!--    </div>-->
+
+<!--{% endif %}-->
+
+<!--</form>-->
+
+<!--</div>-->
+<div class="section">
+
+<h5 class="section-title">Loan Decision</h5>
+
+{% if application.status == "approved" %}
+
+    {% if application.is_transferred %}
+
+        <div class="alert alert-success">
+            Amount Successfully Transferred
+        </div>
+
+        <button class="btn btn-success" disabled>
+            Transferred
+        </button>
+
+    {% else %}
+
+        <form method="POST" action="{% url 'loan_approve' application.id %}">
+            {% csrf_token %}
+
+            <button type="submit" class="btn btn-success transfer-btn mb-3">
+                Transfer Amount (₹ {{ application.loan_amount }})
+            </button>
+        </form>
+
+    {% endif %}
+
+{% elif application.status == "pending" %}
+
+<form method="POST" action="{% url 'loan_decision' application.id %}">
+    {% csrf_token %}
+
+    <textarea
+        id="messageBox"
+        name="reason"
+        class="form-control mb-3"
+        style="display:none;"
+        rows="4"></textarea>
+
+    <input
+        type="hidden"
+        name="action"
+        id="actionField">
+
+    <div id="actionButtons">
+
+        <button
+            type="submit"
+            onclick="setAction('approve')"
+            class="btn btn-success">
+            Approve
+        </button>
+
+        <button
+            type="button"
+            onclick="showReason('return')"
+            class="btn btn-warning">
+            Return
+        </button>
+
+        <button
+            type="button"
+            onclick="showReason('reject')"
+            class="btn btn-danger">
+            Reject
+        </button>
+
+    </div>
+
+    <button
+        type="submit"
+        id="submitBtn"
+        class="btn btn-primary mt-3"
+        style="display:none;">
+        Submit
+    </button>
+
+</form>
+
+{% elif application.status == "returned" %}
+
+<div class="alert alert-warning">
+    Application Returned
+</div>
+
+<p><strong>Reason:</strong></p>
+<p>{{ application.admin_message }}</p>
+
+{% elif application.status == "rejected" %}
+
+<div class="alert alert-danger">
+    Application Rejected
+</div>
+
+<p><strong>Reason:</strong></p>
+<p>{{ application.reject_reason }}</p>
+
+{% endif %}
+
+</div>
+</div>
+
+</div>
+<script>
+function setAction(action){
+    document.getElementById("actionField").value = action;
+}
+
+function showReason(action){
+
+    document.getElementById("actionButtons").style.display = "none";
+    document.getElementById("messageBox").style.display = "block";
+    document.getElementById("submitBtn").style.display = "inline-block";
+    document.getElementById("actionField").value = action;
+
+    if(action=="return"){
+        document.getElementById("messageBox").placeholder =
+        "Enter return reason";
+    }
+
+    if(action=="reject"){
+        document.getElementById("messageBox").placeholder =
+        "Enter rejection reason";
+    }
+}
+</script>
+</body>
+</html>

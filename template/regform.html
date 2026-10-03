@@ -1,0 +1,1542 @@
+<!--&lt;!&ndash;{% load static %}&ndash;&gt;-->
+<!--&lt;!&ndash;<!DOCTYPE html>&ndash;&gt;-->
+<!--&lt;!&ndash;<html lang="en">&ndash;&gt;-->
+<!--&lt;!&ndash;<head>&ndash;&gt;-->
+<!--&lt;!&ndash;  <title>QuickFund | Member Registration</title>&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <meta charset="utf-8">&ndash;&gt;-->
+<!--&lt;!&ndash;  <meta name="viewport" content="width=device-width, initial-scale=1">&ndash;&gt;-->
+
+<!--&lt;!&ndash;  &lt;!&ndash; Bootstrap &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;  <link rel="stylesheet"&ndash;&gt;-->
+<!--&lt;!&ndash;        href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">&ndash;&gt;-->
+
+<!--&lt;!&ndash;  &lt;!&ndash; Font Awesome &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;  <link rel="stylesheet"&ndash;&gt;-->
+<!--&lt;!&ndash;        href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">&ndash;&gt;-->
+
+<!--&lt;!&ndash;  &lt;!&ndash; Custom CSS &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;  <link rel="stylesheet" href="{% static 'reg.css' %}">&ndash;&gt;-->
+<!--&lt;!&ndash;</head>&ndash;&gt;-->
+
+<!--&lt;!&ndash;<body>&ndash;&gt;-->
+
+<!--&lt;!&ndash;&lt;!&ndash; Registration Form &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;<div class="registration-container">&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <h2>Registration</h2>&ndash;&gt;-->
+
+<!--&lt;!&ndash;  <form action="{% url 'reg' %}" method="POST">&ndash;&gt;-->
+
+<!--&lt;!&ndash;    {% csrf_token %}&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <div class="row">&ndash;&gt;-->
+
+<!--&lt;!&ndash;      &lt;!&ndash; Left Side &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="col-sm-6 right-border">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="form-section-title">&ndash;&gt;-->
+<!--&lt;!&ndash;          Personal Details&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;          <label>Full Name</label>&ndash;&gt;-->
+<!--&lt;!&ndash;          <input type="text"&ndash;&gt;-->
+<!--&lt;!&ndash;                 class="form-control"&ndash;&gt;-->
+<!--&lt;!&ndash;                 name="name"&ndash;&gt;-->
+<!--&lt;!&ndash;                 placeholder="Enter full name"&ndash;&gt;-->
+<!--&lt;!&ndash;                 required>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;          <label>Email Address</label>&ndash;&gt;-->
+<!--&lt;!&ndash;          <input type="email"&ndash;&gt;-->
+<!--&lt;!&ndash;                 class="form-control"&ndash;&gt;-->
+<!--&lt;!&ndash;                 name="email"&ndash;&gt;-->
+<!--&lt;!&ndash;                 placeholder="Enter email"&ndash;&gt;-->
+<!--&lt;!&ndash;                 required>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;          <label>Phone Number</label>&ndash;&gt;-->
+<!--&lt;!&ndash;          <input type="number"&ndash;&gt;-->
+<!--&lt;!&ndash;                 class="form-control"&ndash;&gt;-->
+<!--&lt;!&ndash;                 name="phone"&ndash;&gt;-->
+<!--&lt;!&ndash;                 placeholder="+91">&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <label>Gender</label><br>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <label class="radio-inline">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="radio"&ndash;&gt;-->
+<!--&lt;!&ndash;                   name="gender"&ndash;&gt;-->
+<!--&lt;!&ndash;                   value="Male"&ndash;&gt;-->
+<!--&lt;!&ndash;                   checked> Male&ndash;&gt;-->
+<!--&lt;!&ndash;          </label>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <label class="radio-inline">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="radio"&ndash;&gt;-->
+<!--&lt;!&ndash;                   name="gender"&ndash;&gt;-->
+<!--&lt;!&ndash;                   value="Female"> Female&ndash;&gt;-->
+<!--&lt;!&ndash;          </label>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <label class="radio-inline">&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="radio"&ndash;&gt;-->
+<!--&lt;!&ndash;                   name="gender"&ndash;&gt;-->
+<!--&lt;!&ndash;                   value="Others"> Others&ndash;&gt;-->
+<!--&lt;!&ndash;          </label>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+
+
+<!--&lt;!&ndash;      &lt;!&ndash; Right Side &ndash;&gt;&ndash;&gt;-->
+<!--&lt;!&ndash;      <div class="col-sm-6">&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="form-section-title">&ndash;&gt;-->
+<!--&lt;!&ndash;          Account Settings&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;          <label>Date of Birth</label>&ndash;&gt;-->
+<!--&lt;!&ndash;          <input type="date"&ndash;&gt;-->
+<!--&lt;!&ndash;                 class="form-control"&ndash;&gt;-->
+<!--&lt;!&ndash;                 name="dob">&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;          <label>User Role</label>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <select class="form-control" name="user_type">&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <option value="User">User</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option value="Staff">Staff</option>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          </select>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;          <label>Branch</label>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <select class="form-control" name="branch_type">&ndash;&gt;-->
+
+<!--&lt;!&ndash;            <option value="Trivandrum">Trivandrum</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option value="Kollam">Kollam</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option value="Kottayam">Kottayam</option>&ndash;&gt;-->
+<!--&lt;!&ndash;            <option value="Ernakulam">Ernakulam</option>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          </select>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="form-group">&ndash;&gt;-->
+<!--&lt;!&ndash;          <label>Password</label>&ndash;&gt;-->
+
+<!--&lt;!&ndash;          <input type="password"&ndash;&gt;-->
+<!--&lt;!&ndash;                 class="form-control"&ndash;&gt;-->
+<!--&lt;!&ndash;                 name="pwd"&ndash;&gt;-->
+<!--&lt;!&ndash;                 placeholder="Enter password"&ndash;&gt;-->
+<!--&lt;!&ndash;                 required>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;        <div class="checkbox">&ndash;&gt;-->
+<!--&lt;!&ndash;          <label>&ndash;&gt;-->
+<!--&lt;!&ndash;            <input type="checkbox" required>&ndash;&gt;-->
+<!--&lt;!&ndash;            I agree to the terms & conditions&ndash;&gt;-->
+<!--&lt;!&ndash;          </label>&ndash;&gt;-->
+<!--&lt;!&ndash;        </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;      </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    </div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;    <button type="submit" class="btn btn-orange">&ndash;&gt;-->
+<!--&lt;!&ndash;      Register Now&ndash;&gt;-->
+<!--&lt;!&ndash;    </button>&ndash;&gt;-->
+
+<!--&lt;!&ndash;  </form>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</div>&ndash;&gt;-->
+
+<!--&lt;!&ndash;</body>&ndash;&gt;-->
+<!--&lt;!&ndash;</html>&ndash;&gt;-->
+<!--{% load static %}-->
+<!--<!DOCTYPE html>-->
+<!--<html lang="en">-->
+
+<!--<head>-->
+
+<!--    <title>QuickFund | User Registration</title>-->
+
+<!--    <meta charset="UTF-8">-->
+
+<!--    <meta name="viewport"-->
+<!--          content="width=device-width, initial-scale=1.0">-->
+
+<!--    &lt;!&ndash; Bootstrap &ndash;&gt;-->
+
+<!--    <link rel="stylesheet"-->
+<!--          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">-->
+
+<!--    &lt;!&ndash; Font Awesome &ndash;&gt;-->
+
+<!--    <link rel="stylesheet"-->
+<!--          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">-->
+
+<!--    <style>-->
+
+<!--        body{-->
+
+<!--            margin:0;-->
+<!--            padding:50px 15px;-->
+
+<!--            background:#000;-->
+
+<!--            font-family:'Segoe UI', sans-serif;-->
+<!--            color:#fff;-->
+
+<!--        }-->
+
+<!--        /* MAIN BOX */-->
+
+<!--        .registration-container{-->
+
+<!--            max-width:900px;-->
+
+<!--            margin:auto;-->
+
+<!--            background:#111;-->
+
+<!--            border-radius:15px;-->
+
+<!--            overflow:hidden;-->
+
+<!--            box-shadow:0 10px 35px rgba(0,0,0,0.6);-->
+
+<!--            border:1px solid #222;-->
+
+<!--        }-->
+
+<!--        /* LEFT SIDE */-->
+
+<!--        .left-side{-->
+
+<!--            background:linear-gradient(135deg,#ff6600,#ff8533);-->
+
+<!--            padding:60px 40px;-->
+
+<!--            height:100%;-->
+
+<!--            color:#fff;-->
+
+<!--        }-->
+
+<!--        .left-side h2{-->
+
+<!--            font-size:38px;-->
+
+<!--            font-weight:700;-->
+
+<!--            margin-bottom:20px;-->
+
+<!--        }-->
+
+<!--        .left-side p{-->
+
+<!--            font-size:15px;-->
+
+<!--            line-height:28px;-->
+
+<!--            opacity:0.95;-->
+
+<!--        }-->
+
+<!--        .left-side i{-->
+
+<!--            font-size:70px;-->
+
+<!--            margin-bottom:25px;-->
+
+<!--        }-->
+
+<!--        /* RIGHT SIDE */-->
+
+<!--        .right-side{-->
+
+<!--            padding:45px 40px;-->
+
+<!--            background:#111;-->
+
+<!--        }-->
+
+<!--        .form-title{-->
+
+<!--            color:#ff6600;-->
+
+<!--            font-size:30px;-->
+
+<!--            font-weight:700;-->
+
+<!--            margin-bottom:30px;-->
+
+<!--            text-align:center;-->
+
+<!--        }-->
+
+<!--        /* LABEL */-->
+
+<!--        label{-->
+
+<!--            color:#ccc;-->
+
+<!--            font-size:13px;-->
+
+<!--            margin-bottom:8px;-->
+
+<!--        }-->
+
+<!--        /* INPUT */-->
+
+<!--        .form-control{-->
+
+<!--            background:#1b1b1b;-->
+
+<!--            border:1px solid #333;-->
+
+<!--            color:#fff;-->
+
+<!--            height:48px;-->
+
+<!--            border-radius:8px;-->
+
+<!--            box-shadow:none;-->
+
+<!--        }-->
+
+<!--        .form-control:focus{-->
+
+<!--            border-color:#ff6600;-->
+
+<!--            box-shadow:0 0 10px rgba(255,102,0,0.3);-->
+
+<!--            background:#111;-->
+
+<!--            color:#fff;-->
+
+<!--        }-->
+
+<!--        /* SELECT OPTION */-->
+
+<!--        select option{-->
+
+<!--            background:#111;-->
+<!--            color:#fff;-->
+
+<!--        }-->
+
+<!--        /* DATE */-->
+
+<!--        input[type="date"]{-->
+
+<!--            color:#fff;-->
+
+<!--        }-->
+
+<!--        input[type="date"]::-webkit-calendar-picker-indicator{-->
+
+<!--            filter:invert(1);-->
+
+<!--        }-->
+
+<!--        /* RADIO */-->
+
+<!--        .radio-inline{-->
+
+<!--            color:#ddd;-->
+<!--            margin-right:15px;-->
+
+<!--        }-->
+
+<!--        input[type="radio"]{-->
+
+<!--            accent-color:#ff6600;-->
+
+<!--        }-->
+
+<!--        /* CHECKBOX */-->
+
+<!--        .checkbox label{-->
+
+<!--            color:#ccc;-->
+
+<!--        }-->
+
+<!--        input[type="checkbox"]{-->
+
+<!--            accent-color:#ff6600;-->
+
+<!--        }-->
+
+<!--        /* BUTTON */-->
+
+<!--        .btn-register{-->
+
+<!--            width:100%;-->
+
+<!--            height:50px;-->
+
+<!--            background:#ff6600;-->
+
+<!--            border:none;-->
+
+<!--            border-radius:8px;-->
+
+<!--            color:#fff;-->
+
+<!--            font-size:16px;-->
+
+<!--            font-weight:700;-->
+
+<!--            margin-top:15px;-->
+
+<!--            transition:0.3s;-->
+
+<!--        }-->
+
+<!--        .btn-register:hover{-->
+
+<!--            background:#e65c00;-->
+
+<!--            transform:translateY(-2px);-->
+
+<!--            box-shadow:0 8px 20px rgba(255,102,0,0.4);-->
+
+<!--        }-->
+
+<!--        /* LOGIN LINK */-->
+
+<!--        .bottom-link{-->
+
+<!--            text-align:center;-->
+
+<!--            margin-top:25px;-->
+
+<!--            color:#aaa;-->
+
+<!--        }-->
+
+<!--        .bottom-link a{-->
+
+<!--            color:#ff6600;-->
+
+<!--            font-weight:700;-->
+
+<!--            text-decoration:none;-->
+
+<!--        }-->
+
+<!--        .bottom-link a:hover{-->
+
+<!--            color:#fff;-->
+
+<!--        }-->
+
+<!--        /* MOBILE */-->
+
+<!--        @media(max-width:767px){-->
+
+<!--            .left-side{-->
+
+<!--                text-align:center;-->
+<!--                padding:40px 25px;-->
+
+<!--            }-->
+
+<!--            .right-side{-->
+
+<!--                padding:35px 25px;-->
+
+<!--            }-->
+
+<!--        }-->
+
+<!--    </style>-->
+
+<!--</head>-->
+
+<!--<body>-->
+
+<!--<div class="registration-container">-->
+
+<!--    <div class="row" style="margin:0;">-->
+
+<!--        &lt;!&ndash; LEFT SIDE &ndash;&gt;-->
+
+<!--        <div class="col-md-5 left-side">-->
+
+<!--            <i class="fa fa-user-circle"></i>-->
+
+<!--            <h2>-->
+<!--                QuickFund-->
+<!--            </h2>-->
+
+<!--            <p>-->
+
+<!--                Create your QuickFund account and access secure-->
+<!--                microfinance services, loan management,-->
+<!--                and financial support easily.-->
+
+<!--            </p>-->
+
+<!--        </div>-->
+
+<!--        &lt;!&ndash; RIGHT SIDE &ndash;&gt;-->
+
+<!--        <div class="col-md-7 right-side">-->
+
+<!--            <h3 class="form-title">-->
+<!--                User Registration-->
+<!--            </h3>-->
+
+<!--            <form action="{% url 'reg' %}"-->
+<!--                  method="POST">-->
+
+<!--                {% csrf_token %}-->
+
+<!--                &lt;!&ndash; NAME &ndash;&gt;-->
+
+<!--                <div class="form-group">-->
+
+<!--                    <label>-->
+<!--                        Full Name-->
+<!--                    </label>-->
+
+<!--                    <input type="text"-->
+<!--                           name="name"-->
+<!--                           class="form-control"-->
+<!--                           placeholder="Enter full name"-->
+<!--                           required>-->
+
+<!--                </div>-->
+
+<!--                &lt;!&ndash; EMAIL &ndash;&gt;-->
+
+<!--                <div class="form-group">-->
+
+<!--                    <label>-->
+<!--                        Email Address-->
+<!--                    </label>-->
+
+<!--                    <input type="email"-->
+<!--                           name="email"-->
+<!--                           class="form-control"-->
+<!--                           placeholder="Enter email address"-->
+<!--                           required>-->
+
+<!--                </div>-->
+
+<!--                &lt;!&ndash; PHONE &ndash;&gt;-->
+
+<!--                <div class="form-group">-->
+
+<!--                    <label>-->
+<!--                        Phone Number-->
+<!--                    </label>-->
+
+<!--                    <input type="number"-->
+<!--                           name="phone"-->
+<!--                           class="form-control"-->
+<!--                           placeholder="Enter phone number"-->
+<!--                           required>-->
+
+<!--                </div>-->
+
+<!--                &lt;!&ndash; GENDER &ndash;&gt;-->
+
+<!--                <div class="form-group">-->
+
+<!--                    <label>-->
+<!--                        Gender-->
+<!--                    </label>-->
+
+<!--                    <br>-->
+
+<!--                    <label class="radio-inline">-->
+
+<!--                        <input type="radio"-->
+<!--                               name="gender"-->
+<!--                               value="Male"-->
+<!--                               checked>-->
+
+<!--                        Male-->
+
+<!--                    </label>-->
+
+<!--                    <label class="radio-inline">-->
+
+<!--                        <input type="radio"-->
+<!--                               name="gender"-->
+<!--                               value="Female">-->
+
+<!--                        Female-->
+
+<!--                    </label>-->
+
+<!--                    <label class="radio-inline">-->
+
+<!--                        <input type="radio"-->
+<!--                               name="gender"-->
+<!--                               value="Other">-->
+
+<!--                        Other-->
+
+<!--                    </label>-->
+
+<!--                </div>-->
+
+<!--                &lt;!&ndash; DOB &ndash;&gt;-->
+
+<!--                <div class="form-group">-->
+
+<!--                    <label>-->
+<!--                        Date of Birth-->
+<!--                    </label>-->
+
+<!--                    <input type="date"-->
+<!--                           name="dob"-->
+<!--                           class="form-control"-->
+<!--                           required>-->
+
+<!--                </div>-->
+
+<!--                &lt;!&ndash; BRANCH &ndash;&gt;-->
+
+<!--                <div class="form-group">-->
+
+<!--                    <label>-->
+<!--                        Branch-->
+<!--                    </label>-->
+
+<!--                    <select name="branch_type"-->
+<!--                            class="form-control"-->
+<!--                            required>-->
+
+<!--                        <option value="">-->
+<!--                            Select Branch-->
+<!--                        </option>-->
+
+<!--                        <option value="Trivandrum">-->
+<!--                            Trivandrum-->
+<!--                        </option>-->
+
+<!--                        <option value="Kollam">-->
+<!--                            Kollam-->
+<!--                        </option>-->
+
+<!--                        <option value="Kottayam">-->
+<!--                            Kottayam-->
+<!--                        </option>-->
+
+<!--                        <option value="Ernakulam">-->
+<!--                            Ernakulam-->
+<!--                        </option>-->
+
+<!--                    </select>-->
+
+<!--                </div>-->
+
+<!--                &lt;!&ndash; PASSWORD &ndash;&gt;-->
+
+<!--                <div class="form-group">-->
+
+<!--                    <label>-->
+<!--                        Password-->
+<!--                    </label>-->
+
+<!--                    <input type="password"-->
+<!--                           name="pwd"-->
+<!--                           class="form-control"-->
+<!--                           placeholder="Create password"-->
+<!--                           required>-->
+
+<!--                </div>-->
+
+<!--                &lt;!&ndash; TERMS &ndash;&gt;-->
+
+<!--                <div class="checkbox">-->
+
+<!--                    <label>-->
+
+<!--                        <input type="checkbox"-->
+<!--                               required>-->
+
+<!--                        I agree to the Terms & Conditions-->
+
+<!--                    </label>-->
+
+<!--                </div>-->
+
+<!--                &lt;!&ndash; BUTTON &ndash;&gt;-->
+
+<!--                <button type="submit"-->
+<!--                        class="btn-register">-->
+
+<!--                    <i class="fa fa-user-plus"></i>-->
+
+<!--                    Create Account-->
+
+<!--                </button>-->
+
+<!--            </form>-->
+
+<!--            &lt;!&ndash; LOGIN &ndash;&gt;-->
+
+<!--            <div class="bottom-link">-->
+
+<!--                Already have an account?-->
+
+<!--                <a href="{% url 'home' %}">-->
+<!--                    Login Here-->
+<!--                </a>-->
+
+<!--            </div>-->
+
+<!--        </div>-->
+
+<!--    </div>-->
+
+<!--</div>-->
+
+<!--</body>-->
+
+<!--</html>-->
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <title>QuickFund | User Registration</title>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport"
+          content="width=device-width, initial-scale=1.0">
+
+    <!-- Bootstrap -->
+
+    <link rel="stylesheet"
+          href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css">
+
+    <!-- Font Awesome -->
+
+    <link rel="stylesheet"
+          href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+
+    <style>
+
+        *{
+            margin:0;
+            padding:0;
+            box-sizing:border-box;
+        }
+
+        body{
+
+            background:#000;
+
+            font-family:'Segoe UI', sans-serif;
+
+            min-height:100vh;
+
+            padding:20px 10px;
+
+            color:#fff;
+
+        }
+
+        /* TOP BAR */
+
+        .top-bar{
+
+            max-width:760px;
+
+            margin:auto auto 15px auto;
+
+            display:flex;
+
+            align-items:center;
+
+            gap:12px;
+
+        }
+
+        /* BACK BUTTON */
+
+        .back-btn{
+
+            width:42px;
+
+            height:42px;
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:center;
+
+            background:#111;
+
+            border:1px solid #333;
+
+            border-radius:10px;
+
+            color:#fff;
+
+            text-decoration:none;
+
+            transition:0.3s;
+
+            font-size:18px;
+
+        }
+
+        .back-btn:hover{
+
+            background:#ff6600;
+
+            color:#fff;
+
+            text-decoration:none;
+
+        }
+
+        /* PAGE TITLE */
+
+        .page-title{
+
+            font-size:22px;
+
+            font-weight:700;
+
+            color:#ff6600;
+
+        }
+
+        /* MAIN CONTAINER */
+
+        .registration-container{
+
+            max-width:760px;
+
+            margin:auto;
+
+            background:#111;
+
+            border-radius:14px;
+
+            overflow:hidden;
+
+            border:1px solid #222;
+
+            box-shadow:0 8px 25px rgba(0,0,0,0.5);
+
+        }
+
+        /* LEFT SIDE */
+
+        .left-side{
+
+            background:linear-gradient(135deg,#ff6600,#ff8533);
+
+            padding:35px 25px;
+
+            color:#fff;
+
+            min-height:100%;
+
+            display:flex;
+
+            flex-direction:column;
+
+            justify-content:center;
+
+        }
+
+        .brand-icon{
+
+            width:65px;
+
+            height:65px;
+
+            border-radius:50%;
+
+            background:rgba(255,255,255,0.2);
+
+            display:flex;
+
+            align-items:center;
+
+            justify-content:center;
+
+            margin-bottom:18px;
+
+        }
+
+        .brand-icon i{
+
+            font-size:30px;
+
+        }
+
+        .left-side h2{
+
+            font-size:32px;
+
+            font-weight:700;
+
+            margin-bottom:12px;
+
+        }
+
+        .left-side p{
+
+            font-size:13px;
+
+            line-height:24px;
+
+            color:#fff;
+
+            opacity:0.95;
+
+        }
+
+        /* RIGHT SIDE */
+
+        .right-side{
+
+            padding:30px 25px;
+
+            background:#111;
+
+        }
+
+        /* FORM HEADING */
+
+        .form-heading{
+
+            text-align:center;
+
+            margin-bottom:25px;
+
+        }
+
+        .form-heading h3{
+
+            color:#ff6600;
+
+            font-size:26px;
+
+            font-weight:700;
+
+            margin-bottom:8px;
+
+        }
+
+        .form-heading p{
+
+            color:#999;
+
+            font-size:13px;
+
+        }
+
+        /* FORM GROUP */
+
+        .form-group{
+
+            margin-bottom:15px;
+
+        }
+
+        /* LABEL */
+
+        label{
+
+            color:#ddd;
+
+            font-size:13px;
+
+            margin-bottom:7px;
+
+            font-weight:500;
+
+        }
+
+        .required{
+
+            color:#ff3300;
+
+        }
+
+        /* INPUT */
+
+        .form-control{
+
+            height:42px;
+
+            background:#1b1b1b;
+
+            border:1px solid #333;
+
+            color:#fff;
+
+            border-radius:7px;
+
+            box-shadow:none;
+
+            font-size:13px;
+
+            padding:10px 12px;
+
+        }
+
+        .form-control:focus{
+
+            border-color:#ff6600;
+
+            box-shadow:0 0 8px rgba(255,102,0,0.3);
+
+            background:#111;
+
+            color:#fff;
+
+        }
+
+        .form-control::placeholder{
+
+            color:#777;
+
+        }
+
+        /* SELECT */
+
+        select option{
+
+            background:#111;
+
+            color:#fff;
+
+        }
+
+        /* DATE */
+
+        input[type="date"]{
+
+            color:#fff;
+
+        }
+
+        input[type="date"]::-webkit-calendar-picker-indicator{
+
+            filter:invert(1);
+
+        }
+
+        /* RADIO */
+
+        .radio-inline{
+
+            color:#ddd;
+
+            margin-right:15px;
+
+            font-size:13px;
+
+        }
+
+        input[type="radio"]{
+
+            accent-color:#ff6600;
+
+        }
+
+        /* CHECKBOX */
+
+        .checkbox{
+
+            margin-top:10px;
+
+        }
+
+        .checkbox label{
+
+            font-size:12px;
+
+            color:#bbb;
+
+        }
+
+        input[type="checkbox"]{
+
+            accent-color:#ff6600;
+
+        }
+
+        /* PASSWORD NOTE */
+
+        .password-note{
+
+            margin-top:8px;
+
+            font-size:11px;
+
+            color:#999;
+
+            line-height:20px;
+
+        }
+
+        /* BUTTON */
+
+        .btn-register{
+
+            width:100%;
+
+            height:44px;
+
+            background:#ff6600;
+
+            border:none;
+
+            border-radius:7px;
+
+            color:#fff;
+
+            font-size:15px;
+
+            font-weight:700;
+
+            margin-top:18px;
+
+            transition:0.3s;
+
+        }
+
+        .btn-register:hover{
+
+            background:#e65c00;
+
+        }
+
+        /* LOGIN */
+
+        .bottom-link{
+
+            margin-top:20px;
+
+            text-align:center;
+
+            font-size:13px;
+
+            color:#999;
+
+        }
+
+        .bottom-link a{
+
+            color:#ff6600;
+
+            text-decoration:none;
+
+            font-weight:600;
+
+        }
+
+        .bottom-link a:hover{
+
+            color:#fff;
+
+        }
+
+        /* MOBILE */
+
+        @media(max-width:767px){
+
+            .left-side{
+
+                text-align:center;
+
+                padding:28px 20px;
+
+            }
+
+            .brand-icon{
+
+                margin:auto auto 15px auto;
+
+            }
+
+            .right-side{
+
+                padding:25px 20px;
+
+            }
+
+            .form-heading h3{
+
+                font-size:22px;
+
+            }
+
+        }
+
+    </style>
+
+</head>
+
+<body>
+
+<!-- TOP BAR -->
+
+<div class="top-bar">
+
+    <a href="{% url 'home' %}"
+       class="back-btn">
+
+        <i class="fa fa-arrow-left"></i>
+
+    </a>
+
+    <div class="page-title">
+
+        QuickFund Registration
+
+    </div>
+
+</div>
+
+<!-- MAIN CONTAINER -->
+
+<div class="registration-container">
+
+    <div class="row" style="margin:0;">
+
+        <!-- LEFT SIDE -->
+
+        <div class="col-md-5 left-side">
+
+            <div class="brand-icon">
+
+                <i class="fa fa-bank"></i>
+
+            </div>
+
+            <h2>
+
+                QuickFund
+
+            </h2>
+
+            <p>
+
+                Join QuickFund and access secure loan services,
+                EMI management, and trusted financial support
+                with a simple registration process.
+
+            </p>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+
+        <div class="col-md-7 right-side">
+
+            <!-- FORM HEADING -->
+
+            <div class="form-heading">
+
+                <h3>
+
+                    Create Account
+
+                </h3>
+
+                <p>
+
+                    Fill all mandatory fields to continue
+
+                </p>
+
+            </div>
+
+            <!-- FORM -->
+
+            <form action="{% url 'reg' %}"
+                  method="POST">
+
+                {% csrf_token %}
+
+                <!-- NAME -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        Full Name
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <input type="text"
+                           name="name"
+                           class="form-control"
+                           minlength="3"
+                           placeholder="Enter full name"
+                           required>
+
+                </div>
+
+                <!-- EMAIL -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        Email Address
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <input type="email"
+                           name="email"
+                           class="form-control"
+                           placeholder="Enter Gmail address"
+                           required>
+
+                </div>
+
+                <!-- PHONE -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        Phone Number
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <input type="tel"
+                           name="phone"
+                           class="form-control"
+                           pattern="[0-9]{10}"
+                           maxlength="10"
+                           minlength="10"
+                           placeholder="Enter 10 digit number"
+                           required>
+
+                </div>
+
+                <!-- GENDER -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        Gender
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <br>
+
+                    <label class="radio-inline">
+
+                        <input type="radio"
+                               name="gender"
+                               value="Male"
+                               required>
+
+                        Male
+
+                    </label>
+
+                    <label class="radio-inline">
+
+                        <input type="radio"
+                               name="gender"
+                               value="Female">
+
+                        Female
+
+                    </label>
+
+                    <label class="radio-inline">
+
+                        <input type="radio"
+                               name="gender"
+                               value="Other">
+
+                        Other
+
+                    </label>
+
+                </div>
+
+                <!-- DOB -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        Date of Birth
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <input type="date"
+                           name="dob"
+                           class="form-control"
+                           required>
+
+                </div>
+
+                <!-- BRANCH -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        Branch
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <select name="branch_type"
+                            class="form-control"
+                            required>
+
+                        <option value="">
+
+                            Select Branch
+
+                        </option>
+
+                        <option value="Trivandrum">
+
+                            Trivandrum
+
+                        </option>
+
+                        <option value="Kollam">
+
+                            Kollam
+
+                        </option>
+
+                        <option value="Kottayam">
+
+                            Kottayam
+
+                        </option>
+
+                        <option value="Ernakulam">
+
+                            Ernakulam
+
+                        </option>
+
+                    </select>
+
+                </div>
+
+                <!-- PASSWORD -->
+
+                <div class="form-group">
+
+                    <label>
+
+                        Password
+                        <span class="required">*</span>
+
+                    </label>
+
+                    <input type="password"
+                           name="pwd"
+                           class="form-control"
+                           minlength="6"
+                           pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@#$%^&+=!]).{6,}$"
+                           placeholder="Create strong password"
+                           required>
+
+                    <div class="password-note">
+
+                        • Minimum 8 characters <br>
+
+                        • One uppercase letter <br>
+
+                        • One lowercase letter <br>
+
+                        • One number <br>
+
+                        • One special character
+
+                    </div>
+
+                </div>
+
+                <!-- TERMS -->
+
+                <div class="checkbox">
+
+                    <label>
+
+                        <input type="checkbox"
+                               required>
+
+                        I agree to the Terms & Conditions
+                        <span class="required">*</span>
+
+                    </label>
+
+                </div>
+
+                <!-- BUTTON -->
+
+                <button type="submit"
+                        class="btn-register">
+
+                    <i class="fa fa-user-plus"></i>
+
+                    Create Account
+
+                </button>
+
+            </form>
+
+            <!-- LOGIN -->
+
+            <div class="bottom-link">
+
+                Already have an account?
+
+                <a href="{% url 'home' %}">
+
+                    Login Here
+
+                </a>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</div>
+
+</body>
+
+</html>

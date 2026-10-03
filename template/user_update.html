@@ -1,0 +1,687 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<title>Loan Application</title>
+
+<link href="https://fonts.googleapis.com/css?family=Poppins:400,500,600" rel="stylesheet">
+<link rel="stylesheet" href="{% static 'loan_form.css' %}">
+</head>
+<style>
+/* =====================================
+   QUICKFUND USER PANEL
+   BLACK • ORANGE • WHITE THEME
+===================================== */
+
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+body{
+    font-family:'Poppins',sans-serif;
+    background:#edf1f5;
+    color:#222;
+    line-height:1.6;
+}
+
+/* =====================================
+   NAVBAR
+===================================== */
+
+.navbar{
+    background:#111;
+    padding:15px 0;
+    position:sticky;
+    top:0;
+    z-index:999;
+    box-shadow:0 2px 15px rgba(0,0,0,.15);
+}
+
+.nav-container{
+    width:95%;
+    max-width:1400px;
+    margin:auto;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+.logo{
+    text-decoration:none;
+    font-size:32px;
+    font-weight:700;
+    color:#fff;
+}
+
+.logo span{
+    color:#ff8800;
+}
+
+.nav-links{
+    list-style:none;
+    display:flex;
+    align-items:center;
+    gap:22px;
+}
+
+.nav-links li{
+    position:relative;
+}
+
+.nav-links a{
+    text-decoration:none;
+    color:#fff;
+    font-size:15px;
+    font-weight:500;
+    transition:.3s;
+}
+
+.nav-links a:hover{
+    color:#ff8800;
+}
+
+/* Notification Badge */
+
+.badge{
+    background:#ff8800;
+    color:#fff;
+    padding:3px 8px;
+    border-radius:50px;
+    font-size:11px;
+    margin-left:5px;
+}
+
+/* =====================================
+   DROPDOWN
+===================================== */
+
+.dropdown-content{
+    display:none;
+    position:absolute;
+    right:0;
+    top:35px;
+    background:#fff;
+    min-width:220px;
+    border-radius:10px;
+    overflow:hidden;
+    box-shadow:0 5px 20px rgba(0,0,0,.15);
+}
+
+.dropdown-content a{
+    display:block;
+    padding:12px 15px;
+    color:#222;
+    border-bottom:1px solid #eee;
+}
+
+.dropdown-content a:hover{
+    background:#fff5e6;
+    color:#ff8800;
+}
+
+.dropdown:hover .dropdown-content{
+    display:block;
+}
+
+.logout{
+    color:red !important;
+}
+
+/* =====================================
+   MAIN CONTAINER
+===================================== */
+
+.container{
+    width:95%;
+    max-width:1200px;
+    margin:30px auto;
+    background:#fff;
+    padding:35px;
+    border-radius:15px;
+    box-shadow:0 0 25px rgba(0,0,0,.08);
+}
+
+/* =====================================
+   TITLE
+===================================== */
+
+h1{
+    text-align:center;
+    font-size:34px;
+    font-weight:700;
+    color:#111;
+    margin-bottom:35px;
+}
+
+h1::after{
+    content:'';
+    width:120px;
+    height:4px;
+    background:#ff8800;
+    display:block;
+    margin:10px auto;
+    border-radius:30px;
+}
+
+/* =====================================
+   SECTION HEADING
+===================================== */
+
+h2{
+    margin:30px 0 20px;
+    color:#ff8800;
+    font-size:22px;
+    border-left:5px solid #ff8800;
+    padding-left:12px;
+}
+
+/* =====================================
+   FORM GRID
+===================================== */
+
+.form-grid{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:18px;
+}
+
+.full{
+    grid-column:1/-1;
+}
+
+/* =====================================
+   LABEL
+===================================== */
+
+label{
+    display:block;
+    margin-bottom:6px;
+    font-size:13px;
+    font-weight:600;
+    color:#444;
+}
+
+/* =====================================
+   INPUT
+===================================== */
+
+input,
+select,
+textarea{
+    width:100%;
+    border:1px solid #d7d7d7;
+    border-radius:8px;
+    padding:10px 12px;
+    font-size:14px;
+    font-family:'Poppins',sans-serif;
+    transition:.3s;
+}
+
+input,
+select{
+    height:45px;
+}
+
+textarea{
+    min-height:90px;
+    resize:vertical;
+}
+
+input:focus,
+select:focus,
+textarea:focus{
+    outline:none;
+    border-color:#ff8800;
+    box-shadow:0 0 0 3px rgba(255,136,0,.15);
+}
+
+/* =====================================
+   FILE GRID
+===================================== */
+
+.file-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:15px;
+    margin-top:15px;
+}
+
+.file-box{
+    background:#fafafa;
+    border:1px solid #e5e5e5;
+    border-radius:10px;
+    padding:15px;
+    text-align:center;
+    transition:.3s;
+}
+
+.file-box:hover{
+    transform:translateY(-3px);
+    box-shadow:0 5px 15px rgba(0,0,0,.08);
+}
+
+.file-box img{
+    width:100px;
+    height:100px;
+    object-fit:cover;
+    border-radius:8px;
+    border:1px solid #ddd;
+    margin-bottom:10px;
+}
+
+.file-box input[type="file"]{
+    border:none;
+    background:none;
+    padding:0;
+    font-size:12px;
+}
+
+/* =====================================
+   BUTTON
+===================================== */
+
+button{
+    display:block;
+    width:280px;
+    margin:40px auto 0;
+    border:none;
+    border-radius:8px;
+    padding:14px;
+    background:#ff8800;
+    color:#fff;
+    font-size:16px;
+    font-weight:600;
+    cursor:pointer;
+    transition:.3s;
+}
+
+button:hover{
+    background:#e67700;
+    transform:translateY(-2px);
+}
+
+/* =====================================
+   PLACEHOLDER
+===================================== */
+
+::placeholder{
+    color:#999;
+}
+
+/* =====================================
+   TABLET
+===================================== */
+
+@media(max-width:992px){
+
+    .container{
+        width:95%;
+        padding:25px;
+    }
+
+    .file-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .nav-container{
+        flex-direction:column;
+        gap:15px;
+    }
+
+    .nav-links{
+        flex-wrap:wrap;
+        justify-content:center;
+    }
+}
+
+/* =====================================
+   MOBILE
+===================================== */
+
+@media(max-width:768px){
+
+    .form-grid{
+        grid-template-columns:1fr;
+    }
+
+    .file-grid{
+        grid-template-columns:1fr;
+    }
+
+    h1{
+        font-size:28px;
+    }
+
+    h2{
+        font-size:18px;
+    }
+
+    button{
+        width:100%;
+    }
+
+    .logo{
+        font-size:28px;
+    }
+
+    .nav-links{
+        gap:12px;
+        justify-content:center;
+        flex-wrap:wrap;
+    }
+
+    .nav-links a{
+        font-size:14px;
+    }
+}
+
+/* =====================================
+   PRINT
+===================================== */
+
+@media print{
+
+    .navbar{
+        display:none;
+    }
+
+    body{
+        background:#fff;
+    }
+
+    .container{
+        width:100%;
+        margin:0;
+        border:none;
+        box-shadow:none;
+        padding:0;
+    }
+
+    button{
+        display:none;
+    }
+}
+</style>
+<body>
+<nav class="navbar">
+    <div class="nav-container">
+
+        <a href="{% url 'user_home' %}" class="logo">
+            QuickFund
+        </a>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="{% url 'user_home' %}">
+                    🏠 Dashboard
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'loan_app' %}">
+                    📄 My Applications
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'loan_s' %}">
+                    📊 Loan Status
+                </a>
+            </li>
+
+            <li>
+                <a href="{% url 'notification' %}">
+                    🔔 Notifications
+                    {% if notification_count > 0 %}
+                    <span class="badge">
+                        {{ notification_count }}
+                    </span>
+                    {% endif %}
+                </a>
+            </li>
+
+            <li class="dropdown">
+
+                <a href="#">
+                    👤 Profile ▼
+                </a>
+
+                <div class="dropdown-content">
+
+                    <a href="{% url 'user_profile' %}">
+                        Account
+                    </a>
+
+                    <a href="{% url 'user_emi' %}">
+                        EMI Payment
+                    </a>
+
+                    <a href="{% url 'user_payment' %}">
+                        Payment History
+                    </a>
+
+                    <a href="{% url 'user_logout' %}" class="logout">
+                        Logout
+                    </a>
+
+                </div>
+
+            </li>
+
+        </ul>
+
+    </div>
+</nav>
+<div class="container">
+
+<h1>Loan Application Form</h1>
+
+<form method="POST" action="{% url 'user_app_update' data.pk %}" enctype="multipart/form-data">
+{% csrf_token %}
+
+<h2>Applicant Details</h2>
+
+<div class="form-grid">
+
+<div>
+<label>Name</label>
+<input type="text" name="name" value="{{data.name}}" required>
+</div>
+
+<div>
+<label>Email</label>
+<input type="email" name="email" value="{{data.email}}" required>
+</div>
+
+<div>
+<label>Phone</label>
+<input type="text" name="phone" value="{{data.phone}}" required>
+</div>
+
+<div>
+<label>Job</label>
+<input type="text" name="job" value="{{data.job}}">
+</div>
+
+<div class="full">
+<label>Address</label>
+<textarea name="address">{{data.address}}</textarea>
+</div>
+
+<div>
+<label>Income</label>
+<input type="number" name="income" value="{{data.income}}">
+</div>
+
+<div>
+<label>Loan Amount</label>
+<input type="number" name="loan_amount" value="{{data.loan_amount}}" min="1000" required>
+</div>
+
+<div>
+<label>Loan Type</label>
+<select name="loan_type" required>
+    <option value="">Select Loan Type</option>
+    <option value="home" {% if data.loan_type == "home" %}selected{% endif %}>Home Loan</option>
+    <option value="vehicle" {% if data.loan_type == "vehicle" %}selected{% endif %}>Vehicle Loan</option>
+    <option value="medical" {% if data.loan_type == "medical" %}selected{% endif %}>Medical Loan</option>
+    <option value="business" {% if data.loan_type == "business" %}selected{% endif %}>Business Loan</option>
+</select>
+</div>
+
+<div>
+<label>Branch</label>
+<select name="branch_type" required>
+    <option value="">Select Branch</option>
+    <option value="Trivandrum" {% if data.branch_type == "Trivandrum" %}selected{% endif %}>Trivandrum</option>
+    <option value="Kollam" {% if data.branch_type == "Kollam" %}selected{% endif %}>Kollam</option>
+    <option value="Kottayam" {% if data.branch_type == "Kottayam" %}selected{% endif %}>Kottayam</option>
+    <option value="Ernakulam" {% if data.branch_type == "Ernakulam" %}selected{% endif %}>Ernakulam</option>
+</select>
+</div>
+
+<div class="full">
+<label>Purpose</label>
+<textarea name="purpose">{{data.purpose}}</textarea>
+</div>
+
+<div>
+<label>Relationship</label>
+<input type="text" name="relationship" value="{{data.relationship}}">
+</div>
+
+</div>
+
+<!-- FILES -->
+<h2>Applicant Documents</h2>
+
+<div class="file-grid">
+
+<div class="file-box">
+<label>ID Proof</label>
+{% if data.id_proof %}
+    <img src="{{ data.id_proof.url }}" width="100">
+{% endif %}
+<input type="file" name="id_proof">
+</div>
+
+<div class="file-box">
+<label>Age Proof</label>
+{% if data.age_proof %}
+    <img src="{{ data.age_proof.url }}" width="100">
+{% endif %}
+<input type="file" name="age_proof">
+</div>
+
+<div class="file-box">
+<label>Income Proof</label>
+{% if data.income_proof %}
+    <img src="{{ data.income_proof.url }}" width="100">
+{% endif %}
+<input type="file" name="income_proof">
+</div>
+
+<div class="file-box">
+<label>Profile Image</label>
+{% if data.photo %}
+    <img src="{{ data.photo.url }}" width="100">
+{% endif %}
+<input type="file" name="photo">
+</div>
+
+</div>
+
+<!-- CO-APPLICANT -->
+<h2>Co-Applicant Details</h2>
+
+<div class="form-grid">
+
+<div>
+<label>Name</label>
+<input type="text" name="co_name" value="{{co_data.name}}">
+</div>
+
+<div>
+<label>Email</label>
+<input type="email" name="co_email" value="{{co_data.email}}">
+</div>
+
+<div>
+<label>Phone</label>
+<input type="text" name="co_phone" value="{{co_data.phone}}">
+</div>
+
+<div>
+<label>Job</label>
+<input type="text" name="co_job" value="{{co_data.job}}">
+</div>
+
+<div class="full">
+<label>Address</label>
+<textarea name="co_address">{{co_data.co_address}}</textarea>
+</div>
+
+<div>
+<label>Income</label>
+<input type="number" name="co_income" value="{{co_data.income}}">
+</div>
+
+<div>
+<label>Relationship</label>
+<input type="text" name="co_relationship" value="{{co_data.relationship}}">
+</div>
+
+</div>
+
+<div class="file-grid">
+
+<div class="file-box">
+<label>ID Proof</label>
+{% if co_data and co_data.id_proof %}
+    <img src="{{ co_data.id_proof.url }}" width="100">
+{% endif %}
+<input type="file" name="co_id_proof">
+</div>
+
+<div class="file-box">
+<label>Age Proof</label>
+{% if co_data and co_data.age_proof %}
+    <img src="{{ co_data.age_proof.url }}" width="100">
+{% endif %}
+<input type="file" name="co_age_proof">
+</div>
+
+<div class="file-box">
+<label>Relational Proof</label>
+{% if co_data and co_data.relational_proof %}
+    <img src="{{ co_data.relational_proof.url }}" width="100">
+{% endif %}
+<input type="file" name="co_relational_proof">
+</div>
+
+<div class="file-box">
+<label>Profile Image</label>
+{% if co_data and co_data.photo %}
+    <img src="{{ co_data.photo.url }}" width="100">
+{% endif %}
+<input type="file" name="co_image">
+</div>
+
+</div>
+
+<br>
+
+<button type="submit">Update Application</button>
+
+</form>
+
+</div>
+
+</body>
+</html>
